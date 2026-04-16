@@ -1,0 +1,277 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CTABar from '../components/CTABar.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import Prose from '../components/Prose.astro';
+import LocalBusiness from '../components/schema/LocalBusiness.astro';
+import FAQSchema from '../components/schema/FAQSchema.astro';
+import business from '../data/business.json';
+
+interface Props {
+  entry: CollectionEntry<'locations'>;
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+// Short tree-service data for the services grid
+const treeServices = await getCollection('tree-services');
+const treeServiceOrder = [
+  'tree-removal',
+  'emergency-tree-removal',
+  'storm-damage-cleanup',
+  'tree-trimming-pruning',
+  'stump-grinding',
+  'lot-land-clearing',
+];
+const orderedTreeServices = treeServiceOrder
+  .map((id) => treeServices.find((s) => s.id === id))
+  .filter((s): s is CollectionEntry<'tree-services'> => s !== undefined);
+
+const iconMap: Record<string, 'axe' | 'alert' | 'wind' | 'scissors' | 'disc' | 'trees'> = {
+  'tree-removal': 'axe',
+  'emergency-tree-removal': 'alert',
+  'storm-damage-cleanup': 'wind',
+  'tree-trimming-pruning': 'scissors',
+  'stump-grinding': 'disc',
+  'lot-land-clearing': 'trees',
+};
+
+const shortTitle = (full: string) => full.split(' in ')[0];
+---
+
+<BaseLayout title={d.titleTag} description={d.description} canonical={pageURL}>
+  <LocalBusiness
+    slot="head"
+    idSuffix={`business-${entry.id}`}
+    nameOverride={`${business.name} — ${d.city}`}
+    areaServedCity={{ city: d.city, region: d.state }}
+  />
+  <FAQSchema slot="head" faqs={d.faqs} />
+
+  <Hero
+    eyebrow={`${d.city}, ${d.state}`}
+    eyebrowIcon="location"
+    headline={d.h1}
+    subhead={d.description}
+    variant="location"
+    secondaryCTA={{ text: 'Free Estimate', href: '/contact' }}
+  />
+
+  <TrustStrip />
+
+  {/* Intro */}
+  <section class="bg-white py-14 md:py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Prose>
+        <p set:html={d.intro.replace(/\n\n/g, '</p><p>')} />
+      </Prose>
+    </div>
+  </section>
+
+  {/* Services in [City] */}
+  <section class="bg-stone-50 py-16 md:py-24 border-y border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-10 md:mb-14">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-light text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+          Full tree service
+        </div>
+        <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl">
+          Tree Services in {d.city}
+        </h2>
+        <p class="mt-4 text-gray-600 text-base md:text-lg leading-relaxed">
+          Every service we offer is available across {d.city} and the surrounding area. Same crew, same flat-rate pricing.
+        </p>
+      </div>
+      <div class="grid gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          orderedTreeServices.map((s) => (
+            <ServiceCard
+              title={shortTitle(s.data.title)}
+              description={s.data.description}
+              href={`/tree-services/${s.id}`}
+              icon={iconMap[s.id] ?? 'default'}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* Why [City] */}
+  {
+    d.whyHere && (
+      <section class="bg-white py-16 md:py-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-5 gap-10 lg:gap-14 items-start">
+            <div class="lg:col-span-3">
+              <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl mb-6">
+                {d.whyHere.heading}
+              </h2>
+              <Prose>
+                <p set:html={d.whyHere.body.replace(/\n\n/g, '</p><p>')} />
+              </Prose>
+              {d.whyHere.quote && (
+                <figure class="mt-8 relative rounded-2xl bg-stone-50 shadow-sm ring-1 ring-gray-200 p-7 md:p-8">
+                  <svg class="absolute -top-3 left-6 w-10 h-10 text-brand/20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7 11h3v8H2v-6c0-3.3 2.7-6 6-6V5c-2.8 0-5 2.2-5 5v1h4zm12 0h3v8h-8v-6c0-3.3 2.7-6 6-6V5c-2.8 0-5 2.2-5 5v1h4z"/>
+                  </svg>
+                  <blockquote class="text-lg leading-relaxed text-gray-800 italic">
+                    "{d.whyHere.quote.quote}"
+                  </blockquote>
+                  <figcaption class="mt-5 flex items-center gap-3 text-sm">
+                    <div class="w-10 h-10 rounded-full bg-brand-dark text-white font-bold flex items-center justify-center" aria-hidden="true">DS</div>
+                    <div>
+                      <div class="font-bold text-gray-900">{d.whyHere.quote.attribution}</div>
+                      <div class="text-gray-500">Snyder's Outdoor Solutions</div>
+                    </div>
+                  </figcaption>
+                </figure>
+              )}
+            </div>
+            <aside class="lg:col-span-2 lg:sticky lg:top-24">
+              <div class="relative rounded-2xl bg-gradient-to-br from-brand-dark to-brand/90 text-white p-6 md:p-7 shadow-xl overflow-hidden">
+                <svg class="absolute -right-6 -bottom-6 w-40 h-40 text-white/5" viewBox="0 0 120 160" fill="currentColor" aria-hidden="true">
+                  <path d="M60 10 L40 50 L50 50 L30 90 L45 90 L20 140 L100 140 L75 90 L90 90 L70 50 L80 50 Z"/>
+                  <rect x="54" y="140" width="12" height="18"/>
+                </svg>
+                <div class="relative">
+                  <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/10 ring-1 ring-white/20 text-[10px] font-bold uppercase tracking-widest mb-4">
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                      <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    Local Snapshot
+                  </div>
+                  <div class="space-y-4">
+                    <div>
+                      <div class="text-xs uppercase tracking-wider text-brand-light/80 font-semibold">Service area</div>
+                      <div class="font-heading font-bold text-lg">{d.city}, {d.state} &amp; surrounding</div>
+                    </div>
+                    {d.neighborhoods.length > 0 && (
+                      <>
+                        <div class="h-px bg-white/10" />
+                        <div>
+                          <div class="text-xs uppercase tracking-wider text-brand-light/80 font-semibold">Neighborhoods</div>
+                          <div class="text-sm text-white/90 leading-relaxed mt-1">
+                            {d.neighborhoods.slice(0, 6).join(' · ')}
+                            {d.neighborhoods.length > 6 && <span class="text-white/60"> &amp; more</span>}
+                          </div>
+                        </div>
+                      </>
+                    )}
+                    <div class="h-px bg-white/10" />
+                    <div>
+                      <div class="text-xs uppercase tracking-wider text-brand-light/80 font-semibold">Response</div>
+                      <div class="font-heading font-bold text-lg">Same or next business day</div>
+                      <div class="text-white/70 text-sm">24/7 for true emergencies</div>
+                    </div>
+                  </div>
+                  <a
+                    href={`tel:${business.phoneTel}`}
+                    class="mt-6 inline-flex items-center justify-center w-full gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-5 py-3 rounded-lg text-base min-h-12 focus:outline-none focus:ring-2 focus:ring-white/60 transition-colors"
+                  >
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    Get a Free Estimate
+                  </a>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {/* Local Proof — map + neighborhoods + landmarks + driving route */}
+  <section class="bg-stone-50 py-16 md:py-24 border-y border-gray-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-10 md:mb-14">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          Serving the {d.city} area
+        </div>
+        <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl">
+          Where We Work in {d.city}
+        </h2>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">
+        <div class="rounded-2xl overflow-hidden shadow-lg ring-1 ring-gray-200 bg-white aspect-video">
+          <iframe
+            src={d.mapEmbedSrc ?? `https://www.google.com/maps?q=${encodeURIComponent(`${d.city}, ${d.state}`)}&output=embed`}
+            class="w-full h-full border-0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title={`Map of ${d.city}, ${d.state}`}
+          ></iframe>
+        </div>
+
+        <div>
+          <h3 class="font-heading font-bold text-gray-900 text-xl md:text-2xl mb-4">Neighborhoods We Serve</h3>
+          <ul class="grid grid-cols-2 gap-x-4 gap-y-2 text-gray-700 mb-8">
+            {
+              d.neighborhoods.map((n) => (
+                <li class="flex items-start gap-2">
+                  <svg class="w-4 h-4 text-brand mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  <span>{n}</span>
+                </li>
+              ))
+            }
+          </ul>
+
+          {d.landmarks.length > 0 && (
+            <>
+              <h3 class="font-heading font-bold text-gray-900 text-xl md:text-2xl mb-3">Local Landmarks &amp; Districts</h3>
+              <p class="text-gray-700 leading-relaxed mb-8">
+                {d.landmarks.join(' · ')}
+              </p>
+            </>
+          )}
+
+          {d.drivingRoute && (
+            <>
+              <h3 class="font-heading font-bold text-gray-900 text-xl md:text-2xl mb-3">Getting to You</h3>
+              <p class="text-gray-700 leading-relaxed">
+                {d.drivingRoute}
+              </p>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FAQAccordion faqs={d.faqs} />
+
+  {/* External resource + cross-link */}
+  <section class="bg-white py-10">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-sm text-gray-500">
+        Local resource:{' '}
+        <a href={d.externalLink.url} target="_blank" rel="noopener noreferrer" class="text-brand font-semibold underline underline-offset-4 hover:text-brand-dark">
+          {d.externalLink.text}
+        </a>{' '}
+        ({d.externalLink.source})
+      </p>
+    </div>
+  </section>
+
+  <CTABar
+    headline={`Serving ${d.city} — ready when you are.`}
+    subhead="Call for a free on-site estimate or book an appointment online."
+  />
+</BaseLayout>

@@ -1,0 +1,69 @@
+---
+type IconName =
+  | 'axe'
+  | 'alert'
+  | 'wind'
+  | 'scissors'
+  | 'disc'
+  | 'trees'
+  | 'leaf'
+  | 'shield'
+  | 'default';
+
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  icon?: IconName;
+  eyebrow?: string;
+  variant?: 'default' | 'compact';
+}
+
+const { title, description, href, icon = 'default', eyebrow, variant = 'default' } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    'group relative flex flex-col bg-white rounded-2xl ring-1 ring-gray-200 shadow-sm hover:shadow-xl hover:ring-brand/40 hover:-translate-y-0.5 transition-all duration-200',
+    variant === 'compact' ? 'p-5' : 'p-6 md:p-7',
+  ]}
+>
+  <div class="flex items-center justify-between mb-4">
+    <div
+      class:list={[
+        'flex items-center justify-center rounded-xl bg-brand/10 ring-1 ring-brand/15 text-brand-dark group-hover:bg-brand group-hover:text-white transition-colors',
+        variant === 'compact' ? 'w-10 h-10' : 'w-12 h-12',
+      ]}
+      aria-hidden="true"
+    >
+      <svg class:list={[variant === 'compact' ? 'w-5 h-5' : 'w-6 h-6']} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        {icon === 'axe' && <><path d="M9.5 7.5a7 7 0 0 1 9.9 0l2.6 2.6-2.1 2.1-2.6-2.6a4 4 0 1 0-5.7 5.7l2.6 2.6-2.1 2.1-2.6-2.6a7 7 0 0 1 0-9.9z"/><path d="M14 14 3 3"/></>}
+        {icon === 'alert' && <><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></>}
+        {icon === 'wind' && <><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></>}
+        {icon === 'scissors' && <><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></>}
+        {icon === 'disc' && <><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></>}
+        {icon === 'trees' && <><path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z"/><path d="M7 16v6"/><path d="M13 19v3"/><path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5"/></>}
+        {icon === 'leaf' && <><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.2 2.96c.8 3.36.2 6.58-2.2 9.04A7 7 0 0 1 11 20z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></>}
+        {icon === 'shield' && <><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></>}
+        {icon === 'default' && <><path d="M12 2 L2 22 L22 22 Z"/></>}
+      </svg>
+    </div>
+    <svg class="w-5 h-5 text-gray-300 group-hover:text-brand group-hover:translate-x-1 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="5" y1="12" x2="19" y2="12"/>
+      <polyline points="12 5 19 12 12 19"/>
+    </svg>
+  </div>
+
+  {eyebrow && <div class="text-xs font-semibold uppercase tracking-wider text-brand-dark/70 mb-1.5">{eyebrow}</div>}
+  <h3 class="font-heading font-bold text-gray-900 text-lg md:text-xl leading-tight group-hover:text-brand-dark transition-colors">
+    {title}
+  </h3>
+  <p class="mt-2.5 text-gray-600 text-sm leading-relaxed flex-1">{description}</p>
+  <span class="mt-4 inline-flex items-center gap-1 text-brand font-semibold text-sm group-hover:text-brand-dark">
+    Learn more
+    <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+      <polyline points="9 18 15 12 9 6"/>
+    </svg>
+  </span>
+</a>

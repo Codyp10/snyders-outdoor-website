@@ -1,0 +1,82 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import CTABar from '../../components/CTABar.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+
+const locations = await getCollection('locations');
+const locationOrder = ['hagerstown-md', 'frederick-md', 'martinsburg-wv'];
+const ordered = locationOrder
+  .map((id) => locations.find((l) => l.id === id))
+  .filter((l) => l !== undefined);
+
+const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
+---
+
+<BaseLayout
+  title="Service Areas | Snyder's Outdoor Solutions"
+  description="Tree service across the Tri-State area — Hagerstown MD, Frederick MD, and Martinsburg WV. See the cities and neighborhoods we serve."
+  canonical={pageURL}
+>
+  <Hero
+    eyebrow="Tri-State Coverage"
+    eyebrowIcon="location"
+    headline="Areas We Serve"
+    subhead="Tree service and outdoor solutions across Maryland and West Virginia. Based in Hagerstown, working throughout Washington County, Frederick County, and the Martinsburg area."
+    variant="about"
+    secondaryCTA={{ text: 'Free Estimate', href: '/contact' }}
+  />
+
+  <TrustStrip />
+
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-10 md:mb-14">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-light text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+          Primary Cities
+        </div>
+        <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl">
+          Where We Work
+        </h2>
+        <p class="mt-4 text-gray-600 text-base md:text-lg leading-relaxed">
+          Tap any city below for full coverage details, served neighborhoods, and a local map.
+        </p>
+      </div>
+      <div class="grid gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          ordered.map((l) => (
+            <ServiceCard
+              title={`${l!.data.city}, ${l!.data.state}`}
+              description={l!.data.description}
+              href={`/service-areas/${l!.id}`}
+              icon="shield"
+              eyebrow="Tree Service"
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-stone-50 py-16 md:py-24 border-y border-gray-100">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-700 leading-relaxed">
+      <h2 class="font-heading font-bold text-gray-900 text-2xl md:text-3xl mb-4">Regional Coverage</h2>
+      <p class="mb-4">
+        Beyond our three primary markets we regularly work throughout Washington County, Maryland
+        — including Williamsport, Clear Spring, Smithsburg, Funkstown, and Boonsboro — as well as
+        parts of southern Franklin County, Pennsylvania, and across the Potomac into Berkeley and
+        Jefferson Counties, West Virginia. Most jobs happen within a 30-mile radius of our
+        Hagerstown base.
+      </p>
+      <p>
+        Outside the listed areas? Call us anyway. We travel for the right job and we'll tell you
+        honestly whether we're the best fit or refer you to a crew that is.
+      </p>
+    </div>
+  </section>
+
+  <CTABar />
+</BaseLayout>
