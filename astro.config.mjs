@@ -6,7 +6,11 @@ export default defineConfig({
   site: 'https://snydersoutdoorsolutions.com',
   output: 'static',
   trailingSlash: 'never',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) => !/\/(privacy|terms)\/?$/.test(page),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

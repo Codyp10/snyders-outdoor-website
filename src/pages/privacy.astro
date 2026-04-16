@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Prose from '../components/Prose.astro';
+import CTABar from '../components/CTABar.astro';
+import business from '../data/business.json';
+
+const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
+---
+
+<BaseLayout
+  title="Privacy Policy | Snyder's Outdoor Solutions"
+  description="How Snyder's Outdoor Solutions collects, uses, and protects your personal information."
+  canonical={pageURL}
+  noindex={true}
+>
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-light text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+        Legal
+      </div>
+      <h1 class="font-heading font-extrabold text-gray-900 text-3xl md:text-5xl mb-4">Privacy Policy</h1>
+      <p class="text-sm text-gray-500 mb-8">Last updated: this document is draft boilerplate pending legal review.</p>
+      <Prose>
+        <p>
+          Snyder's Outdoor Solutions ("we", "our", or "us") respects your privacy. This policy describes what
+          information we collect when you interact with our website and services, how we use it, and the choices
+          you have. Because this is draft boilerplate for a small local service business, you should review it
+          with counsel before treating it as your final policy.
+        </p>
+
+        <h2>Information we collect</h2>
+        <p>We collect information in two primary ways:</p>
+        <ul>
+          <li>
+            <strong>Information you give us.</strong> When you request an estimate, call us, or submit a form,
+            we collect your name, phone number, email (if provided), property address or location, and the details
+            of your service request.
+          </li>
+          <li>
+            <strong>Information collected automatically.</strong> When you browse our site, we collect standard
+            analytics information via Google Analytics (through Google Tag Manager) — page views, device type,
+            approximate location based on IP, referral source, and interaction events. We also use Microsoft
+            Clarity to record anonymous session data (heatmaps and interaction patterns) to improve the site.
+          </li>
+        </ul>
+
+        <h2>How we use your information</h2>
+        <ul>
+          <li>To respond to your service request, schedule work, and deliver the services you ask for.</li>
+          <li>To communicate with you about your estimate, appointment, or invoice.</li>
+          <li>To improve our website, our marketing, and the way we communicate with prospective customers.</li>
+          <li>To comply with applicable laws and protect our legal rights.</li>
+        </ul>
+
+        <h2>Who we share it with</h2>
+        <p>
+          We do not sell your personal information. We share information only with:
+        </p>
+        <ul>
+          <li>
+            <strong>Service providers we rely on</strong> — for example, our scheduling software (Jobber), our
+            analytics provider (Google), and our session-analytics provider (Microsoft Clarity). These providers
+            are bound by their own privacy obligations and use the data only to provide their services to us.
+          </li>
+          <li>
+            <strong>Legal and regulatory</strong> — if required by law, court order, or legitimate legal process.
+          </li>
+        </ul>
+
+        <h2>Cookies</h2>
+        <p>
+          Our site uses cookies and similar technologies for analytics and tag management purposes. You can disable
+          cookies in your browser settings; some site functionality may be limited as a result.
+        </p>
+
+        <h2>Data retention</h2>
+        <p>
+          We keep contact and job information for as long as needed to provide and support our services and to
+          comply with applicable legal obligations. Analytics data is retained according to each provider's
+          default retention settings.
+        </p>
+
+        <h2>Your choices</h2>
+        <p>
+          You can request a copy of the personal information we have about you, ask us to correct it, or ask us
+          to delete it, by contacting us using the details below. Some information may be retained if we're
+          required to keep it by law.
+        </p>
+
+        <h2>Children's privacy</h2>
+        <p>
+          Our services are directed to adults. We do not knowingly collect personal information from children
+          under 13.
+        </p>
+
+        <h2>Changes to this policy</h2>
+        <p>
+          We may update this policy from time to time. When we do, we'll revise the "last updated" date at the
+          top. Material changes may also be announced on the site itself.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Questions about this policy can go to <a href="/contact">our contact page</a> or directly to {business.name}
+          at the phone number listed in our site footer.
+        </p>
+      </Prose>
+    </div>
+  </section>
+
+  <CTABar />
+</BaseLayout>

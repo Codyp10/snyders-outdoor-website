@@ -1,0 +1,218 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LocalBusiness from '../components/schema/LocalBusiness.astro';
+import Hero from '../components/Hero.astro';
+import CTABar from '../components/CTABar.astro';
+import business from '../data/business.json';
+
+const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
+const addr = business.address;
+const phoneDisplay = business.phone === 'NAP_PENDING' ? '(555) 000-0000' : business.phone;
+const phoneTel = business.phoneTel === 'NAP_PENDING' ? '+15550000000' : business.phoneTel;
+---
+
+<BaseLayout
+  title="Contact Us | Snyder's Outdoor Solutions"
+  description="Call Snyder's Outdoor Solutions for free on-site tree service estimates in Hagerstown, Frederick, and Martinsburg — or request an estimate online."
+  canonical={pageURL}
+>
+  <LocalBusiness slot="head" />
+
+  <Hero
+    eyebrow="Tri-State Coverage"
+    eyebrowIcon="location"
+    headline="Contact Snyder's Outdoor Solutions"
+    subhead="Fastest way to reach us is the phone. For anything non-urgent, the estimate form below goes straight to our scheduling queue."
+    variant="contact"
+  />
+
+  {/* Phone-first CTA bar */}
+  <section class="bg-brand-dark text-white py-10 md:py-14">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-5">
+      <div>
+        <div class="uppercase tracking-widest text-xs font-semibold text-brand-light mb-1">Call us directly</div>
+        <div class="font-heading font-extrabold text-white text-3xl md:text-4xl">{phoneDisplay}</div>
+        <div class="text-white/70 text-sm mt-1">24/7 for true emergencies · regular hours for everything else</div>
+      </div>
+      <a
+        href={`tel:${phoneTel}`}
+        class="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-lg text-base md:text-lg min-h-12 shadow-lg shadow-orange-900/30 focus:outline-none focus:ring-2 focus:ring-white/60"
+      >
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        Call Now
+      </a>
+    </div>
+  </section>
+
+  {/* Estimate Form — Jobber embed placeholder */}
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-light text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+          Online Estimate Request
+        </div>
+        <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl">Request a Free Estimate</h2>
+        <p class="mt-4 text-gray-600 text-base md:text-lg leading-relaxed">
+          Submissions route directly to our scheduling queue. We'll reach out to confirm the visit
+          — usually the same day during business hours.
+        </p>
+      </div>
+
+      {/* PLACEHOLDER: Jobber embed drops in here.
+          Cody will replace the entire .jobber-placeholder block with either:
+          (a) Jobber's provided <script>/<iframe> embed code, or
+          (b) a link-out button to the Jobber online booking URL.
+          The wrapper styles (shadow, border, rounded corners) give the embed
+          a consistent visual even if Jobber's form is plain HTML. */}
+      <div class="jobber-placeholder rounded-2xl bg-stone-50 ring-1 ring-gray-200 shadow-sm p-8 md:p-10 text-center">
+        <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-brand/10 ring-1 ring-brand/20 text-brand-dark mb-5">
+          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </div>
+        <h3 class="font-heading font-bold text-gray-900 text-xl md:text-2xl">Estimate form loading shortly</h3>
+        <p class="mt-3 text-gray-600 text-base leading-relaxed max-w-lg mx-auto">
+          Our online estimate request form is being finalized. In the meantime, the fastest way to get on
+          the schedule is a quick phone call — we'll take your details and confirm a visit window.
+        </p>
+        <a
+          href={`tel:${phoneTel}`}
+          class="mt-6 inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-7 py-3 rounded-lg text-base min-h-12 focus:outline-none focus:ring-2 focus:ring-brand/40"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          Call {phoneDisplay}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* Emergency callout */}
+  <section class="bg-orange-50 border-y border-orange-200 py-8">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-start md:items-center gap-4">
+      <div class="flex-shrink-0 w-11 h-11 rounded-full bg-orange-500 text-white flex items-center justify-center" aria-hidden="true">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+      </div>
+      <div class="flex-1">
+        <div class="font-heading font-bold text-gray-900 text-lg">For emergencies, skip the form.</div>
+        <div class="text-gray-700 text-sm md:text-base">
+          Tree on a structure, blocked driveway, line hazard — call <a href={`tel:${phoneTel}`} class="text-brand font-bold underline underline-offset-2 hover:text-brand-dark">{phoneDisplay}</a> directly and we'll get a crew moving.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Service area + hours */}
+  <section class="bg-stone-50 py-16 md:py-24 border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+          Service Area
+        </div>
+        <h2 class="font-heading font-bold text-gray-900 text-2xl md:text-3xl mb-4">Where We Work</h2>
+        <ul class="space-y-2 text-gray-700">
+          {
+            business.areaServed.map((a) => (
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-brand mt-1 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <a href={`/service-areas/${a.city.toLowerCase()}-${a.region.toLowerCase()}`} class="hover:text-brand-dark">
+                  {a.city}, {a.region}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="mt-4 text-gray-600 text-sm leading-relaxed">
+          Plus Williamsport, Clear Spring, Smithsburg, Funkstown, Boonsboro, Hedgesville, Inwood, Bunker Hill,
+          and most of the territory between. Outside the listed area? <a href="/contact" class="text-brand font-semibold underline underline-offset-4 hover:text-brand-dark">Ask anyway.</a>
+        </p>
+      </div>
+
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+          Hours
+        </div>
+        <h2 class="font-heading font-bold text-gray-900 text-2xl md:text-3xl mb-4">When We Work</h2>
+        <dl class="space-y-2 text-gray-700">
+          <div class="flex justify-between gap-4 border-b border-gray-200 pb-2">
+            <dt class="font-semibold">Monday – Friday</dt>
+            <dd>7:00 AM – 5:00 PM</dd>
+          </div>
+          <div class="flex justify-between gap-4 border-b border-gray-200 pb-2">
+            <dt class="font-semibold">Saturday</dt>
+            <dd>8:00 AM – 2:00 PM</dd>
+          </div>
+          <div class="flex justify-between gap-4 border-b border-gray-200 pb-2">
+            <dt class="font-semibold">Sunday</dt>
+            <dd>By appointment</dd>
+          </div>
+          <div class="flex justify-between gap-4 bg-orange-50 -mx-2 px-2 py-2 rounded">
+            <dt class="font-semibold text-orange-700">Emergency line</dt>
+            <dd class="font-semibold text-orange-700">24/7</dd>
+          </div>
+        </dl>
+        <p class="mt-4 text-gray-500 text-xs italic">
+          Hours are representative — confirm with your local market via the phone line.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Business info + map */}
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-light text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+            Business Details
+          </div>
+          <h2 class="font-heading font-bold text-gray-900 text-2xl md:text-3xl mb-4">
+            Snyder's Outdoor Solutions
+          </h2>
+          <address class="not-italic text-gray-700 space-y-2 text-base">
+            <div class="font-semibold text-gray-900">{business.name}</div>
+            <div>{addr.street !== 'NAP_PENDING' ? addr.street : 'Hagerstown, MD (full address on request)'}</div>
+            {addr.street !== 'NAP_PENDING' && <div>{addr.city}, {addr.region} {addr.postalCode}</div>}
+            <div>
+              <a href={`tel:${phoneTel}`} class="text-brand font-semibold hover:text-brand-dark">
+                {phoneDisplay}
+              </a>
+            </div>
+          </address>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden shadow-lg ring-1 ring-gray-200 bg-white aspect-video">
+          <iframe
+            src="https://www.google.com/maps?q=Hagerstown,MD&output=embed"
+            class="w-full h-full border-0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Snyder's Outdoor Solutions service area map"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABar
+    headline="Prefer to talk it through?"
+    subhead="Call us and we'll walk the job with you on the phone."
+  />
+</BaseLayout>

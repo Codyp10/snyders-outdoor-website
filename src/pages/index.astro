@@ -1,58 +1,307 @@
 ---
+import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CTABar from '../components/CTABar.astro';
+import Prose from '../components/Prose.astro';
+import LocalBusiness from '../components/schema/LocalBusiness.astro';
 import business from '../data/business.json';
+
+const treeServices = await getCollection('tree-services');
+const treeServiceOrder = [
+  'tree-removal',
+  'emergency-tree-removal',
+  'storm-damage-cleanup',
+  'tree-trimming-pruning',
+  'stump-grinding',
+  'lot-land-clearing',
+];
+const ordered = treeServiceOrder
+  .map((id) => treeServices.find((s) => s.id === id))
+  .filter((s): s is CollectionEntry<'tree-services'> => s !== undefined);
+
+const iconMap: Record<string, 'axe' | 'alert' | 'wind' | 'scissors' | 'disc' | 'trees'> = {
+  'tree-removal': 'axe',
+  'emergency-tree-removal': 'alert',
+  'storm-damage-cleanup': 'wind',
+  'tree-trimming-pruning': 'scissors',
+  'stump-grinding': 'disc',
+  'lot-land-clearing': 'trees',
+};
+const shortTitle = (full: string) => full.split(' in ')[0];
+
+const locations = await getCollection('locations');
+const locationOrder = ['hagerstown-md', 'frederick-md', 'martinsburg-wv'];
+const orderedLocations = locationOrder
+  .map((id) => locations.find((l) => l.id === id))
+  .filter((l): l is CollectionEntry<'locations'> => l !== undefined);
+
+const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
 <BaseLayout
   title="Tree Service Hagerstown MD | Snyder's Outdoor Solutions"
-  description="Professional tree removal, emergency service, trimming, stump grinding, and land clearing in Hagerstown, Frederick, and Martinsburg."
+  description="Licensed tree service in Hagerstown, Frederick, and Martinsburg. Tree removal, emergency response, trimming, stump grinding, storm damage cleanup, and land clearing — free estimates."
+  canonical={pageURL}
 >
-  <section class="bg-brand-dark text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
-      <p class="uppercase tracking-widest text-xs font-semibold text-brand-light mb-4">
-        Scaffold preview · content coming
+  <LocalBusiness slot="head" />
+
+  <Hero
+    eyebrow="Hagerstown · Frederick · Martinsburg"
+    eyebrowIcon="location"
+    headline="Tree Service in Hagerstown, MD"
+    subhead="Licensed, local, and ready when you are. Snyder's Outdoor Solutions handles tree removal, emergency response, trimming, stump grinding, storm damage cleanup, and land clearing across the Tri-State area."
+    variant="home"
+    secondaryCTA={{ text: 'Free Estimate', href: '/contact' }}
+  />
+
+  <TrustStrip />
+
+  {/* Intro + service grid */}
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-10 md:mb-14">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-light text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+          Our Tree Services
+        </div>
+        <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl">
+          Six Services, One Local Crew
+        </h2>
+        <p class="mt-4 text-gray-600 text-base md:text-lg leading-relaxed">
+          From routine trimming to major removals, we run one crew across the full range of
+          residential tree work. Tap any service for the details — pricing notes, process, and FAQs.
+        </p>
+      </div>
+      <div class="grid gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          ordered.map((s) => (
+            <ServiceCard
+              title={shortTitle(s.data.title)}
+              description={s.data.description}
+              href={`/tree-services/${s.id}`}
+              icon={iconMap[s.id] ?? 'default'}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* Emergency callout — full-width, urgency */}
+  <section class="relative overflow-hidden bg-[#4a1a1a] text-white">
+    <div
+      class="absolute inset-0 bg-[radial-gradient(120%_100%_at_80%_0%,rgba(255,120,80,0.35),transparent_55%),linear-gradient(135deg,#5a1f1f_0%,#2a1212_100%)] -z-10"
+      aria-hidden="true"
+    ></div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20 text-center relative">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-500/15 text-orange-200 ring-1 ring-orange-400/40 text-xs font-semibold uppercase tracking-widest mb-5">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        24/7 Emergency Response
+      </div>
+      <h2 class="font-heading font-extrabold text-white text-3xl md:text-5xl leading-tight">
+        Tree Down? Storm Damage? Don't Wait.
+      </h2>
+      <p class="mt-5 text-base md:text-lg text-white/85 leading-relaxed max-w-2xl mx-auto">
+        Trees on houses, blocked driveways, line hazards — we respond around the clock across Hagerstown,
+        Frederick, and Martinsburg. Fastest way to get a crew moving is to call.
       </p>
-      <h1 class="font-heading font-extrabold text-3xl md:text-5xl leading-tight max-w-3xl">
-        Tree Service in Hagerstown, MD — {business.name}
-      </h1>
-      <p class="mt-6 text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed">
-        Scaffolding checkpoint. Full homepage content, photos, and schema land in the
-        reference-page milestone.
-      </p>
-      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+      <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
         <a
           href={`tel:${business.phoneTel}`}
-          class="inline-flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-lg text-base md:text-lg"
+          class="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-lg text-base md:text-lg min-h-12 shadow-lg shadow-orange-900/30 focus:outline-none focus:ring-2 focus:ring-white/70"
         >
-          Call Now
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+          Call Emergency Line
         </a>
         <a
-          href="/contact"
-          class="inline-flex items-center justify-center border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-4 rounded-lg text-base md:text-lg"
+          href="/tree-services/emergency-tree-removal"
+          class="inline-flex items-center justify-center border-2 border-white/80 text-white hover:bg-white/10 font-bold px-8 py-4 rounded-lg text-base md:text-lg min-h-12 focus:outline-none focus:ring-2 focus:ring-white/70"
         >
-          Free Estimate
+          Emergency Info
         </a>
       </div>
     </div>
   </section>
 
-  <section class="bg-white py-16 md:py-24">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg">
-      <h2 class="font-heading font-bold text-2xl md:text-3xl text-gray-900">
-        What's here so far
-      </h2>
-      <ul class="mt-4 space-y-2 text-gray-700 list-disc list-inside">
-        <li>Astro 5 + Tailwind 4 + sitemap integration</li>
-        <li>BaseLayout with canonical, OG/Twitter, GTM stub, skip-to-content</li>
-        <li>Header (sticky, dropdown nav, mobile drawer) + Footer reading from <code>business.json</code></li>
-        <li>Sticky mobile Call / Estimate bar</li>
-        <li>Inter Variable self-hosted via <code>@fontsource-variable/inter</code></li>
-        <li>Placeholder NAP values gated behind <code>NAP_PENDING</code> — swap before launch</li>
-      </ul>
-      <p class="mt-6 text-gray-600">
-        Next checkpoint: schema components, content collection schemas, and the reference
-        service page (Tree Removal — Hagerstown).
-      </p>
+  {/* Why Choose */}
+  <section class="bg-stone-50 py-16 md:py-24 border-y border-gray-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-5 gap-10 lg:gap-14 items-start">
+        <div class="lg:col-span-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+            Why Homeowners Choose Snyder's
+          </div>
+          <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl mb-6">
+            Tree Work the Way It's Supposed to Be Done
+          </h2>
+          <Prose>
+            <p>
+              There's a lot of tree services in the Tri-State area. Most do the job. A few do it right. Snyder's Outdoor Solutions
+              was built on the premise that homeowners shouldn't have to gamble on which crew shows up — the same people who
+              quote the job do the work, with the experience, the equipment, and the insurance to stand behind it.
+            </p>
+            <p>
+              Dustin grew up logging with his dad in the woods around Hagerstown, and that experience shapes every job:
+              plan every cut before you make it, protect what's underneath, leave the property cleaner than you found it.
+              It's an old-school approach in an industry that's filled up with pop-up crews and out-of-town franchises,
+              and it's why we keep getting called back by the same families and their neighbors.
+            </p>
+          </Prose>
+          <figure class="mt-8 relative rounded-2xl bg-white shadow-md ring-1 ring-gray-100 p-7 md:p-8">
+            <svg class="absolute -top-3 left-6 w-10 h-10 text-brand/20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M7 11h3v8H2v-6c0-3.3 2.7-6 6-6V5c-2.8 0-5 2.2-5 5v1h4zm12 0h3v8h-8v-6c0-3.3 2.7-6 6-6V5c-2.8 0-5 2.2-5 5v1h4z"/>
+            </svg>
+            <blockquote class="text-lg leading-relaxed text-gray-800 italic">
+              "My dad taught me that tree work is about respecting the property as much as the tree. If you leave a yard
+              torn up or a stump sitting there rotting, you didn't finish the job — you just stopped working. That's the
+              difference we try to show up with on every call."
+            </blockquote>
+            <figcaption class="mt-5 flex items-center gap-3 text-sm">
+              <div class="w-10 h-10 rounded-full bg-brand-dark text-white font-bold flex items-center justify-center" aria-hidden="true">DS</div>
+              <div>
+                <div class="font-bold text-gray-900">Dustin Snyder, Owner</div>
+                <div class="text-gray-500">Snyder's Outdoor Solutions</div>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+
+        <aside class="lg:col-span-2 lg:sticky lg:top-24">
+          <div class="relative rounded-2xl bg-gradient-to-br from-brand-dark to-brand/90 text-white p-6 md:p-7 shadow-xl overflow-hidden">
+            <svg class="absolute -right-6 -bottom-6 w-40 h-40 text-white/5" viewBox="0 0 120 160" fill="currentColor" aria-hidden="true">
+              <path d="M60 10 L40 50 L50 50 L30 90 L45 90 L20 140 L100 140 L75 90 L90 90 L70 50 L80 50 Z"/>
+              <rect x="54" y="140" width="12" height="18"/>
+            </svg>
+            <div class="relative">
+              <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/10 ring-1 ring-white/20 text-[10px] font-bold uppercase tracking-widest mb-4">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-light"></span>
+                The Snyder's Difference
+              </div>
+              <ul class="space-y-4">
+                {[
+                  ['Owner on every job', 'Dustin is on site or one phone call away — the person who quoted your job is the person you talk to if something comes up.'],
+                  ['Flat-rate pricing', 'You know the price before we start. No hourly surprises.'],
+                  ['Full cleanup included', 'Debris haul-off is part of the job, not an add-on.'],
+                  ['Licensed in MD & WV', 'Proper licensing and insurance on both sides of the line.'],
+                ].map(([t, b]) => (
+                  <li>
+                    <div class="flex items-start gap-2">
+                      <svg class="w-4 h-4 text-brand-light flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      <div>
+                        <div class="font-heading font-bold text-sm">{t}</div>
+                        <div class="text-white/70 text-xs leading-relaxed mt-0.5">{b}</div>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="/contact"
+                class="mt-6 inline-flex items-center justify-center w-full gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-5 py-3 rounded-lg text-base min-h-12 focus:outline-none focus:ring-2 focus:ring-white/60 transition-colors"
+              >
+                Get Your Free Estimate
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
     </div>
   </section>
+
+  {/* About preview */}
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-light text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+        About Snyder's
+      </div>
+      <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl mb-6">
+        A Local Business, Built on Local Work
+      </h2>
+      <Prose>
+        <p>
+          Snyder's Outdoor Solutions is a Hagerstown-based tree service and outdoor solutions company run by Dustin Snyder.
+          What started as Dustin working alongside his dad has grown into a full-service crew covering residential tree
+          care across Maryland and West Virginia. <a href="/about">Read Dustin's full story →</a>
+        </p>
+      </Prose>
+    </div>
+  </section>
+
+  {/* Outdoor Services teaser */}
+  <section class="bg-brand-light/50 py-16 md:py-24 border-y border-brand/10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+        Beyond Tree Work
+      </div>
+      <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl mb-4">
+        We Do More Than Trees
+      </h2>
+      <p class="text-gray-700 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+        Wood products, plant health care, driveway sealing, holiday lights, lightning protection, and more.
+        Trees are our anchor — they're not the whole list.
+      </p>
+      <a
+        href="/outdoor-services"
+        class="mt-6 inline-flex items-center justify-center gap-2 border-2 border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white font-bold px-7 py-3 rounded-lg text-base transition-colors"
+      >
+        See all outdoor services
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  {/* Service areas */}
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-10 md:mb-14">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-light text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          Service Areas
+        </div>
+        <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl">
+          Serving the Tri-State Area
+        </h2>
+        <p class="mt-4 text-gray-600 text-base md:text-lg leading-relaxed">
+          Three primary markets — and plenty of stops between. <a href="/service-areas" class="text-brand font-semibold hover:text-brand-dark">See full coverage →</a>
+        </p>
+      </div>
+      <div class="grid gap-5 md:gap-6 sm:grid-cols-3">
+        {
+          orderedLocations.map((l) => (
+            <ServiceCard
+              title={`${l.data.city}, ${l.data.state}`}
+              description={l.data.description}
+              href={`/service-areas/${l.id}`}
+              icon="shield"
+              eyebrow="Tree Service"
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CTABar
+    headline="Ready for tree work? Call Snyder's today."
+    subhead="Free on-site estimates. Fast response. Flat-rate pricing you can trust."
+  />
 </BaseLayout>

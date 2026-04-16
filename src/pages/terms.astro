@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Prose from '../components/Prose.astro';
+import CTABar from '../components/CTABar.astro';
+import business from '../data/business.json';
+
+const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
+---
+
+<BaseLayout
+  title="Terms of Service | Snyder's Outdoor Solutions"
+  description="Terms governing use of the Snyder's Outdoor Solutions website."
+  canonical={pageURL}
+  noindex={true}
+>
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-light text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+        Legal
+      </div>
+      <h1 class="font-heading font-extrabold text-gray-900 text-3xl md:text-5xl mb-4">Terms of Service</h1>
+      <p class="text-sm text-gray-500 mb-8">Last updated: this document is draft boilerplate pending legal review.</p>
+      <Prose>
+        <p>
+          These terms govern your use of the Snyder's Outdoor Solutions website. This is draft boilerplate for a
+          small local service business; you should review it with counsel before treating it as your final terms.
+        </p>
+
+        <h2>About the site</h2>
+        <p>
+          This site is operated by {business.name}, based in {business.address.city}, {business.address.region}. It
+          provides information about our services, our service areas, and a way to request a free estimate. The site
+          is not a service agreement — the terms of any work we perform are governed by the separate written quote,
+          estimate, or contract signed before work begins.
+        </p>
+
+        <h2>Use of the site</h2>
+        <p>
+          You may use the site for lawful purposes related to getting information about, or requesting, our services.
+          You may not attempt to disrupt or reverse-engineer the site, scrape content for commercial purposes, or use
+          the site in a way that violates applicable law.
+        </p>
+
+        <h2>Content</h2>
+        <p>
+          All content on this site — photos, copy, logos, design — is owned by {business.name} or used with
+          permission, and is protected by applicable intellectual property law. You may view and share reasonable
+          excerpts for personal, non-commercial purposes, but republishing the full site content is not permitted
+          without written consent.
+        </p>
+
+        <h2>Accuracy</h2>
+        <p>
+          We try to keep the information on this site accurate, but we make no warranties that it is complete,
+          error-free, or current. Service areas, pricing examples, hours, and policies may change; the authoritative
+          source is the written estimate or contract we provide for your specific job.
+        </p>
+
+        <h2>External links</h2>
+        <p>
+          Our site may link to third-party sites (industry resources, local government, reference material). We
+          don't control those sites and aren't responsible for their content or their practices.
+        </p>
+
+        <h2>Limitation of liability</h2>
+        <p>
+          To the fullest extent permitted by law, {business.name} is not liable for any indirect, incidental, or
+          consequential damages arising out of your use of this site. Our total liability for any claim related to
+          the site is limited to the amount you paid us (if any) for services referenced through the site in the
+          12 months preceding the claim.
+        </p>
+
+        <h2>Governing law</h2>
+        <p>
+          These terms are governed by the laws of the State of Maryland, without regard to conflict of law
+          principles. Any dispute relating to this site will be resolved in the state or federal courts located in
+          Washington County, Maryland.
+        </p>
+
+        <h2>Changes</h2>
+        <p>
+          We may update these terms from time to time. Material changes will be reflected in the "last updated"
+          date at the top of this page.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Questions about these terms can go to <a href="/contact">our contact page</a> or the phone number listed
+          in our site footer.
+        </p>
+      </Prose>
+    </div>
+  </section>
+
+  <CTABar />
+</BaseLayout>

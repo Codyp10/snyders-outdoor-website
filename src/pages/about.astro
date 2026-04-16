@@ -1,0 +1,209 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+import CTABar from '../components/CTABar.astro';
+import Prose from '../components/Prose.astro';
+import business from '../data/business.json';
+
+const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
+---
+
+<BaseLayout
+  title="About Snyder's Outdoor Solutions | Hagerstown, MD"
+  description="Snyder's Outdoor Solutions is a family-run tree service based in Hagerstown, MD. Meet Dustin and learn how a logger's son built a full-service outdoor solutions company."
+  canonical={pageURL}
+>
+  <Hero
+    eyebrow="Family-run · Hagerstown, MD"
+    eyebrowIcon="leaf"
+    headline="About Snyder's Outdoor Solutions"
+    subhead="A Hagerstown-based tree service built by a logger's son. Real work, real people, real accountability."
+    variant="about"
+    secondaryCTA={{ text: 'Get a Quote', href: '/contact' }}
+  />
+
+  <TrustStrip />
+
+  {/* Dustin's Story — 2-col with designed identity card */}
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-5 gap-10 lg:gap-14 items-start">
+        <div class="lg:col-span-2 lg:sticky lg:top-24">
+          {/* Designed identity card — swaps to <Image> of Dustin when photo lands */}
+          <div class="relative rounded-2xl bg-gradient-to-br from-brand-dark to-brand/90 text-white p-7 md:p-8 shadow-xl overflow-hidden">
+            <svg class="absolute -right-10 -bottom-10 w-56 h-56 text-white/5" viewBox="0 0 120 160" fill="currentColor" aria-hidden="true">
+              <path d="M60 10 L40 50 L50 50 L30 90 L45 90 L20 140 L100 140 L75 90 L90 90 L70 50 L80 50 Z"/>
+              <rect x="54" y="140" width="12" height="18"/>
+            </svg>
+            <div class="relative">
+              <div class="w-16 h-16 rounded-full bg-brand-light text-brand-dark font-heading font-extrabold text-2xl flex items-center justify-center shadow-lg" aria-hidden="true">DS</div>
+              <div class="mt-5">
+                <div class="font-heading font-bold text-2xl">Dustin Snyder</div>
+                <div class="text-brand-light text-sm uppercase tracking-widest mt-0.5">Owner &amp; Operator</div>
+              </div>
+              <div class="mt-6 space-y-4 text-sm">
+                <div>
+                  <div class="text-brand-light/80 uppercase tracking-wider text-[11px] font-semibold">Based in</div>
+                  <div class="font-heading font-bold text-lg">Hagerstown, Maryland</div>
+                </div>
+                <div class="h-px bg-white/10"></div>
+                <div>
+                  <div class="text-brand-light/80 uppercase tracking-wider text-[11px] font-semibold">Background</div>
+                  <div class="font-heading font-bold text-lg">Logger's son</div>
+                  <div class="text-white/70 mt-0.5">Years on chainsaws before most kids drove a car.</div>
+                </div>
+                <div class="h-px bg-white/10"></div>
+                <div>
+                  <div class="text-brand-light/80 uppercase tracking-wider text-[11px] font-semibold">On every job</div>
+                  <div class="font-heading font-bold text-lg">Either on site or one call away</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-light text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+            Dustin's Story
+          </div>
+          <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl mb-6">
+            Raised in the Woods, Building a Business in Town
+          </h2>
+          <Prose>
+            <p>
+              Dustin Snyder grew up in the woods around Hagerstown, learning to run a chainsaw before most kids his age
+              were old enough to drive. His dad was a logger, and every weekend from early on was spent on a job —
+              dropping trees, clearing lots, hauling wood. By the time Dustin was a teenager, he knew how to read a tree,
+              rig a limb, and leave a jobsite looking like a crew had actually been there.
+            </p>
+            <p>
+              When he started Snyder's Outdoor Solutions, the goal was never to be the biggest tree service in the region.
+              It was to be the one homeowners could actually trust — the crew that shows up when they say, quotes flat-rate,
+              and treats the property the way the customer would treat it themselves. Ten years later, a lot of the work still
+              comes from the same handful of neighborhoods, from customers who call Dustin's cell directly.
+            </p>
+            <p>
+              The company has grown past pure tree work into a broader outdoor solutions business — wood products, plant
+              health, driveway sealing, holiday lights, and more — but the tree service is still the anchor. Every new
+              service extension gets tested against the same rule: if Dustin can't stand behind the quality personally, it
+              doesn't get offered.
+            </p>
+          </Prose>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Qualifications */}
+  <section class="bg-stone-50 py-16 md:py-24 border-y border-gray-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-10 md:mb-14">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+          Qualifications
+        </div>
+        <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl">
+          The Paperwork, the Training, the Coverage
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          {
+            icon: 'shield',
+            title: 'Fully insured',
+            body: 'Full general liability and workers\u2019 comp coverage. Certificates available on request before any job.',
+          },
+          {
+            icon: 'check',
+            title: 'Licensed MD & WV',
+            body: 'Proper licensing on both sides of the state line, because we work Berkeley County just like Washington County.',
+          },
+          {
+            icon: 'mappin',
+            title: 'Local to Hagerstown',
+            body: 'Same zip code as most of our customers. No long-distance dispatch delays when you need us.',
+          },
+          {
+            icon: 'leaf',
+            title: 'Industry practice',
+            body: 'We prune to International Society of Arboriculture standards — no topping, no flush cuts, no shortcuts that hurt the tree.',
+          },
+        ].map((b) => (
+          <div class="flex flex-col gap-3 p-6 rounded-2xl bg-white ring-1 ring-gray-200 shadow-sm">
+            <div class="w-11 h-11 rounded-full bg-brand text-white flex items-center justify-center" aria-hidden="true">
+              {b.icon === 'shield' && (
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              )}
+              {b.icon === 'check' && (
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              )}
+              {b.icon === 'mappin' && (
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              )}
+              {b.icon === 'leaf' && (
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.2 2.96c.8 3.36.2 6.58-2.2 9.04A7 7 0 0 1 11 20z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>
+              )}
+            </div>
+            <h3 class="font-heading font-bold text-gray-900 text-lg leading-tight">{b.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{b.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Team & equipment */}
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-light text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+        Team &amp; Equipment
+      </div>
+      <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl mb-6">
+        The Right Crew with the Right Gear
+      </h2>
+      <Prose>
+        <p>
+          The Snyder's crew runs with the equipment the job actually needs — bucket trucks for tight residential
+          takedowns, grapple trucks for efficient debris haul-off, chippers on every job, and industrial stump
+          grinders when a removal is getting finished properly. It's a real operation with real capacity, not a
+          pickup-and-chainsaw side hustle.
+        </p>
+        <p>
+          Everybody on the crew has been trained on safe rigging and climbing, and nobody is running a saw without
+          the experience behind it. We don't send untrained help out to a residential job — the work is too
+          unforgiving for on-the-job education.
+        </p>
+      </Prose>
+    </div>
+  </section>
+
+  {/* Quote */}
+  <section class="bg-stone-50 py-16 md:py-24 border-y border-gray-100">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <figure class="relative rounded-2xl bg-white shadow-md ring-1 ring-gray-100 p-8 md:p-10">
+        <svg class="absolute -top-3 left-8 w-12 h-12 text-brand/20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M7 11h3v8H2v-6c0-3.3 2.7-6 6-6V5c-2.8 0-5 2.2-5 5v1h4zm12 0h3v8h-8v-6c0-3.3 2.7-6 6-6V5c-2.8 0-5 2.2-5 5v1h4z"/>
+        </svg>
+        <blockquote class="text-xl md:text-2xl leading-relaxed text-gray-800 italic">
+          "My dad taught me that you don't just cut down a tree — you read it, you plan it, and you respect whatever it's
+          standing next to. That's the whole business, honestly. Everything else follows from there."
+        </blockquote>
+        <figcaption class="mt-6 flex items-center gap-3 text-sm">
+          <div class="w-12 h-12 rounded-full bg-brand-dark text-white font-bold flex items-center justify-center text-lg" aria-hidden="true">DS</div>
+          <div>
+            <div class="font-bold text-gray-900 text-base">Dustin Snyder</div>
+            <div class="text-gray-500">Owner, Snyder's Outdoor Solutions</div>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <CTABar
+    headline="Work with a crew that actually shows up."
+    subhead="Call for a free estimate or send us the details — Dustin or someone on the crew will get back to you the same day."
+  />
+</BaseLayout>
