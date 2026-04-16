@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #589D64;
+  --color-brand-dark: #3A6B44;
+  --color-brand-light: #D4EADA;
+
+  --font-heading: "Inter Variable", system-ui, sans-serif;
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Prevent iOS from zooming on input focus */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  /* FAQ accordion marker reset — we render our own chevron */
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}

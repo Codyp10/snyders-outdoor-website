@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page Not Found | Snyder's Outdoor Solutions"
+  description="The page you requested could not be found."
+  noindex={true}
+>
+  <section class="bg-white py-24 md:py-32">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-brand font-bold uppercase tracking-widest text-sm">404</p>
+      <h1 class="mt-4 font-heading font-extrabold text-3xl md:text-5xl text-gray-900">
+        We can't find that page.
+      </h1>
+      <p class="mt-6 text-lg text-gray-600 leading-relaxed">
+        It may have moved or never existed. Head back home or give us a call — we're happy to help.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+        <a
+          href="/"
+          class="inline-flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-lg"
+        >
+          Back to Home
+        </a>
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center border-2 border-brand text-brand hover:bg-brand/10 font-bold px-6 py-3 rounded-lg"
+        >
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

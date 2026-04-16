@@ -1,0 +1,22 @@
+{
+  "_comment": "Nav structure. Outdoor Services is a single link at launch (no dropdown) — dropdown appears when Phase 2 pages exist.",
+  "primary": [
+    { "label": "Home", "href": "/" },
+    {
+      "label": "Tree Services",
+      "href": "/tree-services",
+      "children": [
+        { "label": "Tree Removal", "href": "/tree-services/tree-removal" },
+        { "label": "Emergency Tree Removal", "href": "/tree-services/emergency-tree-removal" },
+        { "label": "Storm Damage Cleanup", "href": "/tree-services/storm-damage-cleanup" },
+        { "label": "Tree Trimming & Pruning", "href": "/tree-services/tree-trimming-pruning" },
+        { "label": "Stump Grinding", "href": "/tree-services/stump-grinding" },
+        { "label": "Lot & Land Clearing", "href": "/tree-services/lot-land-clearing" }
+      ]
+    },
+    { "label": "Outdoor Services", "href": "/outdoor-services" },
+    { "label": "About", "href": "/about" },
+    { "label": "Service Areas", "href": "/service-areas" },
+    { "label": "Contact", "href": "/contact", "cta": true }
+  ]
+}

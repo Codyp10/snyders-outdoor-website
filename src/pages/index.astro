@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import business from '../data/business.json';
+---
+
+<BaseLayout
+  title="Tree Service Hagerstown MD | Snyder's Outdoor Solutions"
+  description="Professional tree removal, emergency service, trimming, stump grinding, and land clearing in Hagerstown, Frederick, and Martinsburg."
+>
+  <section class="bg-brand-dark text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+      <p class="uppercase tracking-widest text-xs font-semibold text-brand-light mb-4">
+        Scaffold preview · content coming
+      </p>
+      <h1 class="font-heading font-extrabold text-3xl md:text-5xl leading-tight max-w-3xl">
+        Tree Service in Hagerstown, MD — {business.name}
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed">
+        Scaffolding checkpoint. Full homepage content, photos, and schema land in the
+        reference-page milestone.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a
+          href={`tel:${business.phoneTel}`}
+          class="inline-flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-lg text-base md:text-lg"
+        >
+          Call Now
+        </a>
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-4 rounded-lg text-base md:text-lg"
+        >
+          Free Estimate
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg">
+      <h2 class="font-heading font-bold text-2xl md:text-3xl text-gray-900">
+        What's here so far
+      </h2>
+      <ul class="mt-4 space-y-2 text-gray-700 list-disc list-inside">
+        <li>Astro 5 + Tailwind 4 + sitemap integration</li>
+        <li>BaseLayout with canonical, OG/Twitter, GTM stub, skip-to-content</li>
+        <li>Header (sticky, dropdown nav, mobile drawer) + Footer reading from <code>business.json</code></li>
+        <li>Sticky mobile Call / Estimate bar</li>
+        <li>Inter Variable self-hosted via <code>@fontsource-variable/inter</code></li>
+        <li>Placeholder NAP values gated behind <code>NAP_PENDING</code> — swap before launch</li>
+      </ul>
+      <p class="mt-6 text-gray-600">
+        Next checkpoint: schema components, content collection schemas, and the reference
+        service page (Tree Removal — Hagerstown).
+      </p>
+    </div>
+  </section>
+</BaseLayout>

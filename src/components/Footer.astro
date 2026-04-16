@@ -1,0 +1,64 @@
+---
+import business from '../data/business.json';
+import nav from '../data/navigation.json';
+
+const year = new Date().getFullYear();
+const treeServices = nav.primary.find((i) => i.label === 'Tree Services')?.children ?? [];
+const addr = business.address;
+---
+
+<footer class="bg-brand-dark text-white pt-16 pb-8 mt-auto">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <div>
+        <div class="font-heading font-extrabold text-xl mb-3">{business.name}</div>
+        <p class="text-white/70 text-sm leading-relaxed">
+          Professional tree service and outdoor solutions serving Hagerstown, Frederick, and Martinsburg.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-sm uppercase tracking-wider text-white/90 mb-3">Quick Links</h2>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/" class="text-white/70 hover:text-white">Home</a></li>
+          <li><a href="/about" class="text-white/70 hover:text-white">About</a></li>
+          <li><a href="/service-areas" class="text-white/70 hover:text-white">Service Areas</a></li>
+          <li><a href="/contact" class="text-white/70 hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-sm uppercase tracking-wider text-white/90 mb-3">Tree Services</h2>
+        <ul class="space-y-2 text-sm">
+          {treeServices.map((s) => (
+            <li><a href={s.href} class="text-white/70 hover:text-white">{s.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-sm uppercase tracking-wider text-white/90 mb-3">Contact</h2>
+        <address class="not-italic text-sm text-white/70 space-y-2">
+          <div>
+            <div class="font-semibold text-white">{business.name}</div>
+            <div>{addr.street}</div>
+            <div>{addr.city}, {addr.region} {addr.postalCode}</div>
+          </div>
+          <div>
+            <a href={`tel:${business.phoneTel}`} class="text-white font-semibold hover:text-brand-light">
+              {business.phone}
+            </a>
+          </div>
+        </address>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 pt-6 mt-12 flex flex-col sm:flex-row justify-between gap-4 text-xs text-white/50">
+      <div>© {year} {business.name}. All rights reserved.</div>
+      <div class="flex gap-4">
+        <a href="/privacy" class="hover:text-white">Privacy Policy</a>
+        <a href="/terms" class="hover:text-white">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>

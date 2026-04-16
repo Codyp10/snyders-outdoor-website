@@ -1,0 +1,176 @@
+---
+import nav from '../data/navigation.json';
+import business from '../data/business.json';
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) => {
+  if (href === '/') return currentPath === '/';
+  return currentPath === href || currentPath.startsWith(href + '/');
+};
+---
+
+<header class="sticky top-0 z-40 bg-brand-dark text-white shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <a href="/" class="flex items-center gap-2 font-heading font-extrabold text-lg lg:text-xl">
+        <!-- PLACEHOLDER: replace with <Image> of logo-white.svg once asset lands -->
+        <span aria-hidden="true" class="inline-block w-8 h-8 rounded bg-brand-light text-brand-dark font-black text-center leading-8">S</span>
+        <span>{business.name}</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1" aria-label="Primary">
+        {
+          nav.primary.map((item) =>
+            item.children ? (
+              <div class="relative group">
+                <button
+                  type="button"
+                  class="flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-brand-dark/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                >
+                  {item.label}
+                  <svg
+                    class="w-4 h-4 transition-transform group-hover:rotate-180 group-focus-within:rotate-180"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+                <div class="absolute left-0 top-full pt-2 w-72 invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 transition-opacity">
+                  <div class="bg-brand-dark rounded-lg shadow-xl ring-1 ring-white/10 overflow-hidden">
+                    {item.children.map((child) => (
+                      <a
+                        href={child.href}
+                        class={`block px-4 py-3 text-sm hover:bg-brand border-b border-white/10 last:border-b-0 ${isActive(child.href) ? 'bg-brand/30' : ''}`}
+                      >
+                        {child.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : item.cta ? (
+              <a
+                href={item.href}
+                class="ml-2 px-4 py-2 rounded-lg bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold focus:outline-none focus:ring-2 focus:ring-white/50"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <a
+                href={item.href}
+                class={`px-4 py-2 rounded-lg text-sm font-semibold hover:bg-brand-dark/70 focus:outline-none focus:ring-2 focus:ring-white/50 ${isActive(item.href) ? 'text-brand-light' : ''}`}
+              >
+                {item.label}
+              </a>
+            )
+          )
+        }
+      </nav>
+
+      <button
+        type="button"
+        id="mobile-nav-toggle"
+        class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg hover:bg-brand-dark/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+        aria-controls="mobile-nav"
+        aria-expanded="false"
+        aria-label="Open menu"
+      >
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="4" y1="7" x2="20" y2="7" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="17" x2="20" y2="17" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-nav"
+    class="lg:hidden fixed inset-0 z-50 hidden"
+    aria-hidden="true"
+  >
+    <div id="mobile-nav-backdrop" class="absolute inset-0 bg-black/50"></div>
+    <div class="absolute right-0 top-0 h-full w-full max-w-sm bg-brand-dark text-white shadow-2xl flex flex-col">
+      <div class="flex items-center justify-between h-16 px-4 border-b border-white/10">
+        <span class="font-heading font-extrabold">{business.name}</span>
+        <button
+          type="button"
+          id="mobile-nav-close"
+          class="inline-flex items-center justify-center w-11 h-11 rounded-lg hover:bg-brand-dark/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+          aria-label="Close menu"
+        >
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="6" y1="6" x2="18" y2="18" />
+            <line x1="6" y1="18" x2="18" y2="6" />
+          </svg>
+        </button>
+      </div>
+      <nav class="flex-1 overflow-y-auto px-2 py-4" aria-label="Mobile">
+        {
+          nav.primary.map((item) =>
+            item.children ? (
+              <details class="group">
+                <summary class="flex items-center justify-between px-4 py-3 text-lg font-semibold rounded-lg hover:bg-brand-dark/70 cursor-pointer">
+                  {item.label}
+                  <svg class="w-5 h-5 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                  </svg>
+                </summary>
+                <div class="pl-4 py-1">
+                  <a href={item.href} class="block px-4 py-2 text-base text-white/80 hover:text-white">All {item.label}</a>
+                  {item.children.map((child) => (
+                    <a href={child.href} class="block px-4 py-2 text-base text-white/80 hover:text-white">
+                      {child.label}
+                    </a>
+                  ))}
+                </div>
+              </details>
+            ) : (
+              <a
+                href={item.href}
+                class={`block px-4 py-3 text-lg font-semibold rounded-lg hover:bg-brand-dark/70 ${item.cta ? 'mt-2 bg-orange-500 hover:bg-orange-600 text-center' : ''}`}
+              >
+                {item.label}
+              </a>
+            )
+          )
+        }
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('mobile-nav-toggle');
+  const menu = document.getElementById('mobile-nav');
+  const close = document.getElementById('mobile-nav-close');
+  const backdrop = document.getElementById('mobile-nav-backdrop');
+
+  const open = () => {
+    menu?.classList.remove('hidden');
+    menu?.setAttribute('aria-hidden', 'false');
+    toggle?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  };
+  const shut = () => {
+    menu?.classList.add('hidden');
+    menu?.setAttribute('aria-hidden', 'true');
+    toggle?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  };
+
+  toggle?.addEventListener('click', open);
+  close?.addEventListener('click', shut);
+  backdrop?.addEventListener('click', shut);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') shut();
+  });
+</script>

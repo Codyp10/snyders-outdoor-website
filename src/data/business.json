@@ -1,0 +1,32 @@
+{
+  "_comment": "SINGLE SOURCE OF TRUTH for NAP. Every component reads from here. Character-for-character match to GBP required before production launch. Replace every NAP_PENDING value before DNS cutover.",
+  "name": "Snyder's Outdoor Solutions",
+  "legalName": "NAP_PENDING",
+  "phone": "NAP_PENDING",
+  "phoneTel": "NAP_PENDING",
+  "email": "NAP_PENDING",
+  "address": {
+    "street": "NAP_PENDING",
+    "city": "Hagerstown",
+    "region": "MD",
+    "postalCode": "NAP_PENDING",
+    "country": "US"
+  },
+  "geo": {
+    "latitude": "NAP_PENDING",
+    "longitude": "NAP_PENDING"
+  },
+  "url": "https://snydersoutdoorsolutions.com",
+  "gbpUrl": "NAP_PENDING",
+  "openingHours": [
+    { "days": "Mo,Tu,We,Th,Fr", "opens": "NAP_PENDING", "closes": "NAP_PENDING" },
+    { "days": "Sa", "opens": "NAP_PENDING", "closes": "NAP_PENDING" }
+  ],
+  "emergency247": true,
+  "areaServed": [
+    { "city": "Hagerstown", "region": "MD" },
+    { "city": "Frederick", "region": "MD" },
+    { "city": "Martinsburg", "region": "WV" }
+  ],
+  "sameAs": []
+}
