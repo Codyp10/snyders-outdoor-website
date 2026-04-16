@@ -1,0 +1,222 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import CTABar from '../components/CTABar.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import Prose from '../components/Prose.astro';
+import ServiceSchema from '../components/schema/ServiceSchema.astro';
+import FAQSchema from '../components/schema/FAQSchema.astro';
+import business from '../data/business.json';
+
+interface Props {
+  entry: CollectionEntry<'tree-services'>;
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const locationLabelMap: Record<string, string> = {
+  'hagerstown-md': 'Hagerstown, MD',
+  'frederick-md': 'Frederick, MD',
+  'martinsburg-wv': 'Martinsburg, WV',
+};
+const serviceLabelMap: Record<string, string> = {
+  'tree-removal': 'tree removal',
+  'emergency-tree-removal': 'emergency tree removal',
+  'storm-damage-cleanup': 'storm damage cleanup',
+  'tree-trimming-pruning': 'tree trimming and pruning',
+  'stump-grinding': 'stump grinding',
+  'lot-land-clearing': 'lot and land clearing',
+};
+---
+
+<BaseLayout title={d.titleTag} description={d.description} canonical={pageURL}>
+  <ServiceSchema
+    slot="head"
+    serviceName={d.title}
+    description={d.description}
+    url={pageURL}
+    areaServed={{ city: d.city, region: d.state }}
+  />
+  <FAQSchema slot="head" faqs={d.faqs} />
+
+  <Hero
+    eyebrow={d.emergency ? '24/7 Emergency Response' : `${d.city}, ${d.state}`}
+    headline={d.h1}
+    subhead={d.description}
+    variant={d.emergency ? 'emergency' : 'service'}
+    secondaryCTA={d.emergency ? undefined : { text: 'Free Estimate', href: '/contact' }}
+  />
+
+  <!-- Intro -->
+  <section class="bg-white py-12 md:py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Prose>
+        <p set:html={d.intro.replace(/\n\n/g, '</p><p>')} />
+      </Prose>
+    </div>
+  </section>
+
+  {
+    d.whatsIncluded && (
+      <section class="bg-stone-50 py-14 md:py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="font-heading font-bold text-gray-900 text-2xl md:text-4xl mb-6">
+            {d.whatsIncluded.heading}
+          </h2>
+          <Prose>
+            <p set:html={d.whatsIncluded.body.replace(/\n\n/g, '</p><p>')} />
+          </Prose>
+          {d.whatsIncluded.items && (
+            <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+              {d.whatsIncluded.items.map((item) => (
+                <li class="flex gap-3 items-start">
+                  <svg class="w-5 h-5 text-brand flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                  <span class="text-gray-800">{item}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </section>
+    )
+  }
+
+  {
+    d.signsYouNeed && (
+      <section class="bg-white py-14 md:py-20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="font-heading font-bold text-gray-900 text-2xl md:text-4xl mb-8 md:mb-10 text-center">
+            {d.signsYouNeed.heading}
+          </h2>
+          <div class="grid gap-5 md:gap-6 md:grid-cols-2">
+            {d.signsYouNeed.items.map((item) => (
+              <div class="flex gap-4 p-5 rounded-xl border border-gray-200 bg-white hover:shadow-md transition-shadow">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-light flex items-center justify-center">
+                  <svg class="w-5 h-5 text-brand-dark" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 5zm0 9a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-gray-900 text-lg">{item.title}</h3>
+                  <p class="mt-1 text-gray-600 leading-relaxed">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    d.whyChoose && (
+      <section class="bg-stone-50 py-14 md:py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="font-heading font-bold text-gray-900 text-2xl md:text-4xl mb-6">
+            {d.whyChoose.heading}
+          </h2>
+          <Prose>
+            <p set:html={d.whyChoose.body.replace(/\n\n/g, '</p><p>')} />
+          </Prose>
+          {d.whyChoose.quote && (
+            <blockquote class="mt-8 border-l-4 border-brand pl-6 py-4 bg-white rounded-r-lg shadow-sm">
+              <p class="text-lg italic text-gray-700 leading-relaxed">
+                "{d.whyChoose.quote.quote}"
+              </p>
+              <footer class="mt-3 text-sm font-semibold text-gray-900">
+                — {d.whyChoose.quote.attribution}
+              </footer>
+            </blockquote>
+          )}
+        </div>
+      </section>
+    )
+  }
+
+  {
+    d.processSteps && (
+      <section class="bg-white py-14 md:py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="font-heading font-bold text-gray-900 text-2xl md:text-4xl mb-10 md:mb-14 text-center">
+            {d.processSteps.heading}
+          </h2>
+          <ol class="grid gap-8 md:grid-cols-2 lg:grid-cols-5 lg:gap-4">
+            {d.processSteps.steps.map((step, i) => (
+              <li class="relative">
+                <div class="flex flex-col items-center text-center">
+                  <div class="w-12 h-12 rounded-full bg-brand text-white font-bold flex items-center justify-center text-lg shadow-md">
+                    {i + 1}
+                  </div>
+                  <h3 class="mt-4 font-bold text-gray-900 text-lg">{step.title}</h3>
+                  <p class="mt-2 text-gray-600 text-sm leading-relaxed">{step.description}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+    )
+  }
+
+  {/* Editorial cross-links — required by the strategy doc */}
+  {
+    (d.relatedLocations.length > 0 || d.relatedServices.length > 0) && (
+      <section class="bg-stone-50 py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Prose>
+            {d.relatedLocations.length > 0 && (
+              <p>
+                We provide {serviceLabelMap[entry.id] ?? 'tree service'} across our primary service area, including{' '}
+                {d.relatedLocations.map((slug, i) => (
+                  <>
+                    {i > 0 && i === d.relatedLocations.length - 1 ? ', and ' : i > 0 ? ', ' : ''}
+                    <a href={`/service-areas/${slug}`}>
+                      {locationLabelMap[slug] ?? slug}
+                    </a>
+                  </>
+                ))}
+                . Most jobs happen within a 30-mile radius of our Hagerstown base.
+              </p>
+            )}
+            {d.relatedServices.length > 0 && (
+              <p>
+                Need a related service? We also handle{' '}
+                {d.relatedServices.map((slug, i) => (
+                  <>
+                    {i > 0 && i === d.relatedServices.length - 1 ? ', and ' : i > 0 ? ', ' : ''}
+                    <a href={`/tree-services/${slug}`}>{serviceLabelMap[slug] ?? slug}</a>
+                  </>
+                ))}{' '}
+                — often in the same visit.
+              </p>
+            )}
+            <p class="text-sm text-gray-500">
+              Helpful outside resource:{' '}
+              <a href={d.externalLink.url} target="_blank" rel="noopener noreferrer">
+                {d.externalLink.text}
+              </a>{' '}
+              ({d.externalLink.source}).
+            </p>
+          </Prose>
+        </div>
+      </section>
+    )
+  }
+
+  <FAQAccordion faqs={d.faqs} />
+
+  <CTABar
+    headline={
+      d.emergency
+        ? "Don't wait — call us now."
+        : `Ready for ${d.title.split(' in ')[0].toLowerCase()}? Call ${business.name}.`
+    }
+    subhead={d.emergency ? 'We respond 24/7 across Hagerstown, Frederick, and Martinsburg.' : undefined}
+    variant={d.emergency ? 'emergency' : 'default'}
+  />
+</BaseLayout>

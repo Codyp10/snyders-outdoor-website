@@ -1,0 +1,40 @@
+---
+import business from '../../data/business.json';
+
+interface Props {
+  serviceName: string;
+  serviceType?: string;
+  description: string;
+  /** URL of the page this schema is on */
+  url: string;
+  /** City/region this service is offered in (usually the page's city) */
+  areaServed: { city: string; region: string };
+  /** @id of the LocalBusiness this service is provided by */
+  providerId?: string;
+}
+
+const {
+  serviceName,
+  serviceType,
+  description,
+  url,
+  areaServed,
+  providerId = `${business.url}/#business`,
+} = Astro.props;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: serviceName,
+  serviceType: serviceType ?? serviceName,
+  description,
+  url,
+  provider: { '@id': providerId },
+  areaServed: {
+    '@type': 'City',
+    name: `${areaServed.city}, ${areaServed.region}`,
+  },
+};
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />

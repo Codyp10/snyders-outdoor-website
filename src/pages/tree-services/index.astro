@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import CTABar from '../../components/CTABar.astro';
+import Prose from '../../components/Prose.astro';
+
+const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
+---
+
+<BaseLayout
+  title="Tree Services Hagerstown MD | Snyder's Outdoor Solutions"
+  description="Full-service tree care in Hagerstown, Frederick, and Martinsburg — tree removal, emergency response, trimming, stump grinding, and land clearing."
+  canonical={pageURL}
+>
+  <Hero
+    eyebrow="Hub page — full build coming"
+    headline="Professional Tree Services in Hagerstown, MD"
+    subhead="Scaffolding in place. The full hub page with 6 service cards and FAQs lands after the reference-page checkpoint."
+    variant="service"
+    secondaryCTA={{ text: 'Free Estimate', href: '/contact' }}
+  />
+
+  <section class="bg-white py-14 md:py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Prose>
+        <p>
+          The Tree Services hub page is a scaffolded placeholder. Once the reference
+          page pattern is approved, this page will display Service Cards linking to
+          each of the six tree services, a "Why Choose Snyder's" section, and general
+          tree-service FAQs.
+        </p>
+        <ul>
+          <li><a href="/tree-services/tree-removal">Tree Removal</a></li>
+          <li>Emergency Tree Removal (coming)</li>
+          <li>Storm Damage Cleanup (coming)</li>
+          <li>Tree Trimming &amp; Pruning (coming)</li>
+          <li>Stump Grinding (coming)</li>
+          <li>Lot &amp; Land Clearing (coming)</li>
+        </ul>
+      </Prose>
+    </div>
+  </section>
+
+  <CTABar />
+</BaseLayout>

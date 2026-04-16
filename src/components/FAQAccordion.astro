@@ -1,0 +1,47 @@
+---
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faqs: FAQ[];
+  heading?: string;
+}
+
+const { faqs, heading = 'Frequently Asked Questions' } = Astro.props;
+---
+
+<section class="bg-brand-light py-14 md:py-20">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="font-heading font-bold text-gray-900 text-2xl md:text-4xl text-center mb-8 md:mb-12">
+      {heading}
+    </h2>
+    <div class="rounded-xl bg-white shadow-sm divide-y divide-gray-200">
+      {
+        faqs.map((f) => (
+          <details class="group">
+            <summary class="flex items-center justify-between gap-4 px-5 md:px-6 py-4 md:py-5 cursor-pointer font-bold text-base md:text-lg text-gray-900 hover:bg-gray-50 rounded-xl">
+              <span>{f.question}</span>
+              <svg
+                class="w-5 h-5 flex-shrink-0 text-brand transition-transform group-open:rotate-180"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </summary>
+            <div class="px-5 md:px-6 pb-5 md:pb-6 text-gray-700 leading-relaxed">
+              {f.answer}
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

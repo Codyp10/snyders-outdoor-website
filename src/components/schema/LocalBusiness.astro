@@ -1,0 +1,80 @@
+---
+import business from '../../data/business.json';
+
+interface Props {
+  /** Override @id for area-specific LocalBusiness on location pages */
+  idSuffix?: string;
+  /** Area-specific name override, e.g. "Snyder's Outdoor Solutions — Hagerstown" */
+  nameOverride?: string;
+  /** Restrict areaServed to one city (for location pages) */
+  areaServedCity?: { city: string; region: string };
+}
+
+const { idSuffix = 'business', nameOverride, areaServedCity } = Astro.props;
+
+const id = `${business.url}/#${idSuffix}`;
+const name = nameOverride ?? business.name;
+
+const addr = business.address;
+const openingHoursSpecification = business.openingHours
+  .filter((h) => h.opens !== 'NAP_PENDING')
+  .map((h) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: h.days.split(',').map((d) => {
+      const map: Record<string, string> = {
+        Mo: 'Monday', Tu: 'Tuesday', We: 'Wednesday', Th: 'Thursday',
+        Fr: 'Friday', Sa: 'Saturday', Su: 'Sunday',
+      };
+      return map[d] ?? d;
+    }),
+    opens: h.opens,
+    closes: h.closes,
+  }));
+
+const areaServed = areaServedCity
+  ? [{ '@type': 'City', name: `${areaServedCity.city}, ${areaServedCity.region}` }]
+  : business.areaServed.map((a) => ({
+      '@type': 'City',
+      name: `${a.city}, ${a.region}`,
+    }));
+
+const jsonLd: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': id,
+  name,
+  url: business.url,
+  image: `${business.url}/og-default.jpg`,
+};
+
+if (business.phone !== 'NAP_PENDING') jsonLd.telephone = business.phone;
+if (business.email !== 'NAP_PENDING') jsonLd.email = business.email;
+
+const addressFields: Record<string, string> = { '@type': 'PostalAddress' };
+if (addr.street !== 'NAP_PENDING') addressFields.streetAddress = addr.street;
+addressFields.addressLocality = addr.city;
+addressFields.addressRegion = addr.region;
+if (addr.postalCode !== 'NAP_PENDING') addressFields.postalCode = addr.postalCode;
+addressFields.addressCountry = addr.country;
+jsonLd.address = addressFields;
+
+if (business.geo.latitude !== 'NAP_PENDING' && business.geo.longitude !== 'NAP_PENDING') {
+  jsonLd.geo = {
+    '@type': 'GeoCoordinates',
+    latitude: business.geo.latitude,
+    longitude: business.geo.longitude,
+  };
+}
+
+if (openingHoursSpecification.length > 0) {
+  jsonLd.openingHoursSpecification = openingHoursSpecification;
+}
+
+jsonLd.areaServed = areaServed;
+
+if (business.sameAs.length > 0) {
+  jsonLd.sameAs = business.sameAs;
+}
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
