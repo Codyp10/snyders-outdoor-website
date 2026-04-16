@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import CTABar from '../../components/CTABar.astro';
+import Prose from '../../components/Prose.astro';
+import business from '../../data/business.json';
+
+const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const services = [
+  {
+    title: 'Wood Products',
+    description: 'Firewood, mulch, and lumber — much of it repurposed from our own removal and clearing operations.',
+  },
+  {
+    title: 'Plant Health Care & Pest Control',
+    description: 'Proactive tree and plant health services, lawn treatment, and common pest control for residential properties.',
+  },
+  {
+    title: 'Pet Waste Removal',
+    description: 'Recurring and one-time yard cleanup. Keep your lawn healthy and usable without dealing with it yourself.',
+  },
+  {
+    title: 'Outdoor Construction & Driveway Sealing',
+    description: 'Light outdoor construction work and driveway sealing to protect and extend asphalt life.',
+  },
+  {
+    title: 'Holiday Lights, Chimney Cleaning & Stove Inspection',
+    description: 'Seasonal lighting installation and takedown, chimney cleaning, and wood-stove inspection.',
+  },
+  {
+    title: 'Lightning Protection',
+    description: 'Lightning protection systems for residential and small-commercial structures, designed to the region\u2019s storm profile.',
+  },
+  {
+    title: 'Utility & Rail Track Construction & Maintenance',
+    description: 'Right-of-way vegetation management and track-side maintenance for utility and rail clients.',
+  },
+];
+---
+
+<BaseLayout
+  title="Outdoor Services Hagerstown MD | Snyder's Outdoor Solutions"
+  description="Beyond tree work — Snyder's Outdoor Solutions also handles wood products, plant health care, outdoor construction, holiday lights, lightning protection, and more across the Tri-State area."
+  canonical={pageURL}
+>
+  <Hero
+    eyebrow="Beyond tree service"
+    eyebrowIcon="leaf"
+    headline="Outdoor Services in Hagerstown, MD"
+    subhead="Tree service is our anchor, but Snyder's does more. These services round out our offering across residential and light-commercial properties — call for scope and availability."
+    variant="service"
+    secondaryCTA={{ text: 'Talk to Us', href: '/contact' }}
+  />
+
+  <TrustStrip />
+
+  <section class="bg-white py-14 md:py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Prose>
+        <p>
+          Our core business is tree service, and that's where the bulk of our marketing and our website focus sits. The
+          services below round out what we can do when a customer wants one crew to handle more than just the trees. Dedicated
+          pages for each of these are coming as we expand the site — for now, the fastest way to get accurate scope, pricing,
+          and availability is to call.
+        </p>
+      </Prose>
+    </div>
+  </section>
+
+  <section class="bg-stone-50 py-16 md:py-24 border-y border-gray-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-10 md:mb-14">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-light text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+          What Else We Do
+        </div>
+        <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl">
+          The Rest of the List
+        </h2>
+        <p class="mt-4 text-gray-600 text-base md:text-lg leading-relaxed">
+          Dedicated pages for each service are coming. In the meantime, call for details on scope, pricing, and whether a given service is a good fit for your property.
+        </p>
+      </div>
+
+      <ul class="grid gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          services.map((s) => (
+            <li class="relative flex flex-col gap-2 p-6 rounded-2xl bg-white ring-1 ring-gray-200">
+              <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1">
+                <span class="w-2 h-2 rounded-full bg-brand/40"></span>
+                Available — call for details
+              </div>
+              <h3 class="font-heading font-bold text-gray-900 text-lg leading-tight">{s.title}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">{s.description}</p>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="mt-10 text-center">
+        <a
+          href={`tel:${business.phoneTel}`}
+          class="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-7 py-4 rounded-lg text-base md:text-lg min-h-12 shadow-lg shadow-orange-900/10 focus:outline-none focus:ring-2 focus:ring-brand/40 transition-colors"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+          Call for Outdoor Service Details
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-14 md:py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Prose>
+        <p>
+          Looking for tree work specifically? Start at our <a href="/tree-services">Tree Services page</a> — that's where our
+          core offering lives and where most customers start. For area-specific coverage, see our service pages for{' '}
+          <a href="/service-areas/hagerstown-md">Hagerstown, MD</a>,{' '}
+          <a href="/service-areas/frederick-md">Frederick, MD</a>, and{' '}
+          <a href="/service-areas/martinsburg-wv">Martinsburg, WV</a>.
+        </p>
+        <p class="text-sm text-gray-500">
+          Industry reference:{' '}
+          <a href="https://www.treesaregood.org/" target="_blank" rel="noopener noreferrer">International Society of Arboriculture — consumer resources</a>.
+        </p>
+      </Prose>
+    </div>
+  </section>
+
+  <CTABar />
+</BaseLayout>

@@ -1,45 +1,193 @@
 ---
+import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import FAQAccordion from '../../components/FAQAccordion.astro';
+import FAQSchema from '../../components/schema/FAQSchema.astro';
 import CTABar from '../../components/CTABar.astro';
 import Prose from '../../components/Prose.astro';
+
+const treeServices = await getCollection('tree-services');
+const treeServiceOrder = [
+  'tree-removal',
+  'emergency-tree-removal',
+  'storm-damage-cleanup',
+  'tree-trimming-pruning',
+  'stump-grinding',
+  'lot-land-clearing',
+];
+const ordered = treeServiceOrder
+  .map((id) => treeServices.find((s) => s.id === id))
+  .filter((s): s is CollectionEntry<'tree-services'> => s !== undefined);
+
+const iconMap: Record<string, 'axe' | 'alert' | 'wind' | 'scissors' | 'disc' | 'trees'> = {
+  'tree-removal': 'axe',
+  'emergency-tree-removal': 'alert',
+  'storm-damage-cleanup': 'wind',
+  'tree-trimming-pruning': 'scissors',
+  'stump-grinding': 'disc',
+  'lot-land-clearing': 'trees',
+};
+const shortTitle = (full: string) => full.split(' in ')[0];
+
+const faqs = [
+  {
+    question: 'Are you licensed and insured?',
+    answer:
+      "Yes. We carry full general liability and workers' comp coverage, licensed in Maryland and West Virginia. We're happy to provide current certificates before any work begins — just ask.",
+  },
+  {
+    question: 'Do you offer free estimates?',
+    answer:
+      "Yes, free on-site estimates for any tree service. We walk your property, assess the work, and give you a flat-rate quote — no hourly surprises. In some simpler cases we can quote remotely from clear photos.",
+  },
+  {
+    question: 'What areas do you serve?',
+    answer:
+      "Hagerstown MD (our home base), Frederick MD, and Martinsburg WV are our three primary markets. We also regularly work throughout Washington County, Frederick County, Berkeley County, and parts of Franklin County PA. Most jobs stay inside a 30-mile radius of Hagerstown.",
+  },
+  {
+    question: 'How quickly can you respond?',
+    answer:
+      "For scheduled work we're usually out for an estimate within a week and on the job within one to two weeks. True emergencies (tree on structure, blocked driveway, line hazard) go to the front of the line — we aim to be on site within an hour during daytime.",
+  },
+  {
+    question: 'Do you haul away everything, including stumps?',
+    answer:
+      "Debris haul-off is included in every removal and cleanup job. Stump grinding is a separate service, but we commonly bundle it with a removal and give a combined price.",
+  },
+  {
+    question: "What's the difference between trimming and pruning?",
+    answer:
+      "In practice we use the terms interchangeably, but technically pruning refers to health- and structure-driven cuts (dead wood, crossing limbs, weak forks) and trimming refers to aesthetic or clearance cuts (shape, view, keeping limbs off the roof). A good crew does both in one visit when needed.",
+  },
+];
 
 const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
 <BaseLayout
   title="Tree Services Hagerstown MD | Snyder's Outdoor Solutions"
-  description="Full-service tree care in Hagerstown, Frederick, and Martinsburg — tree removal, emergency response, trimming, stump grinding, and land clearing."
+  description="Full-service tree care in Hagerstown, Frederick, and Martinsburg. Licensed and insured — tree removal, emergency response, trimming, stump grinding, storm damage cleanup, and land clearing."
   canonical={pageURL}
 >
+  <FAQSchema slot="head" faqs={faqs} />
+
   <Hero
-    eyebrow="Hub page — full build coming"
+    eyebrow="Hagerstown, MD · Frederick, MD · Martinsburg, WV"
+    eyebrowIcon="leaf"
     headline="Professional Tree Services in Hagerstown, MD"
-    subhead="Scaffolding in place. The full hub page with 6 service cards and FAQs lands after the reference-page checkpoint."
+    subhead="One local crew for tree removal, emergency response, trimming, stumps, storm cleanup, and land clearing. Licensed, insured, and based in Hagerstown."
     variant="service"
     secondaryCTA={{ text: 'Free Estimate', href: '/contact' }}
   />
+
+  <TrustStrip />
 
   <section class="bg-white py-14 md:py-20">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <Prose>
         <p>
-          The Tree Services hub page is a scaffolded placeholder. Once the reference
-          page pattern is approved, this page will display Service Cards linking to
-          each of the six tree services, a "Why Choose Snyder's" section, and general
-          tree-service FAQs.
+          Snyder's Outdoor Solutions is a full-service tree-care company serving Hagerstown and the surrounding Tri-State region.
+          We handle the whole spectrum of residential tree work — from routine maintenance pruning to emergency storm response,
+          stump grinding, and multi-day land clearing — with the same crew, the same flat-rate pricing, and the same standards
+          every time. Dustin grew up logging with his dad, and that experience drives how the crew approaches every job.
         </p>
-        <ul>
-          <li><a href="/tree-services/tree-removal">Tree Removal</a></li>
-          <li>Emergency Tree Removal (coming)</li>
-          <li>Storm Damage Cleanup (coming)</li>
-          <li>Tree Trimming &amp; Pruning (coming)</li>
-          <li>Stump Grinding (coming)</li>
-          <li>Lot &amp; Land Clearing (coming)</li>
-        </ul>
       </Prose>
     </div>
   </section>
+
+  {/* Services grid */}
+  <section class="bg-stone-50 py-16 md:py-24 border-y border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-10 md:mb-14">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-light text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+          Our Services
+        </div>
+        <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl">
+          Six Services, One Crew
+        </h2>
+        <p class="mt-4 text-gray-600 text-base md:text-lg leading-relaxed">
+          Tap any service for details, pricing notes, process, and FAQs specific to that job.
+        </p>
+      </div>
+      <div class="grid gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          ordered.map((s) => (
+            <ServiceCard
+              title={shortTitle(s.data.title)}
+              description={s.data.description}
+              href={`/tree-services/${s.id}`}
+              icon={iconMap[s.id] ?? 'default'}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* Why Choose */}
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-light text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+          Why Snyder's
+        </div>
+        <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl">
+          Tree Work Done the Right Way
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          {
+            icon: 'shield',
+            title: 'Licensed & insured',
+            body: 'Full general liability and workers\u2019 comp — we\u2019ll send certificates before the work starts if you want them.',
+          },
+          {
+            icon: 'mappin',
+            title: 'Actually local',
+            body: 'Based in Hagerstown, working the Tri-State area every day. No out-of-town crew driving ninety minutes to get to you.',
+          },
+          {
+            icon: 'clock',
+            title: 'Fast, honest scheduling',
+            body: 'Most estimates inside a week, most jobs inside two. True emergencies get an immediate response.',
+          },
+          {
+            icon: 'check',
+            title: 'Flat-rate pricing',
+            body: 'We walk the job, quote a flat rate, and stick to it. No hourly surprises on the invoice.',
+          },
+        ].map((b) => (
+          <div class="flex flex-col gap-3 p-6 rounded-2xl bg-stone-50 ring-1 ring-gray-200">
+            <div class="w-11 h-11 rounded-full bg-brand text-white flex items-center justify-center" aria-hidden="true">
+              {b.icon === 'shield' && (
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              )}
+              {b.icon === 'mappin' && (
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              )}
+              {b.icon === 'clock' && (
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              )}
+              {b.icon === 'check' && (
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              )}
+            </div>
+            <h3 class="font-heading font-bold text-gray-900 text-lg leading-tight">{b.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{b.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FAQAccordion faqs={faqs} heading="Tree Service FAQs" />
 
   <CTABar />
 </BaseLayout>
