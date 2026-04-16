@@ -1,0 +1,94 @@
+---
+interface Badge {
+  label: string;
+  sublabel?: string;
+  icon: 'shield' | 'mappin' | 'clock' | 'check';
+}
+
+interface Props {
+  variant?: 'light' | 'dark';
+  badges?: Badge[];
+}
+
+const {
+  variant = 'light',
+  badges = [
+    { label: 'Licensed & Insured', sublabel: 'Full coverage', icon: 'shield' },
+    { label: 'Locally Owned', sublabel: 'Hagerstown, MD', icon: 'mappin' },
+    { label: 'Fast Response', sublabel: '24/7 emergency', icon: 'clock' },
+    { label: 'Free Estimates', sublabel: 'No obligation', icon: 'check' },
+  ],
+} = Astro.props;
+
+const isDark = variant === 'dark';
+---
+
+<section
+  class:list={[
+    'border-y',
+    isDark ? 'bg-brand-dark border-white/10' : 'bg-brand-light border-brand/10',
+  ]}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
+    <ul class="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
+      {
+        badges.map((b) => (
+          <li class="flex items-center gap-3 md:gap-4">
+            <div
+              class:list={[
+                'flex-shrink-0 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center',
+                isDark ? 'bg-brand/30 text-brand-light' : 'bg-brand text-white',
+              ]}
+              aria-hidden="true"
+            >
+              {b.icon === 'shield' && (
+                <svg class="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="m9 12 2 2 4-4"/>
+                </svg>
+              )}
+              {b.icon === 'mappin' && (
+                <svg class="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              )}
+              {b.icon === 'clock' && (
+                <svg class="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              )}
+              {b.icon === 'check' && (
+                <svg class="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+              )}
+            </div>
+            <div class="min-w-0">
+              <div
+                class:list={[
+                  'font-heading font-bold text-sm md:text-base leading-tight',
+                  isDark ? 'text-white' : 'text-gray-900',
+                ]}
+              >
+                {b.label}
+              </div>
+              {b.sublabel && (
+                <div
+                  class:list={[
+                    'text-xs md:text-sm leading-tight mt-0.5',
+                    isDark ? 'text-white/70' : 'text-gray-600',
+                  ]}
+                >
+                  {b.sublabel}
+                </div>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

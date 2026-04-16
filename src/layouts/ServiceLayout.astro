@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import Hero from '../components/Hero.astro';
+import TrustStrip from '../components/TrustStrip.astro';
 import CTABar from '../components/CTABar.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
 import Prose from '../components/Prose.astro';
@@ -44,14 +45,17 @@ const serviceLabelMap: Record<string, string> = {
 
   <Hero
     eyebrow={d.emergency ? '24/7 Emergency Response' : `${d.city}, ${d.state}`}
+    eyebrowIcon={d.emergency ? 'alert' : 'location'}
     headline={d.h1}
     subhead={d.description}
     variant={d.emergency ? 'emergency' : 'service'}
     secondaryCTA={d.emergency ? undefined : { text: 'Free Estimate', href: '/contact' }}
   />
 
-  <!-- Intro -->
-  <section class="bg-white py-12 md:py-16">
+  <TrustStrip />
+
+  {/* Intro */}
+  <section class="bg-white py-14 md:py-20">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <Prose>
         <p set:html={d.intro.replace(/\n\n/g, '</p><p>')} />
@@ -61,22 +65,26 @@ const serviceLabelMap: Record<string, string> = {
 
   {
     d.whatsIncluded && (
-      <section class="bg-stone-50 py-14 md:py-20">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 class="font-heading font-bold text-gray-900 text-2xl md:text-4xl mb-6">
-            {d.whatsIncluded.heading}
-          </h2>
-          <Prose>
-            <p set:html={d.whatsIncluded.body.replace(/\n\n/g, '</p><p>')} />
-          </Prose>
+      <section class="bg-stone-50 py-14 md:py-20 border-y border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl">
+            <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl mb-5">
+              {d.whatsIncluded.heading}
+            </h2>
+            <Prose>
+              <p set:html={d.whatsIncluded.body.replace(/\n\n/g, '</p><p>')} />
+            </Prose>
+          </div>
           {d.whatsIncluded.items && (
-            <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+            <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-2">
               {d.whatsIncluded.items.map((item) => (
-                <li class="flex gap-3 items-start">
-                  <svg class="w-5 h-5 text-brand flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-gray-800">{item}</span>
+                <li class="flex gap-3 items-start bg-white rounded-lg px-4 py-3 shadow-sm ring-1 ring-gray-100">
+                  <div class="flex-shrink-0 w-6 h-6 rounded-full bg-brand/15 flex items-center justify-center mt-0.5">
+                    <svg class="w-3.5 h-3.5 text-brand" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <span class="text-gray-800 leading-snug">{item}</span>
                 </li>
               ))}
             </ul>
@@ -88,22 +96,34 @@ const serviceLabelMap: Record<string, string> = {
 
   {
     d.signsYouNeed && (
-      <section class="bg-white py-14 md:py-20">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 class="font-heading font-bold text-gray-900 text-2xl md:text-4xl mb-8 md:mb-10 text-center">
-            {d.signsYouNeed.heading}
-          </h2>
+      <section class="bg-white py-14 md:py-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl mx-auto text-center mb-10 md:mb-14">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-50 text-orange-700 ring-1 ring-orange-200 text-xs font-semibold uppercase tracking-widest mb-4">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+              When to Call
+            </div>
+            <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl">
+              {d.signsYouNeed.heading}
+            </h2>
+          </div>
           <div class="grid gap-5 md:gap-6 md:grid-cols-2">
             {d.signsYouNeed.items.map((item) => (
-              <div class="flex gap-4 p-5 rounded-xl border border-gray-200 bg-white hover:shadow-md transition-shadow">
-                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-light flex items-center justify-center">
-                  <svg class="w-5 h-5 text-brand-dark" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 5zm0 9a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+              <div class="relative flex gap-5 p-6 rounded-xl bg-white shadow-sm ring-1 ring-gray-200 hover:shadow-md hover:ring-brand/30 transition-all before:absolute before:left-0 before:top-6 before:bottom-6 before:w-1 before:rounded-r-full before:bg-orange-400">
+                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-orange-50 ring-1 ring-orange-100 flex items-center justify-center">
+                  <svg class="w-6 h-6 text-orange-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                    <line x1="12" y1="9" x2="12" y2="13"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
                   </svg>
                 </div>
-                <div>
-                  <h3 class="font-bold text-gray-900 text-lg">{item.title}</h3>
-                  <p class="mt-1 text-gray-600 leading-relaxed">{item.description}</p>
+                <div class="min-w-0">
+                  <h3 class="font-heading font-bold text-gray-900 text-lg leading-tight">{item.title}</h3>
+                  <p class="mt-2 text-gray-600 leading-relaxed">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -115,24 +135,84 @@ const serviceLabelMap: Record<string, string> = {
 
   {
     d.whyChoose && (
-      <section class="bg-stone-50 py-14 md:py-20">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 class="font-heading font-bold text-gray-900 text-2xl md:text-4xl mb-6">
-            {d.whyChoose.heading}
-          </h2>
-          <Prose>
-            <p set:html={d.whyChoose.body.replace(/\n\n/g, '</p><p>')} />
-          </Prose>
-          {d.whyChoose.quote && (
-            <blockquote class="mt-8 border-l-4 border-brand pl-6 py-4 bg-white rounded-r-lg shadow-sm">
-              <p class="text-lg italic text-gray-700 leading-relaxed">
-                "{d.whyChoose.quote.quote}"
-              </p>
-              <footer class="mt-3 text-sm font-semibold text-gray-900">
-                — {d.whyChoose.quote.attribution}
-              </footer>
-            </blockquote>
-          )}
+      <section class="bg-stone-50 py-16 md:py-24 border-y border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-5 gap-10 lg:gap-14 items-start">
+            <div class="lg:col-span-3">
+              <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl mb-6">
+                {d.whyChoose.heading}
+              </h2>
+              <Prose>
+                <p set:html={d.whyChoose.body.replace(/\n\n/g, '</p><p>')} />
+              </Prose>
+              {d.whyChoose.quote && (
+                <figure class="mt-8 relative rounded-2xl bg-white shadow-md ring-1 ring-gray-100 p-7 md:p-8">
+                  <svg class="absolute -top-3 left-6 w-10 h-10 text-brand/20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7 11h3v8H2v-6c0-3.3 2.7-6 6-6V5c-2.8 0-5 2.2-5 5v1h4zm12 0h3v8h-8v-6c0-3.3 2.7-6 6-6V5c-2.8 0-5 2.2-5 5v1h4z"/>
+                  </svg>
+                  <blockquote class="text-lg leading-relaxed text-gray-800 italic">
+                    "{d.whyChoose.quote.quote}"
+                  </blockquote>
+                  <figcaption class="mt-5 flex items-center gap-3 text-sm">
+                    <div class="w-10 h-10 rounded-full bg-brand-dark text-white font-bold flex items-center justify-center" aria-hidden="true">DS</div>
+                    <div>
+                      <div class="font-bold text-gray-900">{d.whyChoose.quote.attribution}</div>
+                      <div class="text-gray-500">Snyder's Outdoor Solutions</div>
+                    </div>
+                  </figcaption>
+                </figure>
+              )}
+            </div>
+
+            {/* Designed photo placeholder — intentionally styled so the absence
+                of a real photo looks deliberate, and the slot is ready to swap
+                to <Image src={...} /> the moment jobsite photos arrive. */}
+            <aside class="lg:col-span-2 lg:sticky lg:top-24">
+              <div class="relative rounded-2xl bg-gradient-to-br from-brand-dark to-brand/90 text-white p-6 md:p-7 shadow-xl overflow-hidden">
+                <svg class="absolute -right-6 -bottom-6 w-40 h-40 text-white/5" viewBox="0 0 120 160" fill="currentColor" aria-hidden="true">
+                  <path d="M60 10 L40 50 L50 50 L30 90 L45 90 L20 140 L100 140 L75 90 L90 90 L70 50 L80 50 Z"/>
+                  <rect x="54" y="140" width="12" height="18"/>
+                </svg>
+                <div class="relative">
+                  <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/10 ring-1 ring-white/20 text-[10px] font-bold uppercase tracking-widest mb-4">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-light"></span>
+                    Service Snapshot
+                  </div>
+                  <div class="space-y-4">
+                    <div>
+                      <div class="text-xs uppercase tracking-wider text-brand-light/80 font-semibold">Service area</div>
+                      <div class="font-heading font-bold text-lg">Hagerstown, Frederick, Martinsburg</div>
+                    </div>
+                    <div class="h-px bg-white/10"></div>
+                    <div>
+                      <div class="text-xs uppercase tracking-wider text-brand-light/80 font-semibold">Response</div>
+                      <div class="font-heading font-bold text-lg">Same or next business day</div>
+                      <div class="text-white/70 text-sm">24/7 for true emergencies</div>
+                    </div>
+                    <div class="h-px bg-white/10"></div>
+                    <div>
+                      <div class="text-xs uppercase tracking-wider text-brand-light/80 font-semibold">Estimates</div>
+                      <div class="font-heading font-bold text-lg">Free, on-site, flat-rate</div>
+                    </div>
+                    <div class="h-px bg-white/10"></div>
+                    <div>
+                      <div class="text-xs uppercase tracking-wider text-brand-light/80 font-semibold">Coverage</div>
+                      <div class="font-heading font-bold text-lg">Fully licensed & insured</div>
+                    </div>
+                  </div>
+                  <a
+                    href={`tel:${business.phoneTel}`}
+                    class="mt-6 inline-flex items-center justify-center w-full gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-5 py-3 rounded-lg text-base min-h-12 focus:outline-none focus:ring-2 focus:ring-white/60 transition-colors"
+                  >
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    Get a Free Estimate
+                  </a>
+                </div>
+              </div>
+            </aside>
+          </div>
         </div>
       </section>
     )
@@ -140,24 +220,34 @@ const serviceLabelMap: Record<string, string> = {
 
   {
     d.processSteps && (
-      <section class="bg-white py-14 md:py-20">
+      <section class="bg-white py-16 md:py-24">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 class="font-heading font-bold text-gray-900 text-2xl md:text-4xl mb-10 md:mb-14 text-center">
-            {d.processSteps.heading}
-          </h2>
-          <ol class="grid gap-8 md:grid-cols-2 lg:grid-cols-5 lg:gap-4">
-            {d.processSteps.steps.map((step, i) => (
-              <li class="relative">
-                <div class="flex flex-col items-center text-center">
-                  <div class="w-12 h-12 rounded-full bg-brand text-white font-bold flex items-center justify-center text-lg shadow-md">
-                    {i + 1}
+          <div class="max-w-2xl mx-auto text-center mb-12 md:mb-16">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-light text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+              How We Work
+            </div>
+            <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl">
+              {d.processSteps.heading}
+            </h2>
+          </div>
+          <div class="relative">
+            {/* Connector line on desktop — sits behind the numbered circles */}
+            <div class="hidden lg:block absolute top-8 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-brand/20 via-brand/40 to-brand/20 -z-0" aria-hidden="true"></div>
+            <ol class="relative grid gap-10 md:grid-cols-2 lg:grid-cols-5 lg:gap-4">
+              {d.processSteps.steps.map((step, i) => (
+                <li class="relative flex lg:flex-col items-start lg:items-center gap-4 lg:gap-0 lg:text-center">
+                  <div class="relative flex-shrink-0 w-16 h-16 rounded-full bg-brand-dark text-white flex items-center justify-center shadow-lg ring-4 ring-white">
+                    <span class="font-heading font-extrabold text-2xl">{i + 1}</span>
                   </div>
-                  <h3 class="mt-4 font-bold text-gray-900 text-lg">{step.title}</h3>
-                  <p class="mt-2 text-gray-600 text-sm leading-relaxed">{step.description}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
+                  <div class="lg:mt-5">
+                    <h3 class="font-heading font-bold text-gray-900 text-lg">{step.title}</h3>
+                    <p class="mt-1.5 text-gray-600 text-sm leading-relaxed lg:max-w-[220px] lg:mx-auto">{step.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </section>
     )
@@ -166,7 +256,7 @@ const serviceLabelMap: Record<string, string> = {
   {/* Editorial cross-links — required by the strategy doc */}
   {
     (d.relatedLocations.length > 0 || d.relatedServices.length > 0) && (
-      <section class="bg-stone-50 py-12">
+      <section class="bg-stone-50 py-12 md:py-16 border-y border-gray-100">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Prose>
             {d.relatedLocations.length > 0 && (
