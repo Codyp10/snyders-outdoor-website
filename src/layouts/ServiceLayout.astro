@@ -31,6 +31,40 @@ const serviceLabelMap: Record<string, string> = {
   'stump-grinding': 'stump grinding',
   'lot-land-clearing': 'lot and land clearing',
 };
+
+// Per-service hero decoration keyed on entry.id — gives each page a
+// distinct visual signature while keeping the layout consistent.
+type Decoration = 'removal' | 'emergency' | 'storm' | 'trimming' | 'stump' | 'clearing';
+const decorationMap: Record<string, Decoration> = {
+  'tree-removal': 'removal',
+  'emergency-tree-removal': 'emergency',
+  'storm-damage-cleanup': 'storm',
+  'tree-trimming-pruning': 'trimming',
+  'stump-grinding': 'stump',
+  'lot-land-clearing': 'clearing',
+};
+const decoration: Decoration = decorationMap[entry.id] ?? 'removal';
+
+// Per-service eyebrow icon and "signs" section chip label
+type EyebrowIcon = 'location' | 'alert' | 'scissors' | 'axe' | 'wind' | 'disc' | 'trees';
+const eyebrowIconMap: Record<string, EyebrowIcon> = {
+  'tree-removal': 'axe',
+  'emergency-tree-removal': 'alert',
+  'storm-damage-cleanup': 'wind',
+  'tree-trimming-pruning': 'scissors',
+  'stump-grinding': 'disc',
+  'lot-land-clearing': 'trees',
+};
+
+const signsChipMap: Record<string, string> = {
+  'tree-removal': 'When to Remove',
+  'emergency-tree-removal': 'When to Call',
+  'storm-damage-cleanup': 'Common Damage',
+  'tree-trimming-pruning': 'When to Prune',
+  'stump-grinding': 'Why Grind It Out',
+  'lot-land-clearing': 'Common Jobs',
+};
+const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
 ---
 
 <BaseLayout title={d.titleTag} description={d.description} canonical={pageURL}>
@@ -45,10 +79,11 @@ const serviceLabelMap: Record<string, string> = {
 
   <Hero
     eyebrow={d.emergency ? '24/7 Emergency Response' : `${d.city}, ${d.state}`}
-    eyebrowIcon={d.emergency ? 'alert' : 'location'}
+    eyebrowIcon={eyebrowIconMap[entry.id] ?? 'location'}
     headline={d.h1}
     subhead={d.description}
     variant={d.emergency ? 'emergency' : 'service'}
+    decoration={decoration}
     secondaryCTA={d.emergency ? undefined : { text: 'Free Estimate', href: '/contact' }}
   />
 
@@ -105,7 +140,7 @@ const serviceLabelMap: Record<string, string> = {
                 <line x1="12" y1="9" x2="12" y2="13"/>
                 <line x1="12" y1="17" x2="12.01" y2="17"/>
               </svg>
-              When to Call
+              {signsChipLabel}
             </div>
             <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl">
               {d.signsYouNeed.heading}

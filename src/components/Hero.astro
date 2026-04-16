@@ -6,9 +6,19 @@ interface CTA {
   href: string;
 }
 
+type Decoration =
+  | 'trees'
+  | 'removal'
+  | 'emergency'
+  | 'storm'
+  | 'trimming'
+  | 'stump'
+  | 'clearing'
+  | 'none';
+
 interface Props {
   eyebrow?: string;
-  eyebrowIcon?: 'location' | 'alert' | 'leaf';
+  eyebrowIcon?: 'location' | 'alert' | 'leaf' | 'scissors' | 'axe' | 'wind' | 'disc' | 'trees';
   headline: string;
   subhead?: string;
   heroImage?: string;
@@ -16,6 +26,7 @@ interface Props {
   variant?: 'home' | 'service' | 'location' | 'about' | 'contact' | 'emergency';
   primaryCTA?: CTA;
   secondaryCTA?: CTA;
+  decoration?: Decoration;
 }
 
 const {
@@ -26,6 +37,7 @@ const {
   variant = 'service',
   primaryCTA = { text: 'Call Now', href: `tel:${business.phoneTel}` },
   secondaryCTA,
+  decoration = 'trees',
 } = Astro.props;
 
 const heightClass = {
@@ -38,9 +50,6 @@ const heightClass = {
 }[variant];
 
 const isEmergency = variant === 'emergency';
-
-// PLACEHOLDER: replace decorative tree SVG + gradient with <Image> hero when
-// jobsite photos land. Each page's heroImage frontmatter field will drive src.
 ---
 
 <section
@@ -50,7 +59,7 @@ const isEmergency = variant === 'emergency';
     isEmergency ? 'bg-[#4a1a1a]' : 'bg-brand-dark',
   ]}
 >
-  <!-- Base gradient: adds directional light -->
+  {/* Base gradient */}
   <div
     class:list={[
       'absolute inset-0 -z-10',
@@ -59,29 +68,136 @@ const isEmergency = variant === 'emergency';
         : 'bg-[radial-gradient(120%_100%_at_80%_0%,rgba(212,234,218,0.25),transparent_55%),linear-gradient(135deg,#3A6B44_0%,#1a2f21_100%)]',
     ]}
     aria-hidden="true"
-  >
-  </div>
+  ></div>
 
-  <!-- Decorative tree silhouettes: brand relevance without stock-photo risk.
-       Hidden on mobile to keep focus on content. -->
-  <div
-    class="hidden md:block absolute -right-8 lg:right-0 top-0 bottom-0 w-[340px] lg:w-[460px] opacity-[0.07] -z-10 pointer-events-none"
-    aria-hidden="true"
-  >
-    <svg viewBox="0 0 460 460" class="w-full h-full text-brand-light" fill="currentColor" preserveAspectRatio="xMidYMax meet">
-      <!-- Large pine, back -->
-      <path d="M260 40 L200 140 L228 140 L180 220 L212 220 L155 310 L365 310 L308 220 L340 220 L292 140 L320 140 Z"/>
-      <rect x="248" y="310" width="24" height="40"/>
-      <!-- Medium pine, front-right -->
-      <path d="M380 130 L340 196 L360 196 L325 248 L345 248 L308 308 L452 308 L415 248 L435 248 L400 196 L420 196 Z"/>
-      <rect x="372" y="308" width="16" height="28"/>
-      <!-- Small pine, front-left -->
-      <path d="M160 180 L130 230 L145 230 L118 272 L132 272 L104 316 L216 316 L188 272 L202 272 L175 230 L190 230 Z"/>
-      <rect x="154" y="316" width="12" height="22"/>
-    </svg>
-  </div>
+  {/* Service-specific decorative composition, right side, tablet+ */}
+  {decoration !== 'none' && (
+    <div
+      class="hidden md:block absolute right-0 top-0 bottom-0 w-[380px] lg:w-[520px] -z-10 pointer-events-none"
+      aria-hidden="true"
+    >
+      {/* TREES (default / home / hub / generic) — 3 pine silhouettes */}
+      {decoration === 'trees' && (
+        <svg viewBox="0 0 520 520" class="w-full h-full text-brand-light opacity-[0.07]" fill="currentColor" preserveAspectRatio="xMidYMax meet">
+          <path d="M300 60 L240 160 L268 160 L220 240 L252 240 L195 330 L405 330 L348 240 L380 240 L332 160 L360 160 Z"/>
+          <rect x="288" y="330" width="24" height="40"/>
+          <path d="M420 150 L380 216 L400 216 L365 268 L385 268 L348 328 L492 328 L455 268 L475 268 L440 216 L460 216 Z"/>
+          <rect x="412" y="328" width="16" height="28"/>
+          <path d="M200 200 L170 250 L185 250 L158 292 L172 292 L144 336 L256 336 L228 292 L242 292 L215 250 L230 250 Z"/>
+          <rect x="194" y="336" width="12" height="22"/>
+        </svg>
+      )}
 
-  <!-- Subtle noise overlay for texture -->
+      {/* REMOVAL — big tree silhouette with crossed axe */}
+      {decoration === 'removal' && (
+        <svg viewBox="0 0 520 520" class="w-full h-full text-brand-light opacity-[0.08]" fill="currentColor" preserveAspectRatio="xMidYMax meet">
+          {/* Broad pine */}
+          <path d="M300 40 L220 140 L255 140 L190 230 L230 230 L155 340 L445 340 L370 230 L410 230 L345 140 L380 140 Z"/>
+          <rect x="285" y="340" width="30" height="60"/>
+          {/* Axe head */}
+          <g transform="translate(340 200) rotate(-28)">
+            <path d="M0 0 L70 -18 L88 -8 L88 20 L70 28 L0 10 Z"/>
+            <rect x="-110" y="0" width="110" height="10" rx="2"/>
+          </g>
+        </svg>
+      )}
+
+      {/* EMERGENCY — lightning bolt splitting a tree */}
+      {decoration === 'emergency' && (
+        <svg viewBox="0 0 520 520" class="w-full h-full text-orange-200 opacity-[0.10]" fill="currentColor" preserveAspectRatio="xMidYMax meet">
+          {/* Tree with split top */}
+          <path d="M260 60 L205 150 L240 150 L185 230 L225 230 L160 335 L310 335 L290 250 L270 250 Z"/>
+          <path d="M340 70 L390 70 L345 150 L380 150 L340 335 L330 335 L330 260 L310 260 Z"/>
+          <rect x="250" y="335" width="28" height="50"/>
+          <rect x="320" y="335" width="28" height="50"/>
+          {/* Lightning bolt striking between */}
+          <path d="M300 0 L245 180 L300 180 L260 330 L405 130 L345 130 L380 30 Z"/>
+        </svg>
+      )}
+
+      {/* STORM — wind swirls + fallen limb */}
+      {decoration === 'storm' && (
+        <svg viewBox="0 0 520 520" class="w-full h-full text-brand-light opacity-[0.08]" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" preserveAspectRatio="xMidYMax meet">
+          {/* Wind swirls */}
+          <path d="M80 140 C 180 100 260 100 340 140 C 410 180 440 140 460 120"/>
+          <path d="M60 210 C 180 180 280 180 360 220 C 420 260 470 220 490 200"/>
+          <path d="M80 290 C 180 260 300 270 380 310"/>
+          {/* Snapped limb silhouette */}
+          <g fill="currentColor" stroke="none" opacity="0.9">
+            <path d="M180 400 L 260 360 L 320 390 L 380 365 L 430 400 L 430 430 L 180 430 Z"/>
+            <path d="M220 360 L 240 340 L 270 345 L 275 365 Z"/>
+            <path d="M340 360 L 360 335 L 390 345 L 395 370 Z"/>
+          </g>
+        </svg>
+      )}
+
+      {/* TRIMMING — shaped round tree + scissors */}
+      {decoration === 'trimming' && (
+        <svg viewBox="0 0 520 520" class="w-full h-full text-brand-light opacity-[0.08]" fill="currentColor" preserveAspectRatio="xMidYMax meet">
+          {/* Neatly shaped deciduous tree */}
+          <circle cx="300" cy="230" r="140"/>
+          <rect x="288" y="340" width="24" height="70"/>
+          {/* Scissors overlay top-right */}
+          <g transform="translate(380 90) rotate(35)" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="15" cy="15" r="22" fill="currentColor" stroke="none"/>
+            <circle cx="15" cy="85" r="22" fill="currentColor" stroke="none"/>
+            <line x1="100" y1="-10" x2="25" y2="65"/>
+            <line x1="70" y1="70" x2="100" y2="100"/>
+            <line x1="25" y1="35" x2="50" y2="60"/>
+          </g>
+        </svg>
+      )}
+
+      {/* STUMP — tree stump with concentric rings */}
+      {decoration === 'stump' && (
+        <svg viewBox="0 0 520 520" class="w-full h-full text-brand-light opacity-[0.09]" preserveAspectRatio="xMidYMax meet">
+          {/* Stump top (ellipse = perspective) */}
+          <g fill="none" stroke="currentColor" stroke-width="6">
+            <ellipse cx="300" cy="200" rx="180" ry="60"/>
+            <ellipse cx="300" cy="200" rx="140" ry="46"/>
+            <ellipse cx="300" cy="200" rx="100" ry="33"/>
+            <ellipse cx="300" cy="200" rx="60" ry="20"/>
+            <ellipse cx="300" cy="200" rx="24" ry="8"/>
+          </g>
+          {/* Stump sides */}
+          <g fill="currentColor">
+            <path d="M120 200 L120 330 C 120 360 200 380 300 380 C 400 380 480 360 480 330 L480 200 C 480 230 400 250 300 250 C 200 250 120 230 120 200 Z"/>
+          </g>
+          {/* Surface roots */}
+          <g fill="currentColor">
+            <path d="M140 330 Q 100 340 70 370 L 70 390 Q 110 370 160 370 Z"/>
+            <path d="M460 330 Q 500 340 530 370 L 530 390 Q 490 370 440 370 Z"/>
+          </g>
+        </svg>
+      )}
+
+      {/* CLEARING — multiple trees + stumps, "before/after" suggestion */}
+      {decoration === 'clearing' && (
+        <svg viewBox="0 0 520 520" class="w-full h-full text-brand-light opacity-[0.08]" fill="currentColor" preserveAspectRatio="xMidYMax meet">
+          {/* Standing tree left */}
+          <path d="M130 120 L95 180 L110 180 L80 238 L100 238 L60 310 L200 310 L160 238 L180 238 L150 180 L165 180 Z"/>
+          <rect x="122" y="310" width="16" height="28"/>
+          {/* Standing tree middle */}
+          <path d="M260 150 L230 210 L245 210 L216 264 L232 264 L200 324 L320 324 L288 264 L304 264 L275 210 L290 210 Z"/>
+          <rect x="252" y="324" width="16" height="26"/>
+          {/* Stump right (cleared) */}
+          <g>
+            <ellipse cx="420" cy="310" rx="60" ry="16"/>
+            <path d="M360 310 L360 345 C 360 355 388 360 420 360 C 452 360 480 355 480 345 L480 310 C 480 318 452 324 420 324 C 388 324 360 318 360 310 Z"/>
+          </g>
+          {/* Small stump between */}
+          <g>
+            <ellipse cx="350" cy="335" rx="28" ry="8"/>
+            <path d="M322 335 L322 352 C 322 357 335 360 350 360 C 365 360 378 357 378 352 L378 335 C 378 339 365 342 350 342 C 335 342 322 339 322 335 Z"/>
+          </g>
+          {/* Ground line */}
+          <rect x="40" y="370" width="480" height="4" opacity="0.5"/>
+        </svg>
+      )}
+    </div>
+  )}
+
+  {/* Noise texture overlay */}
   <svg
     class="absolute inset-0 w-full h-full opacity-[0.08] mix-blend-overlay -z-10 pointer-events-none"
     aria-hidden="true"
@@ -121,6 +237,31 @@ const isEmergency = variant === 'emergency';
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
               <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.2 2.96c.8 3.36.2 6.58-2.2 9.04A7 7 0 0 1 11 20z"/>
               <path d="M2 21c0-3 1.85-5.36 5.08-6"/>
+            </svg>
+          )}
+          {eyebrowIcon === 'scissors' && (
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/>
+            </svg>
+          )}
+          {eyebrowIcon === 'axe' && (
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9.5 7.5a7 7 0 0 1 9.9 0l2.6 2.6-2.1 2.1-2.6-2.6a4 4 0 1 0-5.7 5.7l2.6 2.6-2.1 2.1-2.6-2.6a7 7 0 0 1 0-9.9z"/><path d="M14 14 3 3"/>
+            </svg>
+          )}
+          {eyebrowIcon === 'wind' && (
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/>
+            </svg>
+          )}
+          {eyebrowIcon === 'disc' && (
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+            </svg>
+          )}
+          {eyebrowIcon === 'trees' && (
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z"/><path d="M7 16v6"/><path d="M13 19v3"/><path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5"/>
             </svg>
           )}
           {eyebrow}
