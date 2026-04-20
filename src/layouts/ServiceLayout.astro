@@ -136,14 +136,6 @@ const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
       <section class="bg-white py-14 md:py-24">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="max-w-2xl mx-auto text-center mb-10 md:mb-14">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-50 text-orange-700 ring-1 ring-orange-200 text-xs font-semibold uppercase tracking-widest mb-4">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-                <line x1="12" y1="9" x2="12" y2="13"/>
-                <line x1="12" y1="17" x2="12.01" y2="17"/>
-              </svg>
-              {signsChipLabel}
-            </div>
             <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl">
               {d.signsYouNeed.heading}
             </h2>
@@ -211,10 +203,6 @@ const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
                   <rect x="54" y="140" width="12" height="18"/>
                 </svg>
                 <div class="relative">
-                  <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/10 ring-1 ring-white/20 text-[10px] font-bold uppercase tracking-widest mb-4">
-                    <span class="w-1.5 h-1.5 rounded-full bg-brand-light"></span>
-                    Service Snapshot
-                  </div>
                   <div class="space-y-4">
                     <div>
                       <div class="text-xs uppercase tracking-wider text-brand-light/80 font-semibold">Service area</div>
@@ -260,10 +248,6 @@ const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
       <section class="bg-white py-16 md:py-24">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="max-w-2xl mx-auto text-center mb-12 md:mb-16">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-light text-brand-dark ring-1 ring-brand/20 text-xs font-semibold uppercase tracking-widest mb-4">
-              <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
-              How We Work
-            </div>
             <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl">
               {d.processSteps.heading}
             </h2>
