@@ -8,6 +8,7 @@ import FAQAccordion from '../../components/FAQAccordion.astro';
 import FAQSchema from '../../components/schema/FAQSchema.astro';
 import CTABar from '../../components/CTABar.astro';
 import Prose from '../../components/Prose.astro';
+import heroImage from '../../assets/images/hero-tree-services.jpg';
 
 const treeServices = await getCollection('tree-services');
 const treeServiceOrder = [
@@ -46,7 +47,7 @@ const faqs = [
   {
     question: 'What areas do you serve?',
     answer:
-      "Hagerstown MD (our home base), Frederick MD, and Martinsburg WV are our three primary markets. We also regularly work throughout Washington County, Frederick County, Berkeley County, and parts of Franklin County PA. Most jobs stay inside a 30-mile radius of Hagerstown.",
+      "Hagerstown MD (our home base), Greencastle PA, Frederick MD, and Martinsburg WV are our four primary markets. We also regularly work throughout Washington County, Frederick County, Berkeley County, and the rest of Franklin County PA. Most jobs stay inside a 30-mile radius of Hagerstown.",
   },
   {
     question: 'How quickly can you respond?',
@@ -70,17 +71,19 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 <BaseLayout
   title="Tree Services Hagerstown MD | Snyder's Outdoor Solutions"
-  description="Full-service tree care in Hagerstown, Frederick, and Martinsburg. Licensed and insured — tree removal, emergency response, trimming, stump grinding, storm damage cleanup, and land clearing."
+  description="Full-service tree care in Hagerstown, Greencastle, Frederick, and Martinsburg. Licensed and insured — tree removal, emergency response, trimming, stump grinding, storm damage cleanup, and land clearing."
   canonical={pageURL}
 >
   <FAQSchema slot="head" faqs={faqs} />
 
   <Hero
-    eyebrow="Hagerstown, MD · Frederick, MD · Martinsburg, WV"
+    eyebrow="Hagerstown · Greencastle · Frederick · Martinsburg"
     eyebrowIcon="leaf"
     headline="Professional Tree Services in Hagerstown, MD"
     subhead="One local crew for tree removal, emergency response, trimming, stumps, storm cleanup, and land clearing. Licensed, insured, and based in Hagerstown."
     variant="service"
+    heroImage={heroImage}
+    heroAlt="Crane grapple lifting large cut logs against a blue sky."
     secondaryCTA={{ text: 'Free Estimate', href: '/contact' }}
   />
 

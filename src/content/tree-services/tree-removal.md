@@ -5,7 +5,8 @@ h1: "Tree Removal in Hagerstown, MD"
 description: "Professional, safe tree removal in Hagerstown, MD. Licensed and insured crew, careful site protection, and clean jobsite cleanup. Free estimates — call Snyder's Outdoor Solutions."
 city: "Hagerstown"
 state: "MD"
-heroAlt: "Snyder's Outdoor Solutions crew performing a tree removal in Hagerstown, MD"
+heroImage: "../../assets/images/hero-tree-removal.jpg"
+heroAlt: "Snyder's Outdoor Solutions bucket truck removing a tall evergreen next to a home."
 emergency: false
 
 intro: |

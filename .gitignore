@@ -29,3 +29,9 @@ pnpm-debug.log*
 
 # vercel
 .vercel
+
+# raw photo originals — optimized versions go in src/assets/images/
+# leading slash anchors to repo root so it doesn't also match src/assets/images/
+# (macOS filesystem is case-insensitive, so an un-anchored `Images/` pattern catches both)
+/Images/
+

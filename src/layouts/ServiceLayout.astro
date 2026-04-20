@@ -84,6 +84,8 @@ const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
     subhead={d.description}
     variant={d.emergency ? 'emergency' : 'service'}
     decoration={decoration}
+    heroImage={d.heroImage}
+    heroAlt={d.heroAlt}
     secondaryCTA={d.emergency ? undefined : { text: 'Free Estimate', href: '/contact' }}
   />
 
@@ -216,7 +218,7 @@ const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
                   <div class="space-y-4">
                     <div>
                       <div class="text-xs uppercase tracking-wider text-brand-light/80 font-semibold">Service area</div>
-                      <div class="font-heading font-bold text-lg">Hagerstown, Frederick, Martinsburg</div>
+                      <div class="font-heading font-bold text-lg">Hagerstown, Greencastle, Frederick, Martinsburg</div>
                     </div>
                     <div class="h-px bg-white/10"></div>
                     <div>
@@ -341,7 +343,7 @@ const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
         ? "Don't wait — call us now."
         : `Ready for ${d.title.split(' in ')[0].toLowerCase()}? Call ${business.name}.`
     }
-    subhead={d.emergency ? 'We respond 24/7 across Hagerstown, Frederick, and Martinsburg.' : undefined}
+    subhead={d.emergency ? 'We respond 24/7 across Hagerstown, Greencastle, Frederick, and Martinsburg.' : undefined}
     variant={d.emergency ? 'emergency' : 'default'}
   />
 </BaseLayout>

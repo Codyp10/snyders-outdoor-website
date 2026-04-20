@@ -2,14 +2,15 @@
 title: "Lot & Land Clearing in Hagerstown, MD"
 titleTag: "Lot & Land Clearing Hagerstown MD | Snyder's Outdoor Solutions"
 h1: "Lot & Land Clearing in Hagerstown, MD"
-description: "Lot and land clearing in Hagerstown, Frederick, and Martinsburg — residential lot clearing, brush removal, building site prep, and light commercial clearing with the right equipment for the job."
+description: "Lot and land clearing in Hagerstown, Greencastle, Frederick, and Martinsburg — residential lot clearing, brush removal, building site prep, and light commercial clearing with the right equipment for the job."
 city: "Hagerstown"
 state: "MD"
-heroAlt: "Snyder's Outdoor Solutions crew clearing a wooded residential lot near Hagerstown"
+heroImage: "../../assets/images/hero-lot-clearing.jpg"
+heroAlt: "Compact skid-steer clearing a wooded lot with freshly cut logs nearby."
 emergency: false
 
 intro: |
-  Whether you just bought a wooded lot to build on, need a fence line cleared, or are ready to reclaim the back half of your property from overgrowth, Snyder's Outdoor Solutions handles land clearing across Hagerstown, Washington County, Frederick County, and the Martinsburg area. We scale crew and equipment to the job — from a one-day brush clear on a residential lot to multi-day clearing for a building site — and we leave the ground ready for whatever comes next.
+  Whether you just bought a wooded lot to build on, need a fence line cleared, or are ready to reclaim the back half of your property from overgrowth, Snyder's Outdoor Solutions handles land clearing across Hagerstown, Washington County, Franklin County PA, Frederick County, and the Martinsburg area. We scale crew and equipment to the job — from a one-day brush clear on a residential lot to multi-day clearing for a building site — and we leave the ground ready for whatever comes next.
 
 whatsIncluded:
   heading: "What Our Land Clearing Covers"

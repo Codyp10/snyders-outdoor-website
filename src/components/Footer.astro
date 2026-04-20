@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import business from '../data/business.json';
 import nav from '../data/navigation.json';
+import logo from '../assets/images/logo-white.png';
 
 const year = new Date().getFullYear();
 const treeServices = nav.primary.find((i) => i.label === 'Tree Services')?.children ?? [];
@@ -11,9 +13,16 @@ const addr = business.address;
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
       <div>
-        <div class="font-heading font-extrabold text-xl mb-3">{business.name}</div>
+        <Image
+          src={logo}
+          alt={business.name}
+          widths={[240, 320]}
+          sizes="200px"
+          loading="lazy"
+          class="h-16 w-auto mb-4"
+        />
         <p class="text-white/70 text-sm leading-relaxed">
-          Professional tree service and outdoor solutions serving Hagerstown, Frederick, and Martinsburg.
+          Professional tree service and outdoor solutions serving Hagerstown, Greencastle, Frederick, and Martinsburg.
         </p>
       </div>
 

@@ -5,7 +5,8 @@ h1: "Tree Service in Hagerstown, MD"
 description: "Licensed, local tree service throughout Hagerstown and Washington County, Maryland. Removal, emergency response, trimming, stumps, and land clearing."
 city: "Hagerstown"
 state: "MD"
-heroAlt: "Snyder's Outdoor Solutions truck in a Hagerstown neighborhood"
+heroImage: "../../assets/images/location-hagerstown.jpg"
+heroAlt: "Snyder's Outdoor Solutions crew removing a large evergreen at sunset near Hagerstown."
 
 intro: |
   Snyder's Outdoor Solutions is based right here in Hagerstown, which means we're not driving in from an hour away when your tree needs to come down — we're your neighbors. From the Robinwood area and the North End to Fountain Head, Halfway, and the Pangborn corridor, we handle tree removal, emergency response, trimming, stump grinding, and lot clearing across every corner of Washington County. Licensed, insured, and local to the tip of a chainsaw.
@@ -39,7 +40,7 @@ landmarks:
   - "Antietam Creek watershed"
 
 drivingRoute: |
-  Because we're based in Hagerstown, most city calls are a 10–15 minute drive for the crew. We can typically be on site within the hour for scheduled estimates, and faster for emergencies. Our trucks cover the I-70 corridor east toward Frederick and I-81 south toward Martinsburg without delay.
+  Because we're based in Hagerstown, most city calls are a 10–15 minute drive for the crew. We can typically be on site within the hour for scheduled estimates, and faster for emergencies. Our trucks cover the I-70 corridor east toward Frederick, I-81 south toward Martinsburg, and I-81 north toward Greencastle without delay.
 
 localStats: ""
 

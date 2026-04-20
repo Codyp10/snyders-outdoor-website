@@ -2,14 +2,15 @@
 title: "Emergency Tree Removal in Hagerstown, MD"
 titleTag: "Emergency Tree Removal Hagerstown MD | Snyder's Outdoor Solutions"
 h1: "Emergency Tree Removal in Hagerstown, MD"
-description: "24/7 emergency tree removal for Hagerstown, Frederick, and Martinsburg. Trees on houses, downed trees on cars, blocked driveways, storm damage — call Snyder's now."
+description: "24/7 emergency tree removal for Hagerstown, Greencastle, Frederick, and Martinsburg. Trees on houses, downed trees on cars, blocked driveways, storm damage — call Snyder's now."
 city: "Hagerstown"
 state: "MD"
-heroAlt: "Snyder's Outdoor Solutions emergency crew responding to a fallen tree in Hagerstown"
+heroImage: "../../assets/images/hero-emergency.jpg"
+heroAlt: "Snyder's Outdoor Solutions crew clearing a tree that fell on a house with a mini-loader."
 emergency: true
 
 intro: |
-  When a tree comes down on a house, a car, or a power line, you don't have time to shop around — you need a licensed, insured crew on the way right now. Snyder's Outdoor Solutions runs 24/7 emergency tree removal across Hagerstown, Washington County, Frederick County, and the Martinsburg area. Call and we'll have a truck rolling within the hour when we can, with the equipment and experience to make the scene safe without making the damage worse.
+  When a tree comes down on a house, a car, or a power line, you don't have time to shop around — you need a licensed, insured crew on the way right now. Snyder's Outdoor Solutions runs 24/7 emergency tree removal across Hagerstown, Washington County, Franklin County PA, Frederick County, and the Martinsburg area. Call and we'll have a truck rolling within the hour when we can, with the equipment and experience to make the scene safe without making the damage worse.
 
 whatsIncluded:
   heading: "What Emergency Response Covers"
@@ -58,7 +59,7 @@ processSteps:
 
 faqs:
   - question: "How fast can you actually get here?"
-    answer: "Daytime emergencies in Hagerstown, Frederick, or Martinsburg are usually on-site within an hour, sometimes less. Overnight calls get a callback to triage, and we're on site first thing in the morning unless the situation is life-safety, in which case we roll out. Time estimates depend on where our other crews are when you call."
+    answer: "Daytime emergencies in Hagerstown, Greencastle, Frederick, or Martinsburg are usually on-site within an hour, sometimes less. Overnight calls get a callback to triage, and we're on site first thing in the morning unless the situation is life-safety, in which case we roll out. Time estimates depend on where our other crews are when you call."
   - question: "Do you charge more for emergency work?"
     answer: "Emergency work carries an after-hours rate because the crew is called in outside normal hours and we prioritize your job over scheduled work. We'll be upfront about the rate structure on the initial call — no surprises on the invoice."
   - question: "Should I call you or my insurance first?"

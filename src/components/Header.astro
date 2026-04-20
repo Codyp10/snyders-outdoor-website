@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import nav from '../data/navigation.json';
 import business from '../data/business.json';
+import logo from '../assets/images/logo-white.png';
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) => {
@@ -12,10 +14,16 @@ const isActive = (href: string) => {
 <header class="sticky top-0 z-40 bg-brand-dark text-white shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
-      <a href="/" class="flex items-center gap-2 font-heading font-extrabold text-lg lg:text-xl">
-        <!-- PLACEHOLDER: replace with <Image> of logo-white.svg once asset lands -->
-        <span aria-hidden="true" class="inline-block w-8 h-8 rounded bg-brand-light text-brand-dark font-black text-center leading-8">S</span>
-        <span>{business.name}</span>
+      <a href="/" class="flex items-center" aria-label={`${business.name} — Home`}>
+        <Image
+          src={logo}
+          alt=""
+          widths={[200, 300]}
+          sizes="(min-width: 1024px) 180px, 140px"
+          loading="eager"
+          class="h-12 lg:h-14 w-auto"
+        />
+        <span class="sr-only">{business.name}</span>
       </a>
 
       <nav class="hidden lg:flex items-center gap-1" aria-label="Primary">
@@ -100,7 +108,8 @@ const isActive = (href: string) => {
     <div id="mobile-nav-backdrop" class="absolute inset-0 bg-black/50"></div>
     <div class="absolute right-0 top-0 h-full w-full max-w-sm bg-brand-dark text-white shadow-2xl flex flex-col">
       <div class="flex items-center justify-between h-16 px-4 border-b border-white/10">
-        <span class="font-heading font-extrabold">{business.name}</span>
+        <Image src={logo} alt="" widths={[200]} sizes="130px" class="h-10 w-auto" />
+        <span class="sr-only">{business.name}</span>
         <button
           type="button"
           id="mobile-nav-close"

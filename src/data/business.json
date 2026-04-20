@@ -25,6 +25,7 @@
   "emergency247": true,
   "areaServed": [
     { "city": "Hagerstown", "region": "MD" },
+    { "city": "Greencastle", "region": "PA" },
     { "city": "Frederick", "region": "MD" },
     { "city": "Martinsburg", "region": "WV" }
   ],

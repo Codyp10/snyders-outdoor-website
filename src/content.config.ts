@@ -35,14 +35,14 @@ const quoteSchema = z.object({
  */
 const treeServices = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/tree-services' }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     titleTag: z.string(),
     h1: z.string(),
     description: z.string(),
     city: z.string().default('Hagerstown'),
     state: z.string().default('MD'),
-    heroImage: z.string().optional(),
+    heroImage: image().optional(),
     heroAlt: z.string(),
     emergency: z.boolean().default(false),
 
@@ -97,14 +97,14 @@ const treeServices = defineCollection({
  */
 const locations = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/locations' }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     titleTag: z.string(),
     h1: z.string(),
     description: z.string(),
     city: z.string(),
     state: z.string(),
-    heroImage: z.string().optional(),
+    heroImage: image().optional(),
     heroAlt: z.string(),
 
     intro: z.string(),
@@ -132,14 +132,14 @@ const locations = defineCollection({
  */
 const outdoorServices = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/outdoor-services' }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     titleTag: z.string(),
     h1: z.string(),
     description: z.string(),
     city: z.string().default('Hagerstown'),
     state: z.string().default('MD'),
-    heroImage: z.string().optional(),
+    heroImage: image().optional(),
     heroAlt: z.string(),
 
     intro: z.string(),

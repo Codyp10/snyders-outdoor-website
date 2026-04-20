@@ -4,6 +4,7 @@ import LocalBusiness from '../components/schema/LocalBusiness.astro';
 import Hero from '../components/Hero.astro';
 import CTABar from '../components/CTABar.astro';
 import business from '../data/business.json';
+import heroImage from '../assets/images/hero-contact.jpg';
 
 const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
 const addr = business.address;
@@ -13,7 +14,7 @@ const phoneTel = business.phoneTel === 'NAP_PENDING' ? '+15550000000' : business
 
 <BaseLayout
   title="Contact Us | Snyder's Outdoor Solutions"
-  description="Call Snyder's Outdoor Solutions for free on-site tree service estimates in Hagerstown, Frederick, and Martinsburg — or request an estimate online."
+  description="Call Snyder's Outdoor Solutions for free on-site tree service estimates in Hagerstown, Greencastle, Frederick, and Martinsburg — or request an estimate online."
   canonical={pageURL}
 >
   <LocalBusiness slot="head" />
@@ -24,6 +25,8 @@ const phoneTel = business.phoneTel === 'NAP_PENDING' ? '+15550000000' : business
     headline="Contact Snyder's Outdoor Solutions"
     subhead="Fastest way to reach us is the phone. For anything non-urgent, the estimate form below goes straight to our scheduling queue."
     variant="contact"
+    heroImage={heroImage}
+    heroAlt="Snyder's Outdoor Solutions branded bucket truck."
   />
 
   {/* Phone-first CTA bar */}

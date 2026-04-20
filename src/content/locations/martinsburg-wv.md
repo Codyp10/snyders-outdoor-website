@@ -5,7 +5,8 @@ h1: "Tree Service in Martinsburg, WV"
 description: "Full tree service across Martinsburg and Berkeley County, West Virginia. Tree removal, storm response, trimming, stumps, and lot clearing from a licensed Hagerstown-based crew."
 city: "Martinsburg"
 state: "WV"
-heroAlt: "Snyder's Outdoor Solutions crew at a residential tree removal in Martinsburg, WV"
+heroImage: "../../assets/images/location-martinsburg.jpg"
+heroAlt: "Snyder's full crew with crane, bucket truck, and green pickup on a residential job."
 
 intro: |
   Martinsburg is 20 miles down I-81 from our Hagerstown base — close enough that we work there as regularly as our home market. From downtown Martinsburg and the North End to Hedgesville, Inwood, Bunker Hill, and the rest of Berkeley County, Snyder's Outdoor Solutions handles residential tree service with the same crew, pricing, and standards we use across the state line. Fully licensed in West Virginia, fully insured, fully local enough to care how the job looks when we leave.

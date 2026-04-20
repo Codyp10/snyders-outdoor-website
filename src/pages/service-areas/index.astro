@@ -5,9 +5,10 @@ import Hero from '../../components/Hero.astro';
 import TrustStrip from '../../components/TrustStrip.astro';
 import CTABar from '../../components/CTABar.astro';
 import ServiceCard from '../../components/ServiceCard.astro';
+import heroImage from '../../assets/images/hero-service-areas.jpg';
 
 const locations = await getCollection('locations');
-const locationOrder = ['hagerstown-md', 'frederick-md', 'martinsburg-wv'];
+const locationOrder = ['hagerstown-md', 'greencastle-pa', 'frederick-md', 'martinsburg-wv'];
 const ordered = locationOrder
   .map((id) => locations.find((l) => l.id === id))
   .filter((l) => l !== undefined);
@@ -17,15 +18,17 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 <BaseLayout
   title="Service Areas | Snyder's Outdoor Solutions"
-  description="Tree service across the Tri-State area — Hagerstown MD, Frederick MD, and Martinsburg WV. See the cities and neighborhoods we serve."
+  description="Tree service across the Tri-State area — Hagerstown MD, Greencastle PA, Frederick MD, and Martinsburg WV. See the cities and neighborhoods we serve."
   canonical={pageURL}
 >
   <Hero
     eyebrow="Tri-State Coverage"
     eyebrowIcon="location"
     headline="Areas We Serve"
-    subhead="Tree service and outdoor solutions across Maryland and West Virginia. Based in Hagerstown, working throughout Washington County, Frederick County, and the Martinsburg area."
+    subhead="Tree service and outdoor solutions across Maryland, Pennsylvania, and West Virginia. Based in Hagerstown, working throughout Washington County, Franklin County, Frederick County, and the Martinsburg area."
     variant="about"
+    heroImage={heroImage}
+    heroAlt="Aerial view of a Maryland farm property with pond and rolling countryside."
     secondaryCTA={{ text: 'Free Estimate', href: '/contact' }}
   />
 

@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import business from '../data/business.json';
 
 interface CTA {
@@ -21,7 +23,7 @@ interface Props {
   eyebrowIcon?: 'location' | 'alert' | 'leaf' | 'scissors' | 'axe' | 'wind' | 'disc' | 'trees';
   headline: string;
   subhead?: string;
-  heroImage?: string;
+  heroImage?: ImageMetadata;
   heroAlt?: string;
   variant?: 'home' | 'service' | 'location' | 'about' | 'contact' | 'emergency';
   primaryCTA?: CTA;
@@ -34,11 +36,15 @@ const {
   eyebrowIcon = 'location',
   headline,
   subhead,
+  heroImage,
+  heroAlt = '',
   variant = 'service',
   primaryCTA = { text: 'Call Now', href: `tel:${business.phoneTel}` },
   secondaryCTA,
   decoration = 'trees',
 } = Astro.props;
+
+const hasImage = Boolean(heroImage);
 
 const heightClass = {
   home: 'min-h-[640px] md:min-h-[700px]',
@@ -59,19 +65,37 @@ const isEmergency = variant === 'emergency';
     isEmergency ? 'bg-[#4a1a1a]' : 'bg-brand-dark',
   ]}
 >
-  {/* Base gradient */}
+  {/* Background photo (when provided) */}
+  {hasImage && (
+    <Image
+      src={heroImage!}
+      alt={heroAlt}
+      widths={[768, 1280, 1920]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+      class="absolute inset-0 w-full h-full object-cover -z-20"
+    />
+  )}
+
+  {/* Base gradient — when an image is shown, slide to a darker scrim so copy stays readable */}
   <div
     class:list={[
       'absolute inset-0 -z-10',
-      isEmergency
-        ? 'bg-[radial-gradient(120%_100%_at_80%_0%,rgba(255,120,80,0.35),transparent_55%),linear-gradient(135deg,#5a1f1f_0%,#2a1212_100%)]'
-        : 'bg-[radial-gradient(120%_100%_at_80%_0%,rgba(212,234,218,0.25),transparent_55%),linear-gradient(135deg,#3A6B44_0%,#1a2f21_100%)]',
+      hasImage
+        ? isEmergency
+          ? 'bg-[linear-gradient(90deg,rgba(26,10,10,0.85)_0%,rgba(26,10,10,0.55)_50%,rgba(26,10,10,0.35)_100%)]'
+          : 'bg-[linear-gradient(90deg,rgba(16,32,22,0.80)_0%,rgba(16,32,22,0.50)_55%,rgba(16,32,22,0.30)_100%)]'
+        : isEmergency
+          ? 'bg-[radial-gradient(120%_100%_at_80%_0%,rgba(255,120,80,0.35),transparent_55%),linear-gradient(135deg,#5a1f1f_0%,#2a1212_100%)]'
+          : 'bg-[radial-gradient(120%_100%_at_80%_0%,rgba(204,237,224,0.25),transparent_55%),linear-gradient(135deg,#009e5f_0%,#00341e_100%)]',
     ]}
     aria-hidden="true"
   ></div>
 
-  {/* Service-specific decorative composition, right side, tablet+ */}
-  {decoration !== 'none' && (
+  {/* Service-specific decorative composition, right side, tablet+.
+      Hidden when a real photo is rendering — the photo owns the visual. */}
+  {!hasImage && decoration !== 'none' && (
     <div
       class="hidden md:block absolute right-0 top-0 bottom-0 w-[380px] lg:w-[520px] -z-10 pointer-events-none"
       aria-hidden="true"

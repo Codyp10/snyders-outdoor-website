@@ -5,7 +5,8 @@ h1: "Tree Service in Frederick, MD"
 description: "Professional tree service throughout Frederick, MD and Frederick County. Tree removal, emergency response, trimming, stumps, and land clearing from a Hagerstown-based crew."
 city: "Frederick"
 state: "MD"
-heroAlt: "Snyder's Outdoor Solutions crew working on a tree removal in Frederick, MD"
+heroImage: "../../assets/images/location-frederick.jpg"
+heroAlt: "Snyder's bucket truck extended over a residential home at dusk."
 
 intro: |
   Frederick is a tree town — from the old hardwoods around Baker Park and Carroll Creek to the young canopies in newer developments like Spring Ridge, Worman's Mill, and Urbana. Snyder's Outdoor Solutions runs from Hagerstown east on I-70 to Frederick and the surrounding county regularly. Same crew, same flat-rate pricing, same licensed-and-insured work you'd get if we were based around the corner.
