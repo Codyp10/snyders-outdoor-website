@@ -6,6 +6,7 @@ description: "Professional stump grinding in Hagerstown, Greencastle, Frederick,
 city: "Hagerstown"
 state: "MD"
 heroImage: "../../assets/images/hero-stump-grinding.jpg"
+heroImageMobile: "../../assets/images/hero-stump-grinding-mobile.jpg"
 heroAlt: "Snyder's crew member running a stump grinder on a residential job."
 emergency: false
 

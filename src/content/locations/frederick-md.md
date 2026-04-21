@@ -6,6 +6,7 @@ description: "Professional tree service throughout Frederick, MD and Frederick C
 city: "Frederick"
 state: "MD"
 heroImage: "../../assets/images/location-frederick.jpg"
+heroImageMobile: "../../assets/images/location-frederick-mobile.jpg"
 heroAlt: "Snyder's bucket truck extended over a residential home at dusk."
 
 intro: |

@@ -6,6 +6,7 @@ description: "Full tree service across Martinsburg and Berkeley County, West Vir
 city: "Martinsburg"
 state: "WV"
 heroImage: "../../assets/images/location-martinsburg.jpg"
+heroImageMobile: "../../assets/images/location-martinsburg-mobile.jpg"
 heroAlt: "Snyder's full crew with crane, bucket truck, and green pickup on a residential job."
 
 intro: |

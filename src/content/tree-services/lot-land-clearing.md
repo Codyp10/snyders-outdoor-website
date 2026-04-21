@@ -6,6 +6,7 @@ description: "Lot and land clearing in Hagerstown, Greencastle, Frederick, and M
 city: "Hagerstown"
 state: "MD"
 heroImage: "../../assets/images/hero-lot-clearing.jpg"
+heroImageMobile: "../../assets/images/hero-lot-clearing-mobile.jpg"
 heroAlt: "Compact skid-steer clearing a wooded lot with freshly cut logs nearby."
 emergency: false
 

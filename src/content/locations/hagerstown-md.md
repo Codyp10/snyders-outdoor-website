@@ -6,6 +6,7 @@ description: "Licensed, local tree service throughout Hagerstown and Washington 
 city: "Hagerstown"
 state: "MD"
 heroImage: "../../assets/images/location-hagerstown.jpg"
+heroImageMobile: "../../assets/images/location-hagerstown-mobile.jpg"
 heroAlt: "Snyder's Outdoor Solutions crew removing a large evergreen at sunset near Hagerstown."
 
 intro: |

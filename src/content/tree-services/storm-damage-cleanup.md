@@ -6,6 +6,7 @@ description: "Full storm damage cleanup in Hagerstown, Greencastle, Frederick, a
 city: "Hagerstown"
 state: "MD"
 heroImage: "../../assets/images/hero-storm.jpg"
+heroImageMobile: "../../assets/images/hero-storm-mobile.jpg"
 heroAlt: "Massive downed evergreen across a residential yard after a storm."
 emergency: false
 

@@ -6,6 +6,7 @@ description: "Licensed tree service throughout Greencastle and Antrim Township, 
 city: "Greencastle"
 state: "PA"
 heroImage: "../../assets/images/location-greencastle.jpg"
+heroImageMobile: "../../assets/images/location-greencastle-mobile.jpg"
 heroAlt: "Rural Pennsylvania home with mature trees, a metal roof, and an American flag on the front lawn."
 
 intro: |

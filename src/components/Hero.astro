@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import business from '../data/business.json';
 
@@ -24,6 +24,7 @@ interface Props {
   headline: string;
   subhead?: string;
   heroImage?: ImageMetadata;
+  heroImageMobile?: ImageMetadata;
   heroAlt?: string;
   variant?: 'home' | 'service' | 'location' | 'about' | 'contact' | 'emergency';
   primaryCTA?: CTA;
@@ -37,6 +38,7 @@ const {
   headline,
   subhead,
   heroImage,
+  heroImageMobile,
   heroAlt = '',
   variant = 'service',
   primaryCTA = { text: 'Call Now', href: `tel:${business.phoneTel}` },
@@ -47,13 +49,32 @@ const {
 const hasImage = Boolean(heroImage);
 
 const heightClass = {
-  home: 'min-h-[640px] md:min-h-[700px]',
-  service: 'min-h-[480px] md:min-h-[560px]',
-  location: 'min-h-[480px] md:min-h-[560px]',
-  about: 'min-h-[400px] md:min-h-[460px]',
-  contact: 'min-h-[320px] md:min-h-[360px]',
-  emergency: 'min-h-[480px] md:min-h-[560px]',
+  home: 'min-h-[520px] md:min-h-[700px]',
+  service: 'min-h-[420px] md:min-h-[560px]',
+  location: 'min-h-[420px] md:min-h-[560px]',
+  about: 'min-h-[440px] md:min-h-[460px]',
+  contact: 'min-h-[300px] md:min-h-[360px]',
+  emergency: 'min-h-[420px] md:min-h-[560px]',
 }[variant];
+
+// Pre-process mobile + desktop image sources for the <picture> element below.
+const desktopImg = heroImage
+  ? await getImage({
+      src: heroImage,
+      widths: [768, 1280, 1920],
+      sizes: '100vw',
+      format: 'webp',
+    })
+  : null;
+
+const mobileImg = heroImageMobile
+  ? await getImage({
+      src: heroImageMobile,
+      widths: [480, 720, 900],
+      sizes: '100vw',
+      format: 'webp',
+    })
+  : null;
 
 const isEmergency = variant === 'emergency';
 ---
@@ -65,17 +86,24 @@ const isEmergency = variant === 'emergency';
     isEmergency ? 'bg-[#4a1a1a]' : 'bg-brand-dark',
   ]}
 >
-  {/* Background photo (when provided) */}
-  {hasImage && (
-    <Image
-      src={heroImage!}
-      alt={heroAlt}
-      widths={[768, 1280, 1920]}
-      sizes="100vw"
-      loading="eager"
-      fetchpriority="high"
-      class="absolute inset-0 w-full h-full object-cover -z-20"
-    />
+  {/* Background photo (when provided). Mobile gets a portrait crop via <picture>. */}
+  {hasImage && desktopImg && (
+    <picture>
+      {mobileImg && (
+        <source media="(max-width: 767px)" srcset={mobileImg.srcSet.attribute} sizes="100vw" />
+      )}
+      <img
+        src={desktopImg.src}
+        srcset={desktopImg.srcSet.attribute}
+        sizes="100vw"
+        alt={heroAlt}
+        width={desktopImg.attributes.width}
+        height={desktopImg.attributes.height}
+        loading="eager"
+        fetchpriority="high"
+        class="absolute inset-0 w-full h-full object-cover -z-20"
+      />
+    </picture>
   )}
 
   {/* Base gradient — when an image is shown, slide to a darker scrim so copy stays readable */}

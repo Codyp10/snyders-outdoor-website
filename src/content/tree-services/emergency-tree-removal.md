@@ -6,6 +6,7 @@ description: "24/7 emergency tree removal for Hagerstown, Greencastle, Frederick
 city: "Hagerstown"
 state: "MD"
 heroImage: "../../assets/images/hero-emergency.jpg"
+heroImageMobile: "../../assets/images/hero-emergency-mobile.jpg"
 heroAlt: "Snyder's Outdoor Solutions crew clearing a tree that fell on a house with a mini-loader."
 emergency: true
 

@@ -9,6 +9,7 @@ import FAQSchema from '../../components/schema/FAQSchema.astro';
 import CTABar from '../../components/CTABar.astro';
 import Prose from '../../components/Prose.astro';
 import heroImage from '../../assets/images/hero-tree-services.jpg';
+import heroImageMobile from '../../assets/images/hero-tree-services-mobile.jpg';
 
 const treeServices = await getCollection('tree-services');
 const treeServiceOrder = [
@@ -83,6 +84,7 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
     subhead="One local crew for tree removal, emergency response, trimming, stumps, storm cleanup, and land clearing. Licensed, insured, and based in Hagerstown."
     variant="service"
     heroImage={heroImage}
+    heroImageMobile={heroImageMobile}
     heroAlt="Crane grapple lifting large cut logs against a blue sky."
     secondaryCTA={{ text: 'Free Estimate', href: '/contact' }}
   />

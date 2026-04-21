@@ -6,6 +6,7 @@ description: "Professional tree trimming and pruning in Hagerstown, Greencastle,
 city: "Hagerstown"
 state: "MD"
 heroImage: "../../assets/images/hero-tree-trimming.jpg"
+heroImageMobile: "../../assets/images/hero-tree-trimming-mobile.jpg"
 heroAlt: "Bucket truck pruning an ornamental tree in front of a residential home."
 emergency: false
 

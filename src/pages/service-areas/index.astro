@@ -6,6 +6,7 @@ import TrustStrip from '../../components/TrustStrip.astro';
 import CTABar from '../../components/CTABar.astro';
 import ServiceCard from '../../components/ServiceCard.astro';
 import heroImage from '../../assets/images/hero-service-areas.jpg';
+import heroImageMobile from '../../assets/images/hero-service-areas-mobile.jpg';
 
 const locations = await getCollection('locations');
 const locationOrder = ['hagerstown-md', 'greencastle-pa', 'frederick-md', 'martinsburg-wv'];
@@ -28,6 +29,7 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
     subhead="Tree service and outdoor solutions across Maryland, Pennsylvania, and West Virginia. Based in Hagerstown, working throughout Washington County, Franklin County, Frederick County, and the Martinsburg area."
     variant="about"
     heroImage={heroImage}
+    heroImageMobile={heroImageMobile}
     heroAlt="Aerial view of a Maryland farm property with pond and rolling countryside."
     secondaryCTA={{ text: 'Free Estimate', href: '/contact' }}
   />

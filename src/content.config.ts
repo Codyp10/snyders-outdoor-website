@@ -43,6 +43,7 @@ const treeServices = defineCollection({
     city: z.string().default('Hagerstown'),
     state: z.string().default('MD'),
     heroImage: image().optional(),
+    heroImageMobile: image().optional(),
     heroAlt: z.string(),
     emergency: z.boolean().default(false),
 
@@ -105,6 +106,7 @@ const locations = defineCollection({
     city: z.string(),
     state: z.string(),
     heroImage: image().optional(),
+    heroImageMobile: image().optional(),
     heroAlt: z.string(),
 
     intro: z.string(),
@@ -140,6 +142,7 @@ const outdoorServices = defineCollection({
     city: z.string().default('Hagerstown'),
     state: z.string().default('MD'),
     heroImage: image().optional(),
+    heroImageMobile: image().optional(),
     heroAlt: z.string(),
 
     intro: z.string(),

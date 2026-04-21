@@ -5,6 +5,7 @@ import Hero from '../components/Hero.astro';
 import CTABar from '../components/CTABar.astro';
 import business from '../data/business.json';
 import heroImage from '../assets/images/hero-contact.jpg';
+import heroImageMobile from '../assets/images/hero-contact-mobile.jpg';
 
 const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
 const addr = business.address;
@@ -26,6 +27,7 @@ const phoneTel = business.phoneTel === 'NAP_PENDING' ? '+15550000000' : business
     subhead="Fastest way to reach us is the phone. For anything non-urgent, the estimate form below goes straight to our scheduling queue."
     variant="contact"
     heroImage={heroImage}
+    heroImageMobile={heroImageMobile}
     heroAlt="Snyder's Outdoor Solutions branded bucket truck."
   />
 

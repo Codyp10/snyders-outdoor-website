@@ -9,6 +9,7 @@ import Prose from '../components/Prose.astro';
 import LocalBusiness from '../components/schema/LocalBusiness.astro';
 import business from '../data/business.json';
 import heroImage from '../assets/images/hero-home.jpg';
+import heroImageMobile from '../assets/images/hero-home-mobile.jpg';
 
 const treeServices = await getCollection('tree-services');
 const treeServiceOrder = [
@@ -56,6 +57,7 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
     subhead="Licensed, local, and ready when you are. Snyder's Outdoor Solutions handles tree removal, emergency response, trimming, stump grinding, storm damage cleanup, and land clearing across the Tri-State area."
     variant="home"
     heroImage={heroImage}
+    heroImageMobile={heroImageMobile}
     heroAlt="Snyder's Outdoor Solutions crew working a residential tree removal with crane and bucket truck."
     secondaryCTA={{ text: 'Free Estimate', href: '/contact' }}
   />

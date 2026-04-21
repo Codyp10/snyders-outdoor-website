@@ -6,6 +6,7 @@ import CTABar from '../components/CTABar.astro';
 import Prose from '../components/Prose.astro';
 import business from '../data/business.json';
 import heroImage from '../assets/images/hero-about.jpg';
+import heroImageMobile from '../assets/images/hero-about-mobile.jpg';
 
 const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
 ---
@@ -22,6 +23,7 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
     subhead="A Hagerstown-based tree service built by a logger's son. Real work, real people, real accountability."
     variant="about"
     heroImage={heroImage}
+    heroImageMobile={heroImageMobile}
     heroAlt="Two Snyder's Outdoor Solutions crew members in PPE on a job site."
     secondaryCTA={{ text: 'Get a Quote', href: '/contact' }}
   />

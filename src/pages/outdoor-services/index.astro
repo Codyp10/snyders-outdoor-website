@@ -6,6 +6,7 @@ import CTABar from '../../components/CTABar.astro';
 import Prose from '../../components/Prose.astro';
 import business from '../../data/business.json';
 import heroImage from '../../assets/images/hero-service-areas.jpg';
+import heroImageMobile from '../../assets/images/hero-service-areas-mobile.jpg';
 
 const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
 
@@ -53,6 +54,7 @@ const services = [
     subhead="Tree service is our anchor, but Snyder's does more. These services round out our offering across residential and light-commercial properties — call for scope and availability."
     variant="service"
     heroImage={heroImage}
+    heroImageMobile={heroImageMobile}
     heroAlt="Aerial view of a Maryland farm property with pond, barn, and rolling countryside."
     secondaryCTA={{ text: 'Talk to Us', href: '/contact' }}
   />
