@@ -26,6 +26,7 @@
   "areaServed": [
     { "city": "Hagerstown", "region": "MD" },
     { "city": "Greencastle", "region": "PA" },
+    { "city": "Waynesboro", "region": "PA" },
     { "city": "Frederick", "region": "MD" },
     { "city": "Martinsburg", "region": "WV" }
   ],

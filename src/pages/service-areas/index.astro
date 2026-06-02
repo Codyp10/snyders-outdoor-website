@@ -9,7 +9,7 @@ import heroImage from '../../assets/images/hero-service-areas.jpg';
 import heroImageMobile from '../../assets/images/hero-service-areas-mobile.jpg';
 
 const locations = await getCollection('locations');
-const locationOrder = ['hagerstown-md', 'greencastle-pa', 'frederick-md', 'martinsburg-wv'];
+const locationOrder = ['hagerstown-md', 'greencastle-pa', 'waynesboro-pa', 'frederick-md', 'martinsburg-wv'];
 const ordered = locationOrder
   .map((id) => locations.find((l) => l.id === id))
   .filter((l) => l !== undefined);
