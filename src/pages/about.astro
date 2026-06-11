@@ -1,19 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import type { ImageMetadata } from 'astro';
 import Hero from '../components/Hero.astro';
 import TrustStrip from '../components/TrustStrip.astro';
 import CTABar from '../components/CTABar.astro';
 import Prose from '../components/Prose.astro';
 import business from '../data/business.json';
+import { Image } from 'astro:assets';
 import heroImage from '../assets/images/hero-about.jpg';
 import heroImageMobile from '../assets/images/hero-about-mobile.jpg';
+import gearCrane from '../assets/images/hero-home.jpg';
+import gearBucket from '../assets/images/hero-tree-trimming.jpg';
+import gearSkidSteer from '../assets/images/hero-lot-clearing.jpg';
 
 const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+// Dustin's portrait — auto-wired. Drop the real photo into src/assets/images/
+// named dustin-snyder.jpg (or .jpeg/.png/.webp) and the identity card below
+// picks it up on the next build. Until then it renders the placeholder frame.
+const portraitGlob = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/images/dustin-snyder.{jpg,jpeg,png,webp}',
+  { eager: true }
+);
+const dustinPortrait = Object.values(portraitGlob)[0]?.default ?? null;
 ---
 
 <BaseLayout
   title="About Snyder's Outdoor Solutions | Hagerstown, MD"
-  description="Snyder's Outdoor Solutions is a family-run tree service based in Hagerstown, MD. Meet Dustin and learn how a logger's son built a full-service outdoor solutions company."
+  description="Snyder's Outdoor Solutions is a family-run tree service in Hagerstown, MD. Meet Dustin — a logger's son who built a full-service outdoor company."
   canonical={pageURL}
 >
   <Hero
@@ -35,37 +49,32 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-5 gap-10 lg:gap-14 items-start">
         <div class="lg:col-span-2 lg:sticky lg:top-24">
-          {/* Designed identity card — swaps to <Image> of Dustin when photo lands */}
-          <div class="relative rounded-2xl bg-gradient-to-br from-brand-dark to-brand/90 text-white p-7 md:p-8 shadow-xl overflow-hidden">
-            <svg class="absolute -right-10 -bottom-10 w-56 h-56 text-white/5" viewBox="0 0 120 160" fill="currentColor" aria-hidden="true">
-              <path d="M60 10 L40 50 L50 50 L30 90 L45 90 L20 140 L100 140 L75 90 L90 90 L70 50 L80 50 Z"/>
-              <rect x="54" y="140" width="12" height="18"/>
-            </svg>
-            <div class="relative">
-              <div class="w-16 h-16 rounded-full bg-brand-light text-brand-dark font-heading font-extrabold text-2xl flex items-center justify-center shadow-lg" aria-hidden="true">DS</div>
-              <div class="mt-5">
-                <div class="font-heading font-bold text-2xl">Dustin Snyder</div>
-                <div class="text-brand-light text-sm uppercase tracking-widest mt-0.5">Owner &amp; Operator</div>
+          {/* Portrait frame — renders Dustin's photo when
+              src/assets/images/dustin-snyder.* exists, placeholder until then. */}
+          {
+            dustinPortrait ? (
+              <div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-xl ring-1 ring-gray-200 bg-brand-dark">
+                <Image
+                  src={dustinPortrait}
+                  alt="Dustin Snyder, owner and operator of Snyder's Outdoor Solutions."
+                  widths={[480, 768, 960]}
+                  sizes="(min-width: 1024px) 420px, 100vw"
+                  class="absolute inset-0 w-full h-full object-cover"
+                />
               </div>
-              <div class="mt-6 space-y-4 text-sm">
-                <div>
-                  <div class="text-brand-light/80 uppercase tracking-wider text-[11px] font-semibold">Based in</div>
-                  <div class="font-heading font-bold text-lg">Hagerstown, Maryland</div>
-                </div>
-                <div class="h-px bg-white/10"></div>
-                <div>
-                  <div class="text-brand-light/80 uppercase tracking-wider text-[11px] font-semibold">Background</div>
-                  <div class="font-heading font-bold text-lg">Logger's son</div>
-                  <div class="text-white/70 mt-0.5">Years on chainsaws before most kids drove a car.</div>
-                </div>
-                <div class="h-px bg-white/10"></div>
-                <div>
-                  <div class="text-brand-light/80 uppercase tracking-wider text-[11px] font-semibold">On every job</div>
-                  <div class="font-heading font-bold text-lg">Either on site or one call away</div>
-                </div>
+            ) : (
+              <div
+                class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-xl bg-gradient-to-br from-brand-dark to-brand/90 flex items-center justify-center"
+                aria-hidden="true"
+              >
+                <svg class="absolute -right-10 -bottom-10 w-56 h-56 text-white/5" viewBox="0 0 120 160" fill="currentColor">
+                  <path d="M60 10 L40 50 L50 50 L30 90 L45 90 L20 140 L100 140 L75 90 L90 90 L70 50 L80 50 Z" />
+                  <rect x="54" y="140" width="12" height="18" />
+                </svg>
+                <div class="w-20 h-20 rounded-full bg-brand-light text-brand-dark font-heading font-extrabold text-3xl flex items-center justify-center shadow-lg">DS</div>
               </div>
-            </div>
-          </div>
+            )
+          }
         </div>
 
         <div class="lg:col-span-3">
@@ -74,16 +83,18 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
           </h2>
           <Prose>
             <p>
-              Dustin Snyder grew up in the woods around Hagerstown, learning to run a chainsaw before most kids his age
-              were old enough to drive. His dad was a logger, and every weekend from early on was spent on a job —
-              dropping trees, clearing lots, hauling wood. By the time Dustin was a teenager, he knew how to read a tree,
-              rig a limb, and leave a jobsite looking like a crew had actually been there.
+              Dustin Snyder, owner and operator of Snyder's Outdoor Solutions, grew up in the woods around Hagerstown,
+              Maryland — learning to run a chainsaw before most kids his age were old enough to drive. His dad was a
+              logger, and every weekend from early on was spent on a job — dropping trees, clearing lots, hauling wood.
+              By the time Dustin was a teenager, he knew how to read a tree, rig a limb, and leave a jobsite looking
+              like a crew had actually been there.
             </p>
             <p>
               When he started Snyder's Outdoor Solutions, the goal was never to be the biggest tree service in the region.
               It was to be the one homeowners could actually trust — the crew that shows up when they say, quotes flat-rate,
               and treats the property the way the customer would treat it themselves. Ten years later, a lot of the work still
-              comes from the same handful of neighborhoods, from customers who call Dustin's cell directly.
+              comes from the same handful of neighborhoods, from customers who call Dustin's cell directly. He's still part
+              of every job, too — either on site with the crew or one phone call away.
             </p>
             <p>
               The company has grown past pure tree work into a broader outdoor solutions business — wood products, plant
@@ -153,23 +164,50 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
 
   {/* Team & equipment */}
   <section class="bg-white py-16 md:py-24">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl mb-6">
-        The Right Crew with the Right Gear
-      </h2>
-      <Prose>
-        <p>
-          The Snyder's crew runs with the equipment the job actually needs — bucket trucks for tight residential
-          takedowns, grapple trucks for efficient debris haul-off, chippers on every job, and industrial stump
-          grinders when a removal is getting finished properly. It's a real operation with real capacity, not a
-          pickup-and-chainsaw side hustle.
-        </p>
-        <p>
-          Everybody on the crew has been trained on safe rigging and climbing, and nobody is running a saw without
-          the experience behind it. We don't send untrained help out to a residential job — the work is too
-          unforgiving for on-the-job education.
-        </p>
-      </Prose>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl mb-6">
+          The Right Crew with the Right Gear
+        </h2>
+        <Prose>
+          <p>
+            The Snyder's crew runs with the equipment the job actually needs — bucket trucks for tight residential
+            takedowns, grapple trucks for efficient debris haul-off, chippers on every job, and industrial stump
+            grinders when a removal is getting finished properly. It's a real operation with real capacity, not a
+            pickup-and-chainsaw side hustle.
+          </p>
+          <p>
+            Everybody on the crew has been trained on safe rigging and climbing, and nobody is running a saw without
+            the experience behind it. We don't send untrained help out to a residential job — the work is too
+            unforgiving for on-the-job education.
+          </p>
+        </Prose>
+      </div>
+
+      {/* Real equipment on real jobs — same photos that anchor the service pages */}
+      <div class="mt-10 grid gap-5 md:gap-6 sm:grid-cols-3">
+        {
+          [
+            { src: gearCrane, alt: 'Crane and bucket truck working a residential tree removal.', caption: 'Crane-assisted removal' },
+            { src: gearBucket, alt: 'Bucket truck fully extended over a residential tree trim.', caption: 'Bucket work on a tight lot' },
+            { src: gearSkidSteer, alt: 'Compact skid steer dragging a felled log during lot clearing.', caption: 'Compact equipment for clearing' },
+          ].map((p) => (
+            <figure class="rounded-2xl overflow-hidden ring-1 ring-gray-200 shadow-sm bg-white">
+              <div class="relative aspect-[4/3] bg-brand-dark">
+                <Image
+                  src={p.src}
+                  alt={p.alt}
+                  widths={[480, 768]}
+                  sizes="(min-width: 640px) 33vw, 100vw"
+                  loading="lazy"
+                  class="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+              <figcaption class="px-4 py-3 text-sm text-gray-600 leading-snug">{p.caption}</figcaption>
+            </figure>
+          ))
+        }
+      </div>
     </div>
   </section>
 

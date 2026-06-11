@@ -2,7 +2,7 @@
 title: "Tree Removal in Hagerstown, MD"
 titleTag: "Tree Removal Hagerstown MD | Snyder's Outdoor Solutions"
 h1: "Tree Removal in Hagerstown, MD"
-description: "Professional, safe tree removal in Hagerstown, MD. Licensed and insured crew, careful site protection, and clean jobsite cleanup. Free estimates — call Snyder's Outdoor Solutions."
+description: "Professional, safe tree removal in Hagerstown, MD. Licensed, insured crew, careful site protection, clean cleanup — free estimates from Snyder's."
 city: "Hagerstown"
 state: "MD"
 heroImage: "../../assets/images/hero-tree-removal.jpg"
@@ -81,6 +81,8 @@ externalLink:
 
 relatedLocations:
   - hagerstown-md
+  - greencastle-pa
+  - waynesboro-pa
   - frederick-md
   - martinsburg-wv
 

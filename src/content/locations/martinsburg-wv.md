@@ -2,7 +2,7 @@
 title: "Tree Service in Martinsburg, WV"
 titleTag: "Tree Service Martinsburg WV | Snyder's Outdoor Solutions"
 h1: "Tree Service in Martinsburg, WV"
-description: "Full tree service across Martinsburg and Berkeley County, West Virginia. Tree removal, storm response, trimming, stumps, and lot clearing from a licensed Hagerstown-based crew."
+description: "Full tree service across Martinsburg and Berkeley County, WV. Tree removal, storm response, trimming, stumps, and lot clearing from a licensed crew."
 city: "Martinsburg"
 state: "WV"
 heroImage: "../../assets/images/location-martinsburg.jpg"

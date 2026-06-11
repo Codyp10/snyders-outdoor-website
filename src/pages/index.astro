@@ -7,9 +7,11 @@ import ServiceCard from '../components/ServiceCard.astro';
 import CTABar from '../components/CTABar.astro';
 import Prose from '../components/Prose.astro';
 import LocalBusiness from '../components/schema/LocalBusiness.astro';
-import business from '../data/business.json';
 import heroImage from '../assets/images/hero-home.jpg';
 import heroImageMobile from '../assets/images/hero-home-mobile.jpg';
+import emergencyBandImage from '../assets/images/hero-storm.jpg';
+import { Image } from 'astro:assets';
+import { phoneTel } from '../lib/nap';
 
 const treeServices = await getCollection('tree-services');
 const treeServiceOrder = [
@@ -35,7 +37,7 @@ const iconMap: Record<string, 'axe' | 'alert' | 'wind' | 'scissors' | 'disc' | '
 const shortTitle = (full: string) => full.split(' in ')[0];
 
 const locations = await getCollection('locations');
-const locationOrder = ['hagerstown-md', 'greencastle-pa', 'frederick-md', 'martinsburg-wv'];
+const locationOrder = ['hagerstown-md', 'greencastle-pa', 'waynesboro-pa', 'frederick-md', 'martinsburg-wv'];
 const orderedLocations = locationOrder
   .map((id) => locations.find((l) => l.id === id))
   .filter((l): l is CollectionEntry<'locations'> => l !== undefined);
@@ -45,13 +47,13 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 <BaseLayout
   title="Tree Service Hagerstown MD | Snyder's Outdoor Solutions"
-  description="Licensed tree service in Hagerstown, Greencastle, Frederick, and Martinsburg. Tree removal, emergency response, trimming, stump grinding, storm damage cleanup, and land clearing — free estimates."
+  description="Licensed tree service in Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg. Removal, trimming, stumps, storm cleanup — free estimates."
   canonical={pageURL}
 >
   <LocalBusiness slot="head" />
 
   <Hero
-    eyebrow="Hagerstown · Greencastle · Frederick · Martinsburg"
+    eyebrow="Hagerstown · Greencastle · Waynesboro · Frederick · Martinsburg"
     eyebrowIcon="location"
     headline="Tree Service in Hagerstown, MD"
     subhead="Licensed, local, and ready when you are. Snyder's Outdoor Solutions handles tree removal, emergency response, trimming, stump grinding, storm damage cleanup, and land clearing across the Tri-State area."
@@ -84,6 +86,8 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
               description={s.data.description}
               href={`/tree-services/${s.id}`}
               icon={iconMap[s.id] ?? 'default'}
+              image={s.data.heroImage}
+              imageAlt={s.data.heroAlt}
             />
           ))
         }
@@ -91,10 +95,19 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
     </div>
   </section>
 
-  {/* Emergency callout — full-width, urgency */}
-  <section class="relative overflow-hidden bg-[#4a1a1a] text-white">
+  {/* Emergency callout — full-width, urgency. Real storm-damage photo under a heavy maroon scrim. */}
+  <section class="relative overflow-hidden bg-[#4a1a1a] text-white isolate">
+    <Image
+      src={emergencyBandImage}
+      alt=""
+      widths={[768, 1280, 1920]}
+      sizes="100vw"
+      loading="lazy"
+      class="absolute inset-0 w-full h-full object-cover -z-20"
+      aria-hidden="true"
+    />
     <div
-      class="absolute inset-0 bg-[radial-gradient(120%_100%_at_80%_0%,rgba(255,120,80,0.35),transparent_55%),linear-gradient(135deg,#5a1f1f_0%,#2a1212_100%)] -z-10"
+      class="absolute inset-0 bg-[radial-gradient(120%_100%_at_80%_0%,rgba(255,120,80,0.28),transparent_55%),linear-gradient(135deg,rgba(90,31,31,0.92)_0%,rgba(42,18,18,0.94)_100%)] -z-10"
       aria-hidden="true"
     ></div>
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20 text-center relative">
@@ -103,11 +116,11 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
       </h2>
       <p class="mt-5 text-base md:text-lg text-white/85 leading-relaxed max-w-2xl mx-auto">
         Trees on houses, blocked driveways, line hazards — we respond around the clock across Hagerstown,
-        Greencastle, Frederick, and Martinsburg. Fastest way to get a crew moving is to call.
+        Greencastle, Waynesboro, Frederick, and Martinsburg. Fastest way to get a crew moving is to call.
       </p>
       <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
         <a
-          href={`tel:${business.phoneTel}`}
+          href={`tel:${phoneTel}`}
           class="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-lg text-base md:text-lg min-h-12 shadow-lg shadow-orange-900/30 focus:outline-none focus:ring-2 focus:ring-white/70"
         >
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -251,7 +264,7 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
           Serving the Tri-State Area
         </h2>
         <p class="mt-4 text-gray-600 text-base md:text-lg leading-relaxed">
-          Four primary markets — and plenty of stops between. <a href="/service-areas" class="text-brand font-semibold hover:text-brand-dark">See full coverage →</a>
+          Five primary markets — and plenty of stops between. <a href="/service-areas" class="text-brand font-semibold hover:text-brand-dark">See full coverage →</a>
         </p>
       </div>
       <div class="grid gap-5 md:gap-6 sm:grid-cols-3">
@@ -263,6 +276,8 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
               href={`/service-areas/${l.id}`}
               icon="shield"
               eyebrow="Tree Service"
+              image={l.data.heroImage}
+              imageAlt={l.data.heroAlt}
             />
           ))
         }

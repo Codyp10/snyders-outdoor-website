@@ -1,5 +1,5 @@
 {
-  "_comment": "Nav structure. Outdoor Services is a single link at launch (no dropdown) — dropdown appears when Phase 2 pages exist.",
+  "_comment": "Nav structure. Outdoor Services is a single link at launch (no dropdown) — dropdown appears when Phase 2 pages exist. Items with hidden:true stay configured but are filtered out of the header nav (page remains live at its URL).",
   "primary": [
     { "label": "Home", "href": "/" },
     {
@@ -14,7 +14,7 @@
         { "label": "Lot & Land Clearing", "href": "/tree-services/lot-land-clearing" }
       ]
     },
-    { "label": "Outdoor Services", "href": "/outdoor-services" },
+    { "label": "Outdoor Services", "href": "/outdoor-services", "hidden": true },
     { "label": "About", "href": "/about" },
     { "label": "Service Areas", "href": "/service-areas" },
     { "label": "Contact", "href": "/contact", "cta": true }

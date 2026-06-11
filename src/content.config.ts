@@ -1,4 +1,4 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z, type SchemaContext } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 /**
@@ -29,6 +29,41 @@ const quoteSchema = z.object({
   quote: z.string(),
   attribution: z.string().default('Dustin Snyder, Owner'),
 });
+
+/**
+ * Image-bearing sub-schemas. These take the collection's image() helper so
+ * markdown files can reference photos with relative ../../assets paths.
+ * All are optional/empty by default — sections only render once photos land.
+ */
+const gallerySchema = (image: SchemaContext['image']) =>
+  z
+    .array(
+      z.object({
+        image: image(),
+        alt: z.string(),
+        caption: z.string().optional(),
+      })
+    )
+    .default([]);
+
+const beforeAfterSchema = (image: SchemaContext['image']) =>
+  z
+    .object({
+      heading: z.string().default('Before & After'),
+      before: z.object({ image: image(), alt: z.string() }),
+      after: z.object({ image: image(), alt: z.string() }),
+      caption: z.string().optional(),
+    })
+    .optional();
+
+const asidePhotoSchema = (image: SchemaContext['image']) =>
+  z
+    .object({
+      image: image(),
+      alt: z.string(),
+      caption: z.string().optional(),
+    })
+    .optional();
 
 /**
  * Tree service pages — /tree-services/<slug>
@@ -87,6 +122,10 @@ const treeServices = defineCollection({
       .optional(),
     faqs: z.array(faqSchema),
 
+    gallery: gallerySchema(image),
+    beforeAfter: beforeAfterSchema(image),
+    asidePhoto: asidePhotoSchema(image),
+
     externalLink: externalLinkSchema,
     relatedLocations: z.array(z.string()).default([]),
     relatedServices: z.array(z.string()).default([]),
@@ -124,6 +163,11 @@ const locations = defineCollection({
     localStats: z.string().optional(),
 
     faqs: z.array(faqSchema),
+
+    gallery: gallerySchema(image),
+    beforeAfter: beforeAfterSchema(image),
+    asidePhoto: asidePhotoSchema(image),
+
     externalLink: externalLinkSchema,
     relatedServices: z.array(z.string()).default([]),
   }),
@@ -159,6 +203,8 @@ const outdoorServices = defineCollection({
       })
       .optional(),
     faqs: z.array(faqSchema),
+
+    gallery: gallerySchema(image),
 
     externalLink: externalLinkSchema,
   }),

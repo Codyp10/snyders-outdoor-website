@@ -2,7 +2,7 @@
 title: "Tree Service in Waynesboro, PA"
 titleTag: "Tree Service Waynesboro PA | Snyder's Outdoor Solutions"
 h1: "Tree Service in Waynesboro, PA"
-description: "Licensed tree service throughout Waynesboro and Washington Township, Pennsylvania. Tree removal, emergency response, trimming, stumps, and lot clearing from a Hagerstown-based crew working the South Mountain foothills."
+description: "Licensed tree service in Waynesboro and Washington Township, PA. Removal, emergency response, trimming, stumps, and lot clearing in the South Mountain foothills."
 city: "Waynesboro"
 state: "PA"
 heroImage: "../../assets/images/location-waynesboro.jpg"

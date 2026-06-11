@@ -8,7 +8,11 @@ import FAQAccordion from '../components/FAQAccordion.astro';
 import Prose from '../components/Prose.astro';
 import ServiceSchema from '../components/schema/ServiceSchema.astro';
 import FAQSchema from '../components/schema/FAQSchema.astro';
+import PhotoGallery from '../components/PhotoGallery.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
+import { Image } from 'astro:assets';
 import business from '../data/business.json';
+import { phoneTel } from '../lib/nap';
 
 interface Props {
   entry: CollectionEntry<'tree-services'>;
@@ -20,6 +24,8 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const locationLabelMap: Record<string, string> = {
   'hagerstown-md': 'Hagerstown, MD',
+  'greencastle-pa': 'Greencastle, PA',
+  'waynesboro-pa': 'Waynesboro, PA',
   'frederick-md': 'Frederick, MD',
   'martinsburg-wv': 'Martinsburg, WV',
 };
@@ -194,10 +200,27 @@ const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
               )}
             </div>
 
-            {/* Designed photo placeholder — intentionally styled so the absence
-                of a real photo looks deliberate, and the slot is ready to swap
-                to <Image src={...} /> the moment jobsite photos arrive. */}
+            {/* Photo slot + info card. When the markdown frontmatter sets
+                asidePhoto, the real jobsite photo renders above the info card;
+                until then the designed card carries the slot on its own. */}
             <aside class="lg:col-span-2 lg:sticky lg:top-24">
+              {d.asidePhoto && (
+                <figure class="mb-6 rounded-2xl overflow-hidden shadow-xl ring-1 ring-gray-200 bg-white">
+                  <div class="relative aspect-[4/3]">
+                    <Image
+                      src={d.asidePhoto.image}
+                      alt={d.asidePhoto.alt}
+                      widths={[480, 768, 960]}
+                      sizes="(min-width: 1024px) 420px, 100vw"
+                      loading="lazy"
+                      class="absolute inset-0 w-full h-full object-cover"
+                    />
+                  </div>
+                  {d.asidePhoto.caption && (
+                    <figcaption class="px-4 py-3 text-sm text-gray-600 leading-snug">{d.asidePhoto.caption}</figcaption>
+                  )}
+                </figure>
+              )}
               <div class="relative rounded-2xl bg-gradient-to-br from-brand-dark to-brand/90 text-white p-6 md:p-7 shadow-xl overflow-hidden">
                 <svg class="absolute -right-6 -bottom-6 w-40 h-40 text-white/5" viewBox="0 0 120 160" fill="currentColor" aria-hidden="true">
                   <path d="M60 10 L40 50 L50 50 L30 90 L45 90 L20 140 L100 140 L75 90 L90 90 L70 50 L80 50 Z"/>
@@ -207,7 +230,7 @@ const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
                   <div class="space-y-4">
                     <div>
                       <div class="text-xs uppercase tracking-wider text-brand-light/80 font-semibold">Service area</div>
-                      <div class="font-heading font-bold text-lg">Hagerstown, Greencastle, Frederick, Martinsburg</div>
+                      <div class="font-heading font-bold text-lg">Hagerstown, Greencastle, Waynesboro, Frederick, Martinsburg</div>
                     </div>
                     <div class="h-px bg-white/10"></div>
                     <div>
@@ -227,7 +250,7 @@ const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
                     </div>
                   </div>
                   <a
-                    href={`tel:${business.phoneTel}`}
+                    href={`tel:${phoneTel}`}
                     class="mt-6 inline-flex items-center justify-center w-full gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-5 py-3 rounded-lg text-base min-h-12 focus:outline-none focus:ring-2 focus:ring-white/60 transition-colors"
                   >
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
@@ -275,36 +298,51 @@ const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
     )
   }
 
+  {
+    d.beforeAfter && (
+      <BeforeAfter
+        heading={d.beforeAfter.heading}
+        before={d.beforeAfter.before}
+        after={d.beforeAfter.after}
+        caption={d.beforeAfter.caption}
+        tone="stone"
+      />
+    )
+  }
+
+  {
+    d.gallery.length > 0 && (
+      <PhotoGallery
+        heading={`Recent ${d.title.split(' in ')[0]} Jobs`}
+        subhead={`Real ${business.name} work — not stock photos.`}
+        items={d.gallery}
+        tone="white"
+      />
+    )
+  }
+
   {/* Editorial cross-links — required by the strategy doc */}
   {
     (d.relatedLocations.length > 0 || d.relatedServices.length > 0) && (
       <section class="bg-stone-50 py-12 md:py-16 border-y border-gray-100">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Prose>
+            {/* Separator + anchor + punctuation stay on one line — Astro preserves
+                inter-element whitespace, and stray spaces land before the commas. */}
             {d.relatedLocations.length > 0 && (
               <p>
                 We provide {serviceLabelMap[entry.id] ?? 'tree service'} across our primary service area, including{' '}
                 {d.relatedLocations.map((slug, i) => (
-                  <>
-                    {i > 0 && i === d.relatedLocations.length - 1 ? ', and ' : i > 0 ? ', ' : ''}
-                    <a href={`/service-areas/${slug}`}>
-                      {locationLabelMap[slug] ?? slug}
-                    </a>
-                  </>
-                ))}
-                . Most jobs happen within a 30-mile radius of our Hagerstown base.
+                  <>{i > 0 && i === d.relatedLocations.length - 1 ? ', and ' : i > 0 ? ', ' : ''}<a href={`/service-areas/${slug}`}>{locationLabelMap[slug] ?? slug}</a></>
+                ))}. Most jobs happen within a 30-mile radius of our Hagerstown base.
               </p>
             )}
             {d.relatedServices.length > 0 && (
               <p>
                 Need a related service? We also handle{' '}
                 {d.relatedServices.map((slug, i) => (
-                  <>
-                    {i > 0 && i === d.relatedServices.length - 1 ? ', and ' : i > 0 ? ', ' : ''}
-                    <a href={`/tree-services/${slug}`}>{serviceLabelMap[slug] ?? slug}</a>
-                  </>
-                ))}{' '}
-                — often in the same visit.
+                  <>{i > 0 && i === d.relatedServices.length - 1 ? ', and ' : i > 0 ? ', ' : ''}<a href={`/tree-services/${slug}`}>{serviceLabelMap[slug] ?? slug}</a></>
+                ))} — often in the same visit.
               </p>
             )}
             <p class="text-sm text-gray-500">
@@ -328,7 +366,7 @@ const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
         ? "Don't wait — call us now."
         : `Ready for ${d.title.split(' in ')[0].toLowerCase()}? Call ${business.name}.`
     }
-    subhead={d.emergency ? 'We respond 24/7 across Hagerstown, Greencastle, Frederick, and Martinsburg.' : undefined}
+    subhead={d.emergency ? 'We respond 24/7 across Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg.' : undefined}
     variant={d.emergency ? 'emergency' : 'default'}
   />
 </BaseLayout>

@@ -48,7 +48,7 @@ const faqs = [
   {
     question: 'What areas do you serve?',
     answer:
-      "Hagerstown MD (our home base), Greencastle PA, Frederick MD, and Martinsburg WV are our four primary markets. We also regularly work throughout Washington County, Frederick County, Berkeley County, and the rest of Franklin County PA. Most jobs stay inside a 30-mile radius of Hagerstown.",
+      "Hagerstown MD (our home base), Greencastle PA, Waynesboro PA, Frederick MD, and Martinsburg WV are our five primary markets. We also regularly work throughout Washington County, Frederick County, Berkeley County, and the rest of Franklin County PA. Most jobs stay inside a 30-mile radius of Hagerstown.",
   },
   {
     question: 'How quickly can you respond?',
@@ -72,13 +72,13 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 <BaseLayout
   title="Tree Services Hagerstown MD | Snyder's Outdoor Solutions"
-  description="Full-service tree care in Hagerstown, Greencastle, Frederick, and Martinsburg. Licensed and insured — tree removal, emergency response, trimming, stump grinding, storm damage cleanup, and land clearing."
+  description="Full-service tree care in Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg. Licensed and insured — removal, trimming, stumps, storm cleanup."
   canonical={pageURL}
 >
   <FAQSchema slot="head" faqs={faqs} />
 
   <Hero
-    eyebrow="Hagerstown · Greencastle · Frederick · Martinsburg"
+    eyebrow="Hagerstown · Greencastle · Waynesboro · Frederick · Martinsburg"
     eyebrowIcon="leaf"
     headline="Professional Tree Services in Hagerstown, MD"
     subhead="One local crew for tree removal, emergency response, trimming, stumps, storm cleanup, and land clearing. Licensed, insured, and based in Hagerstown."
@@ -123,6 +123,8 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
               description={s.data.description}
               href={`/tree-services/${s.id}`}
               icon={iconMap[s.id] ?? 'default'}
+              image={s.data.heroImage}
+              imageAlt={s.data.heroAlt}
             />
           ))
         }

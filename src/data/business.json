@@ -1,9 +1,9 @@
 {
-  "_comment": "SINGLE SOURCE OF TRUTH for NAP. Every component reads from here. Character-for-character match to GBP required before production launch. Replace every NAP_PENDING value before DNS cutover.",
+  "_comment": "SINGLE SOURCE OF TRUTH for NAP. Every component reads from here. Character-for-character match to GBP required before production launch. Replace every NAP_PENDING value before DNS cutover. Phone is the real business line — CallRail DNI (fired via GTM) swaps the displayed number client-side, so this stays the canonical/swap-target number.",
   "name": "Snyder's Outdoor Solutions",
   "legalName": "NAP_PENDING",
-  "phone": "NAP_PENDING",
-  "phoneTel": "NAP_PENDING",
+  "phone": "(301) 302-4658",
+  "phoneTel": "+13013024658",
   "email": "NAP_PENDING",
   "address": {
     "street": "NAP_PENDING",

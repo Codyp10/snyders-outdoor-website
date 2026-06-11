@@ -2,11 +2,15 @@
 import { Image } from 'astro:assets';
 import business from '../data/business.json';
 import nav from '../data/navigation.json';
+import { phoneDisplay, phoneTel } from '../lib/nap';
 import logo from '../assets/images/logo-white.png';
 
 const year = new Date().getFullYear();
 const treeServices = nav.primary.find((i) => i.label === 'Tree Services')?.children ?? [];
 const addr = business.address;
+
+const hasStreet = addr.street !== 'NAP_PENDING';
+const hasPostal = addr.postalCode !== 'NAP_PENDING';
 ---
 
 <footer class="bg-brand-dark text-white pt-16 pb-8 mt-auto">
@@ -22,7 +26,7 @@ const addr = business.address;
           class="h-16 w-auto mb-4"
         />
         <p class="text-white/70 text-sm leading-relaxed">
-          Professional tree service and outdoor solutions serving Hagerstown, Greencastle, Frederick, and Martinsburg.
+          Professional tree service and outdoor solutions serving Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg.
         </p>
       </div>
 
@@ -50,12 +54,12 @@ const addr = business.address;
         <address class="not-italic text-sm text-white/70 space-y-2">
           <div>
             <div class="font-semibold text-white">{business.name}</div>
-            <div>{addr.street}</div>
-            <div>{addr.city}, {addr.region} {addr.postalCode}</div>
+            {hasStreet && <div>{addr.street}</div>}
+            <div>{addr.city}, {addr.region}{hasPostal ? ` ${addr.postalCode}` : ''}</div>
           </div>
           <div>
-            <a href={`tel:${business.phoneTel}`} class="text-white font-semibold hover:text-brand-light">
-              {business.phone}
+            <a href={`tel:${phoneTel}`} class="text-white font-semibold hover:text-brand-light">
+              {phoneDisplay}
             </a>
           </div>
         </address>

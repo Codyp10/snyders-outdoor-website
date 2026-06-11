@@ -2,7 +2,7 @@
 title: "Lot & Land Clearing in Hagerstown, MD"
 titleTag: "Lot & Land Clearing Hagerstown MD | Snyder's Outdoor Solutions"
 h1: "Lot & Land Clearing in Hagerstown, MD"
-description: "Lot and land clearing in Hagerstown, Greencastle, Frederick, and Martinsburg — residential lot clearing, brush removal, building site prep, and light commercial clearing with the right equipment for the job."
+description: "Lot and land clearing in Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg — brush removal, building site prep, and light commercial clearing."
 city: "Hagerstown"
 state: "MD"
 heroImage: "../../assets/images/hero-lot-clearing.jpg"
@@ -78,6 +78,8 @@ externalLink:
 
 relatedLocations:
   - hagerstown-md
+  - greencastle-pa
+  - waynesboro-pa
   - frederick-md
   - martinsburg-wv
 

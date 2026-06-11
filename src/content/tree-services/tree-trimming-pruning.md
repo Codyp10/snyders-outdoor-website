@@ -2,7 +2,7 @@
 title: "Tree Trimming & Pruning in Hagerstown, MD"
 titleTag: "Tree Trimming & Pruning Hagerstown MD | Snyder's Outdoor Solutions"
 h1: "Tree Trimming & Pruning in Hagerstown, MD"
-description: "Professional tree trimming and pruning in Hagerstown, Greencastle, Frederick, and Martinsburg. Proper cuts that protect tree health, improve safety, and keep your landscape looking sharp."
+description: "Tree trimming and pruning in Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg. Proper cuts that protect tree health and keep landscapes sharp."
 city: "Hagerstown"
 state: "MD"
 heroImage: "../../assets/images/hero-tree-trimming.jpg"
@@ -76,6 +76,8 @@ externalLink:
 
 relatedLocations:
   - hagerstown-md
+  - greencastle-pa
+  - waynesboro-pa
   - frederick-md
   - martinsburg-wv
 

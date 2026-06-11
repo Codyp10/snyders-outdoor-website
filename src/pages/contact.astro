@@ -4,18 +4,17 @@ import LocalBusiness from '../components/schema/LocalBusiness.astro';
 import Hero from '../components/Hero.astro';
 import CTABar from '../components/CTABar.astro';
 import business from '../data/business.json';
+import { phoneDisplay, phoneTel } from '../lib/nap';
 import heroImage from '../assets/images/hero-contact.jpg';
 import heroImageMobile from '../assets/images/hero-contact-mobile.jpg';
 
 const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
 const addr = business.address;
-const phoneDisplay = business.phone === 'NAP_PENDING' ? '(555) 000-0000' : business.phone;
-const phoneTel = business.phoneTel === 'NAP_PENDING' ? '+15550000000' : business.phoneTel;
 ---
 
 <BaseLayout
   title="Contact Us | Snyder's Outdoor Solutions"
-  description="Call Snyder's Outdoor Solutions for free on-site tree service estimates in Hagerstown, Greencastle, Frederick, and Martinsburg — or request an estimate online."
+  description="Call Snyder's Outdoor Solutions for free tree service estimates in Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg — or request one online."
   canonical={pageURL}
 >
   <LocalBusiness slot="head" />

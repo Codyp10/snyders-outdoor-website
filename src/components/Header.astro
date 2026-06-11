@@ -9,6 +9,9 @@ const isActive = (href: string) => {
   if (href === '/') return currentPath === '/';
   return currentPath === href || currentPath.startsWith(href + '/');
 };
+
+// Items flagged hidden in navigation.json stay configured but don't render.
+const primaryNav = nav.primary.filter((item) => !('hidden' in item && item.hidden));
 ---
 
 <header class="sticky top-0 z-40 bg-brand-dark text-white shadow-sm">
@@ -28,7 +31,7 @@ const isActive = (href: string) => {
 
       <nav class="hidden lg:flex items-center gap-1" aria-label="Primary">
         {
-          nav.primary.map((item) =>
+          primaryNav.map((item) =>
             item.children ? (
               <div class="relative group">
                 <button
@@ -124,7 +127,7 @@ const isActive = (href: string) => {
       </div>
       <nav class="flex-1 overflow-y-auto px-2 py-4" aria-label="Mobile">
         {
-          nav.primary.map((item) =>
+          primaryNav.map((item) =>
             item.children ? (
               <details class="group">
                 <summary class="flex items-center justify-between px-4 py-3 text-lg font-semibold rounded-lg hover:bg-brand-dark/70 cursor-pointer">

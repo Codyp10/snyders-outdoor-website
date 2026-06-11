@@ -2,7 +2,7 @@
 title: "Tree Service in Greencastle, PA"
 titleTag: "Tree Service Greencastle PA | Snyder's Outdoor Solutions"
 h1: "Tree Service in Greencastle, PA"
-description: "Licensed tree service throughout Greencastle and Antrim Township, Pennsylvania. Tree removal, emergency response, trimming, stumps, and lot clearing from a Hagerstown-based crew just over the state line."
+description: "Licensed tree service in Greencastle and Antrim Township, PA. Tree removal, emergency response, trimming, stumps, and lot clearing from just over the line."
 city: "Greencastle"
 state: "PA"
 heroImage: "../../assets/images/location-greencastle.jpg"

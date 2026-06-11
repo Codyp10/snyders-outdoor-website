@@ -1,11 +1,11 @@
 ---
-import business from '../data/business.json';
+import { phoneTel } from '../lib/nap';
 ---
 
 <div class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-brand-dark border-t border-white/10 shadow-[0_-4px_12px_rgba(0,0,0,0.2)]">
   <div class="flex gap-2 p-3">
     <a
-      href={`tel:${business.phoneTel}`}
+      href={`tel:${phoneTel}`}
       class="flex-[3] inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-4 py-3 rounded-lg text-base min-h-11"
     >
       <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">

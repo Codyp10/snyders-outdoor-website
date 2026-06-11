@@ -2,7 +2,7 @@
 title: "Stump Grinding in Hagerstown, MD"
 titleTag: "Stump Grinding Hagerstown MD | Snyder's Outdoor Solutions"
 h1: "Stump Grinding in Hagerstown, MD"
-description: "Professional stump grinding in Hagerstown, Greencastle, Frederick, and Martinsburg. Ground below grade, site cleaned, ready to replant, resod, or build over — flat-rate pricing."
+description: "Stump grinding in Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg. Ground below grade, site cleaned, ready to replant, resod, or build over."
 city: "Hagerstown"
 state: "MD"
 heroImage: "../../assets/images/hero-stump-grinding.jpg"
@@ -77,6 +77,8 @@ externalLink:
 
 relatedLocations:
   - hagerstown-md
+  - greencastle-pa
+  - waynesboro-pa
   - frederick-md
   - martinsburg-wv
 

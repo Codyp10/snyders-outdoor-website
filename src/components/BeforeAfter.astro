@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Shot {
+  image: ImageMetadata;
+  alt: string;
+}
+
+interface Props {
+  heading?: string;
+  before: Shot;
+  after: Shot;
+  caption?: string;
+  /** Section background — alternate against neighboring sections. */
+  tone?: 'white' | 'stone';
+}
+
+const { heading = 'Before & After', before, after, caption, tone = 'white' } = Astro.props;
+
+const shots: Array<{ label: string; shot: Shot }> = [
+  { label: 'Before', shot: before },
+  { label: 'After', shot: after },
+];
+---
+
+<section class:list={['py-16 md:py-24', tone === 'stone' ? 'bg-stone-50 border-y border-gray-100' : 'bg-white']}>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto text-center mb-10 md:mb-14">
+      <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl">{heading}</h2>
+      {caption && <p class="mt-4 text-gray-600 text-base md:text-lg leading-relaxed">{caption}</p>}
+    </div>
+    <div class="grid gap-5 md:gap-6 sm:grid-cols-2">
+      {
+        shots.map(({ label, shot }) => (
+          <figure class="relative rounded-2xl overflow-hidden ring-1 ring-gray-200 shadow-md bg-brand-dark">
+            <div class="relative aspect-[4/3]">
+              <Image
+                src={shot.image}
+                alt={shot.alt}
+                widths={[480, 768, 1080]}
+                sizes="(min-width: 640px) 50vw, 100vw"
+                loading="lazy"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
+            <figcaption
+              class:list={[
+                'absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-md',
+                label === 'After' ? 'bg-brand-dark text-white' : 'bg-white/95 text-gray-900',
+              ]}
+            >
+              {label}
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

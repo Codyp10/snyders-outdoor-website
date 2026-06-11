@@ -2,7 +2,7 @@
 title: "Emergency Tree Removal in Hagerstown, MD"
 titleTag: "Emergency Tree Removal Hagerstown MD | Snyder's Outdoor Solutions"
 h1: "Emergency Tree Removal in Hagerstown, MD"
-description: "24/7 emergency tree removal for Hagerstown, Greencastle, Frederick, and Martinsburg. Trees on houses, downed trees on cars, blocked driveways, storm damage — call Snyder's now."
+description: "24/7 emergency tree removal in Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg. Tree on a house, car, or driveway — call Snyder's now."
 city: "Hagerstown"
 state: "MD"
 heroImage: "../../assets/images/hero-emergency.jpg"
@@ -60,7 +60,7 @@ processSteps:
 
 faqs:
   - question: "How fast can you actually get here?"
-    answer: "Daytime emergencies in Hagerstown, Greencastle, Frederick, or Martinsburg are usually on-site within an hour, sometimes less. Overnight calls get a callback to triage, and we're on site first thing in the morning unless the situation is life-safety, in which case we roll out. Time estimates depend on where our other crews are when you call."
+    answer: "Daytime emergencies in Hagerstown, Greencastle, Waynesboro, Frederick, or Martinsburg are usually on-site within an hour, sometimes less. Overnight calls get a callback to triage, and we're on site first thing in the morning unless the situation is life-safety, in which case we roll out. Time estimates depend on where our other crews are when you call."
   - question: "Do you charge more for emergency work?"
     answer: "Emergency work carries an after-hours rate because the crew is called in outside normal hours and we prioritize your job over scheduled work. We'll be upfront about the rate structure on the initial call — no surprises on the invoice."
   - question: "Should I call you or my insurance first?"
@@ -79,6 +79,8 @@ externalLink:
 
 relatedLocations:
   - hagerstown-md
+  - greencastle-pa
+  - waynesboro-pa
   - frederick-md
   - martinsburg-wv
 

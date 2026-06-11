@@ -4,7 +4,7 @@ import Hero from '../../components/Hero.astro';
 import TrustStrip from '../../components/TrustStrip.astro';
 import CTABar from '../../components/CTABar.astro';
 import Prose from '../../components/Prose.astro';
-import business from '../../data/business.json';
+import { phoneTel } from '../../lib/nap';
 import heroImage from '../../assets/images/hero-service-areas.jpg';
 import heroImageMobile from '../../assets/images/hero-service-areas-mobile.jpg';
 
@@ -36,7 +36,7 @@ const services = [
 
 <BaseLayout
   title="Outdoor Services Hagerstown MD | Snyder's Outdoor Solutions"
-  description="Beyond tree work — Snyder's Outdoor Solutions also handles wood products, plant health care, holiday lights, lightning protection, and more across the Tri-State area."
+  description="Beyond tree work — Snyder's handles wood products, plant health care, holiday lights, lightning protection, and more across the Tri-State area."
   canonical={pageURL}
 >
   <Hero
@@ -94,7 +94,7 @@ const services = [
 
       <div class="mt-10 text-center">
         <a
-          href={`tel:${business.phoneTel}`}
+          href={`tel:${phoneTel}`}
           class="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-7 py-4 rounded-lg text-base md:text-lg min-h-12 shadow-lg shadow-orange-900/10 focus:outline-none focus:ring-2 focus:ring-brand/40 transition-colors"
         >
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -113,6 +113,8 @@ const services = [
           Looking for tree work specifically? Start at our <a href="/tree-services">Tree Services page</a> — that's where our
           core offering lives and where most customers start. For area-specific coverage, see our service pages for{' '}
           <a href="/service-areas/hagerstown-md">Hagerstown, MD</a>,{' '}
+          <a href="/service-areas/greencastle-pa">Greencastle, PA</a>,{' '}
+          <a href="/service-areas/waynesboro-pa">Waynesboro, PA</a>,{' '}
           <a href="/service-areas/frederick-md">Frederick, MD</a>, and{' '}
           <a href="/service-areas/martinsburg-wv">Martinsburg, WV</a>.
         </p>

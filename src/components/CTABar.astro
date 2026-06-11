@@ -1,5 +1,5 @@
 ---
-import business from '../data/business.json';
+import { phoneTel } from '../lib/nap';
 
 interface Props {
   headline?: string;
@@ -24,7 +24,7 @@ const isEmergency = variant === 'emergency';
     {subhead && <p class="mt-4 text-white/80 text-base md:text-lg">{subhead}</p>}
     <div class="mt-7 flex flex-col sm:flex-row gap-3 justify-center">
       <a
-        href={`tel:${business.phoneTel}`}
+        href={`tel:${phoneTel}`}
         class="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-lg text-base md:text-lg min-h-12 focus:outline-none focus:ring-2 focus:ring-white/60"
       >
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">

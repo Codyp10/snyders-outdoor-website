@@ -2,7 +2,7 @@
 title: "Tree Service in Frederick, MD"
 titleTag: "Tree Service Frederick MD | Snyder's Outdoor Solutions"
 h1: "Tree Service in Frederick, MD"
-description: "Professional tree service throughout Frederick, MD and Frederick County. Tree removal, emergency response, trimming, stumps, and land clearing from a Hagerstown-based crew."
+description: "Professional tree service in Frederick, MD and Frederick County. Tree removal, emergency response, trimming, stumps, and land clearing."
 city: "Frederick"
 state: "MD"
 heroImage: "../../assets/images/location-frederick.jpg"
