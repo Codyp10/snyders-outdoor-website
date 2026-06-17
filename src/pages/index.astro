@@ -16,6 +16,9 @@ import Reviews from '../components/Reviews.astro';
 import ReviewsSchema from '../components/schema/Reviews.astro';
 import { getReviews } from '../sanity/lib/queries';
 
+// Static in production; server-rendered only in the visual-editing preview build.
+export const prerender = import.meta.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED !== 'true';
+
 const treeServices = await getCollection('tree-services');
 const treeServiceOrder = [
   'tree-removal',

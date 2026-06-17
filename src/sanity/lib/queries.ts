@@ -1,4 +1,4 @@
-import { sanityClient } from 'sanity:client';
+import { loadQuery } from './load-query';
 
 export interface ReviewDoc {
   _id: string;
@@ -18,11 +18,11 @@ export interface ReviewDoc {
  */
 export async function getReviews(): Promise<ReviewDoc[]> {
   try {
-    return await sanityClient.fetch<ReviewDoc[]>(
-      `*[_type == "review" && consent == true] | order(featured desc, coalesce(date, "1970-01-01") desc){
+    return await loadQuery<ReviewDoc[]>({
+      query: `*[_type == "review" && consent == true] | order(featured desc, coalesce(date, "1970-01-01") desc){
         _id, name, town, rating, quote, service, date, featured
-      }`
-    );
+      }`,
+    });
   } catch (err) {
     console.warn('[sanity] reviews fetch failed (section will be hidden):', err instanceof Error ? err.message : err);
     return [];
