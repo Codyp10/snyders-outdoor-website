@@ -1,0 +1,42 @@
+---
+import business from '../../data/business.json';
+import type { ReviewDoc } from '../../sanity/lib/queries';
+
+interface Props {
+  reviews: ReviewDoc[];
+}
+
+const { reviews = [] } = Astro.props;
+
+// Only emit valid review markup — Google penalizes empty/malformed review schema.
+const valid = reviews.filter((r) => r.rating >= 1 && r.rating <= 5 && r.quote && r.name);
+
+const avg = valid.length ? valid.reduce((s, r) => s + r.rating, 0) / valid.length : 0;
+
+// Attach to the SAME @id the LocalBusiness component uses, so aggregateRating
+// + reviews augment the existing business entity rather than creating a new one.
+const jsonLd = valid.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'LocalBusiness',
+      '@id': `${business.url}/#business`,
+      name: business.name,
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: avg.toFixed(1),
+        reviewCount: valid.length,
+        bestRating: 5,
+        worstRating: 1,
+      },
+      review: valid.map((r) => ({
+        '@type': 'Review',
+        author: { '@type': 'Person', name: r.name },
+        reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5, worstRating: 1 },
+        reviewBody: r.quote,
+        ...(r.date ? { datePublished: r.date } : {}),
+      })),
+    }
+  : null;
+---
+
+{jsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />}

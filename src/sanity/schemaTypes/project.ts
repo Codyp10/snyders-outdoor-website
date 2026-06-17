@@ -1,11 +1,25 @@
 import { defineField, defineType } from 'sanity';
 
 const TOWNS = [
+  // Maryland — Washington County + Frederick
   'Hagerstown, MD',
+  'Williamsport, MD',
+  'Clear Spring, MD',
+  'Smithsburg, MD',
+  'Funkstown, MD',
+  'Boonsboro, MD',
+  'Hancock, MD',
+  'Frederick, MD',
+  // Pennsylvania — Franklin County
   'Greencastle, PA',
   'Waynesboro, PA',
-  'Frederick, MD',
+  'Chambersburg, PA',
+  'Mercersburg, PA',
+  // West Virginia — Berkeley County
   'Martinsburg, WV',
+  'Hedgesville, WV',
+  'Inwood, WV',
+  'Bunker Hill, WV',
 ];
 
 const SERVICES = [

@@ -12,6 +12,9 @@ import heroImageMobile from '../assets/images/hero-home-mobile.jpg';
 import emergencyBandImage from '../assets/images/hero-storm.jpg';
 import { Image } from 'astro:assets';
 import { phoneTel } from '../lib/nap';
+import Reviews from '../components/Reviews.astro';
+import ReviewsSchema from '../components/schema/Reviews.astro';
+import { getReviews } from '../sanity/lib/queries';
 
 const treeServices = await getCollection('tree-services');
 const treeServiceOrder = [
@@ -43,6 +46,7 @@ const orderedLocations = locationOrder
   .filter((l): l is CollectionEntry<'locations'> => l !== undefined);
 
 const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
+const reviews = await getReviews();
 ---
 
 <BaseLayout
@@ -51,6 +55,7 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
   canonical={pageURL}
 >
   <LocalBusiness slot="head" />
+  <ReviewsSchema slot="head" reviews={reviews} />
 
   <Hero
     eyebrow="Hagerstown · Greencastle · Waynesboro · Frederick · Martinsburg"
@@ -233,6 +238,12 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
       </Prose>
     </div>
   </section>
+
+  {/* Customer reviews — pulled from Sanity, hides itself until reviews exist */}
+  <Reviews
+    reviews={reviews}
+    subhead="Real homeowners across Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg."
+  />
 
   {/* Outdoor Services teaser */}
   <section class="bg-brand-light/50 py-16 md:py-24 border-y border-brand/10">
