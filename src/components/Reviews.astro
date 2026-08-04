@@ -30,7 +30,7 @@ const initials = (name: string) =>
         <div class="grid gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {reviews.map((r) => (
             <figure class="flex flex-col bg-white rounded-2xl ring-1 ring-gray-200 shadow-sm p-6 md:p-7">
-              <div class="flex gap-0.5 mb-3" aria-label={`${r.rating} out of 5 stars`}>
+              <div class="flex gap-0.5 mb-3" role="img" aria-label={`${r.rating} out of 5 stars`}>
                 {Array.from({ length: 5 }).map((_, i) => (
                   <svg
                     class:list={['w-5 h-5', i < r.rating ? 'text-orange-400' : 'text-gray-200']}

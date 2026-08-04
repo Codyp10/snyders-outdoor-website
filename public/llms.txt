@@ -1,0 +1,35 @@
+# Snyder's Outdoor Solutions
+> Licensed tree service based in Hagerstown, MD. Residential tree removal, emergency response, storm cleanup, trimming, stump grinding, and lot clearing across the Tri-State area (Maryland, Pennsylvania, West Virginia). Owner-operated. Free estimates. 24/7 emergency tree removal.
+
+Phone: (301) 288-1677
+Primary markets: Hagerstown MD, Greencastle PA, Waynesboro PA, Frederick MD, Martinsburg WV.
+Contact for quotes and emergency dispatch: https://snydersoutdoorsolutions.com/contact
+Outdoor / non-tree services are not currently offered.
+
+## Core pages
+- [Home](https://snydersoutdoorsolutions.com/): Overview of Snyder's Outdoor Solutions and tree services
+- [Tree Services](https://snydersoutdoorsolutions.com/tree-services): Full list of tree services with links to each offering
+- [About](https://snydersoutdoorsolutions.com/about): Owner Dustin Snyder and company story
+- [Service Areas](https://snydersoutdoorsolutions.com/service-areas): Tri-State coverage map and town pages
+- [Contact](https://snydersoutdoorsolutions.com/contact): Request a free estimate or call for emergency service
+- [Blog](https://snydersoutdoorsolutions.com/blog): Tree care tips and local service updates
+
+## Tree services
+- [Tree Removal](https://snydersoutdoorsolutions.com/tree-services/tree-removal): Safe residential tree removal with cleanup
+- [Emergency Tree Removal](https://snydersoutdoorsolutions.com/tree-services/emergency-tree-removal): 24/7 response for trees on houses, cars, or driveways
+- [Storm Damage Cleanup](https://snydersoutdoorsolutions.com/tree-services/storm-damage-cleanup): Fallen branches, uprooted trees, debris hauling
+- [Tree Trimming & Pruning](https://snydersoutdoorsolutions.com/tree-services/tree-trimming-pruning): Health and clearance pruning
+- [Stump Grinding](https://snydersoutdoorsolutions.com/tree-services/stump-grinding): Stump removal after tree work
+- [Lot & Land Clearing](https://snydersoutdoorsolutions.com/tree-services/lot-land-clearing): Brush removal and building-site prep
+
+## Service areas
+- [Hagerstown, MD](https://snydersoutdoorsolutions.com/service-areas/hagerstown-md): Primary service market
+- [Greencastle, PA](https://snydersoutdoorsolutions.com/service-areas/greencastle-pa): Pennsylvania coverage
+- [Waynesboro, PA](https://snydersoutdoorsolutions.com/service-areas/waynesboro-pa): Pennsylvania coverage
+- [Frederick, MD](https://snydersoutdoorsolutions.com/service-areas/frederick-md): Maryland coverage
+- [Martinsburg, WV](https://snydersoutdoorsolutions.com/service-areas/martinsburg-wv): West Virginia coverage
+
+## Optional
+- [Privacy Policy](https://snydersoutdoorsolutions.com/privacy): Privacy policy
+- [Terms of Service](https://snydersoutdoorsolutions.com/terms): Terms of service
+- [Sitemap](https://snydersoutdoorsolutions.com/sitemap-index.xml): XML sitemap of indexable pages

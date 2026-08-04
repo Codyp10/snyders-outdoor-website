@@ -1,4 +1,39 @@
+# Snyder's Outdoor Solutions
+# https://snydersoutdoorsolutions.com
+#
+# Crawl guidance for search engines and AI agents.
+# For an LLM-oriented site overview, see: /llms.txt
+
 User-agent: *
+Allow: /
+Disallow: /admin
+
+# Explicit allow for common AI crawlers (same policy as *)
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /admin
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+
+User-agent: Applebot-Extended
 Allow: /
 Disallow: /admin
 

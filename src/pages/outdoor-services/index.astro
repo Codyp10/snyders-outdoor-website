@@ -34,10 +34,18 @@ const services = [
 ];
 ---
 
+{/*
+  HIDDEN until Phase 2. These services are not offered yet, so this page is
+  noindex'd, kept out of the sitemap, and unlinked from the site (the nav entry
+  is hidden:true in navigation.json; the homepage teaser is commented out).
+  The page stays live at its URL so nothing is lost. Restore steps: README →
+  "Built but hidden".
+*/}
 <BaseLayout
   title="Outdoor Services Hagerstown MD | Snyder's Outdoor Solutions"
   description="Beyond tree work — Snyder's handles wood products, plant health care, holiday lights, lightning protection, and more across the Tri-State area."
   canonical={pageURL}
+  noindex
 >
   <Hero
     eyebrow="Beyond tree service"
