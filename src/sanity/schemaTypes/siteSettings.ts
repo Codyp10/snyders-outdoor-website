@@ -15,7 +15,7 @@ export default defineType({
       name: 'phone',
       title: 'Phone (display format)',
       type: 'string',
-      description: 'e.g. (301) 302-4658',
+      description: 'e.g. (301) 288-1677',
     }),
     defineField({ name: 'email', type: 'string' }),
     defineField({ name: 'street', title: 'Street address', type: 'string' }),
