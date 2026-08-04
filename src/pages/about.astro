@@ -15,7 +15,7 @@ import gearSkidSteer from '../assets/images/hero-lot-clearing.jpg';
 
 const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
 
-// Dustin's portrait — auto-wired. Drop the real photo into src/assets/images/
+// Dustin's portrait: auto-wired. Drop the real photo into src/assets/images/
 // named dustin-snyder.jpg (or .jpeg/.png/.webp) and the identity card below
 // picks it up on the next build. Until then it renders the placeholder frame.
 const portraitGlob = import.meta.glob<{ default: ImageMetadata }>(
@@ -27,7 +27,7 @@ const dustinPortrait = Object.values(portraitGlob)[0]?.default ?? null;
 
 <BaseLayout
   title="About Snyder's Outdoor Solutions | Hagerstown, MD"
-  description="Snyder's Outdoor Solutions is a family-run tree service in Hagerstown, MD. Meet Dustin — a logger's son who built a full-service outdoor company."
+  description="Snyder's Outdoor Solutions is a family-run tree service in Hagerstown, MD. Meet Dustin, a logger's son who built a full-service outdoor company."
   canonical={pageURL}
 >
   <Hero
@@ -44,12 +44,12 @@ const dustinPortrait = Object.values(portraitGlob)[0]?.default ?? null;
 
   <TrustStrip />
 
-  {/* Dustin's Story — 2-col with designed identity card */}
+  {/* Dustin's Story: 2-col with designed identity card */}
   <section class="bg-white py-16 md:py-24">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-5 gap-10 lg:gap-14 items-start">
         <div class="lg:col-span-2 lg:sticky lg:top-24">
-          {/* Portrait frame — renders Dustin's photo when
+          {/* Portrait frame: renders Dustin's photo when
               src/assets/images/dustin-snyder.* exists, placeholder until then. */}
           {
             dustinPortrait ? (
@@ -84,17 +84,17 @@ const dustinPortrait = Object.values(portraitGlob)[0]?.default ?? null;
           <Prose>
             <p>
               Dustin Snyder, owner and operator of Snyder's Outdoor Solutions, grew up in the woods around Hagerstown,
-              Maryland — learning to run a chainsaw before most kids his age were old enough to drive. His dad was a
-              logger, and every weekend from early on was spent on a job — dropping trees, clearing lots, hauling wood.
+              Maryland, learning to run a chainsaw before most kids his age were old enough to drive. His dad was a
+              logger, and every weekend from early on was spent on a job: dropping trees, clearing lots, hauling wood.
               By the time Dustin was a teenager, he knew how to read a tree, rig a limb, and leave a jobsite looking
               like a crew had actually been there.
             </p>
             <p>
               When he started Snyder's Outdoor Solutions, the goal was never to be the biggest tree service in the region.
-              It was to be the one homeowners could actually trust — the crew that shows up when they say, quotes flat-rate,
+              It was to be the one homeowners could actually trust: the crew that shows up when they say, quotes flat-rate,
               and treats the property the way the customer would treat it themselves. Ten years later, a lot of the work still
               comes from the same handful of neighborhoods, from customers who call Dustin's cell directly. He's still part
-              of every job, too — either on site with the crew or one phone call away.
+              of every job, too, either on site with the crew or one phone call away.
             </p>
             <p>
               Tree work is still the whole focus, and that's on purpose. Every idea for a new service gets tested against
@@ -135,7 +135,7 @@ const dustinPortrait = Object.values(portraitGlob)[0]?.default ?? null;
           {
             icon: 'leaf',
             title: 'Industry practice',
-            body: 'We prune to International Society of Arboriculture standards — no topping, no flush cuts, no shortcuts that hurt the tree.',
+            body: 'We prune to International Society of Arboriculture standards: no topping, no flush cuts, no shortcuts that hurt the tree.',
           },
         ].map((b) => (
           <div class="flex flex-col gap-3 p-6 rounded-2xl bg-white ring-1 ring-gray-200 shadow-sm">
@@ -170,20 +170,20 @@ const dustinPortrait = Object.values(portraitGlob)[0]?.default ?? null;
         </h2>
         <Prose>
           <p>
-            The Snyder's crew runs with the equipment the job actually needs — bucket trucks for tight residential
+            The Snyder's crew runs with the equipment the job actually needs: bucket trucks for tight residential
             takedowns, grapple trucks for efficient debris haul-off, chippers on every job, and industrial stump
             grinders when a removal is getting finished properly. It's a real operation with real capacity, not a
             pickup-and-chainsaw side hustle.
           </p>
           <p>
             Everybody on the crew has been trained on safe rigging and climbing, and nobody is running a saw without
-            the experience behind it. We don't send untrained help out to a residential job — the work is too
+            the experience behind it. We don't send untrained help out to a residential job. The work is too
             unforgiving for on-the-job education.
           </p>
         </Prose>
       </div>
 
-      {/* Real equipment on real jobs — same photos that anchor the service pages */}
+      {/* Real equipment on real jobs: same photos that anchor the service pages */}
       <div class="mt-10 grid gap-5 md:gap-6 sm:grid-cols-3">
         {
           [
@@ -218,7 +218,7 @@ const dustinPortrait = Object.values(portraitGlob)[0]?.default ?? null;
           <path d="M7 11h3v8H2v-6c0-3.3 2.7-6 6-6V5c-2.8 0-5 2.2-5 5v1h4zm12 0h3v8h-8v-6c0-3.3 2.7-6 6-6V5c-2.8 0-5 2.2-5 5v1h4z"/>
         </svg>
         <blockquote class="text-xl md:text-2xl leading-relaxed text-gray-800 italic">
-          "My dad taught me that you don't just cut down a tree — you read it, you plan it, and you respect whatever it's
+          "My dad taught me that you don't just cut down a tree. You read it, you plan it, and you respect whatever it's
           standing next to. That's the whole business, honestly. Everything else follows from there."
         </blockquote>
         <figcaption class="mt-6 flex items-center gap-3 text-sm">
@@ -234,6 +234,6 @@ const dustinPortrait = Object.values(portraitGlob)[0]?.default ?? null;
 
   <CTABar
     headline="Work with a crew that actually shows up."
-    subhead="Call for a free estimate or send us the details — Dustin or someone on the crew will get back to you the same day."
+    subhead="Call for a free estimate or send us the details. Dustin or someone on the crew will get back to you the same day."
   />
 </BaseLayout>

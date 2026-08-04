@@ -314,7 +314,7 @@ const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
     d.gallery.length > 0 && (
       <PhotoGallery
         heading={`Recent ${d.title.split(' in ')[0]} Jobs`}
-        subhead={`Real ${business.name} work — not stock photos.`}
+        subhead={`Real ${business.name} work, not stock photos.`}
         items={d.gallery}
         tone="white"
       />
@@ -342,7 +342,7 @@ const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
                 Need a related service? We also handle{' '}
                 {d.relatedServices.map((slug, i) => (
                   <>{i > 0 && i === d.relatedServices.length - 1 ? ', and ' : i > 0 ? ', ' : ''}<a href={`/tree-services/${slug}`}>{serviceLabelMap[slug] ?? slug}</a></>
-                ))} — often in the same visit.
+                ))}, often in the same visit.
               </p>
             )}
             <p class="text-sm text-gray-500">
@@ -363,7 +363,7 @@ const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
   <CTABar
     headline={
       d.emergency
-        ? "Don't wait — call us now."
+        ? "Don't wait. Call us now."
         : `Ready for ${d.title.split(' in ')[0].toLowerCase()}? Call ${business.name}.`
     }
     subhead={d.emergency ? 'We respond 24/7 across Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg.' : undefined}
