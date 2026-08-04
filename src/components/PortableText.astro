@@ -1,0 +1,114 @@
+---
+/**
+ * Minimal portable-text renderer matching the blockContent schema exactly:
+ * styles normal/h2/h3/blockquote, bullet + numbered lists, strong/em marks,
+ * link annotations, and inline images. If the schema grows new block types,
+ * extend renderBlock below.
+ */
+import { urlFor } from '../sanity/lib/image';
+
+interface Span {
+  _type: 'span';
+  text: string;
+  marks?: string[];
+}
+
+interface MarkDef {
+  _key: string;
+  _type: string;
+  href?: string;
+}
+
+interface Block {
+  _type: string;
+  _key: string;
+  style?: string;
+  listItem?: 'bullet' | 'number';
+  children?: Span[];
+  markDefs?: MarkDef[];
+  alt?: string;
+  caption?: string;
+  asset?: { _ref: string };
+}
+
+interface Props {
+  value: unknown[];
+}
+
+const { value } = Astro.props;
+const blocks = (value ?? []) as Block[];
+
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function renderSpan(span: Span, markDefs: MarkDef[]): string {
+  let html = escapeHtml(span.text).replace(/\n/g, '<br />');
+  for (const mark of span.marks ?? []) {
+    if (mark === 'strong') html = `<strong>${html}</strong>`;
+    else if (mark === 'em') html = `<em>${html}</em>`;
+    else {
+      const def = markDefs.find((d) => d._key === mark);
+      if (def?._type === 'link' && def.href && /^(https?:|mailto:|tel:|\/)/.test(def.href)) {
+        const external = /^https?:/.test(def.href) ? ' rel="noopener"' : '';
+        html = `<a href="${escapeHtml(def.href)}"${external}>${html}</a>`;
+      }
+    }
+  }
+  return html;
+}
+
+function renderChildren(block: Block): string {
+  return (block.children ?? []).map((c) => renderSpan(c, block.markDefs ?? [])).join('');
+}
+
+function renderBlock(block: Block): string {
+  if (block._type === 'image' && block.asset) {
+    const src = urlFor(block).width(1400).url();
+    const caption = block.caption
+      ? `<figcaption class="text-sm text-gray-500 mt-2 text-center">${escapeHtml(block.caption)}</figcaption>`
+      : '';
+    return `<figure class="my-8"><img src="${escapeHtml(src)}" alt="${escapeHtml(block.alt ?? '')}" loading="lazy" class="rounded-xl w-full h-auto shadow-md ring-1 ring-gray-200" />${caption}</figure>`;
+  }
+  if (block._type !== 'block') return '';
+  const inner = renderChildren(block);
+  switch (block.style) {
+    case 'h2':
+      return `<h2>${inner}</h2>`;
+    case 'h3':
+      return `<h3>${inner}</h3>`;
+    case 'blockquote':
+      return `<blockquote class="border-l-4 border-brand pl-4 italic text-gray-600 my-6">${inner}</blockquote>`;
+    default:
+      return `<p>${inner}</p>`;
+  }
+}
+
+// Group consecutive list items into <ul>/<ol>; everything else renders standalone.
+let html = '';
+let openList: 'bullet' | 'number' | null = null;
+
+for (const block of blocks) {
+  const isListItem = block._type === 'block' && !!block.listItem;
+  if (openList && (!isListItem || block.listItem !== openList)) {
+    html += openList === 'bullet' ? '</ul>' : '</ol>';
+    openList = null;
+  }
+  if (isListItem) {
+    if (!openList) {
+      openList = block.listItem!;
+      html += openList === 'bullet' ? '<ul>' : '<ol>';
+    }
+    html += `<li>${renderChildren(block)}</li>`;
+  } else {
+    html += renderBlock(block);
+  }
+}
+if (openList) html += openList === 'bullet' ? '</ul>' : '</ol>';
+---
+
+<Fragment set:html={html} />
