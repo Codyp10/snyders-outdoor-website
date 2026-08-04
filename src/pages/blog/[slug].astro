@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTABar from '../../components/CTABar.astro';
+import Prose from '../../components/Prose.astro';
+import PortableText from '../../components/PortableText.astro';
+import business from '../../data/business.json';
+import { getBlogPosts, type BlogPostDoc } from '../../sanity/lib/queries';
+import { urlFor } from '../../sanity/lib/image';
+
+// Static in production; server-rendered only in the visual-editing preview build.
+export const prerender = import.meta.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED !== 'true';
+
+export async function getStaticPaths() {
+  const posts = await getBlogPosts();
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+interface Props {
+  post?: BlogPostDoc;
+}
+
+// Prerendered pages get the post via getStaticPaths props; the SSR preview
+// build resolves it from the URL at request time instead.
+let post = Astro.props.post;
+if (!post) {
+  const posts = await getBlogPosts();
+  post = posts.find((p) => p.slug === Astro.params.slug);
+  if (!post) return Astro.redirect('/404');
+}
+
+const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
+const published = post.publishedAt
+  ? new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+  : null;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.title,
+  ...(post.excerpt ? { description: post.excerpt } : {}),
+  ...(post.publishedAt ? { datePublished: post.publishedAt } : {}),
+  ...(post.coverImage?.asset ? { image: urlFor(post.coverImage).width(1200).url() } : {}),
+  author: { '@type': 'Organization', name: business.name },
+  publisher: { '@type': 'Organization', name: business.name },
+  mainEntityOfPage: pageURL,
+};
+---
+
+<BaseLayout
+  title={`${post.title} | Snyder's Outdoor Solutions`}
+  description={post.excerpt ?? `${post.title} — tree care advice from Snyder's Outdoor Solutions in Hagerstown, MD.`}
+  canonical={pageURL}
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <article>
+    <header class="bg-stone-50 border-b border-gray-100 pt-12 md:pt-16 pb-10">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="text-sm mb-6" aria-label="Breadcrumb">
+          <a href="/blog" class="text-brand font-semibold hover:text-brand-dark inline-flex items-center gap-1">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            All articles
+          </a>
+        </nav>
+        <div class="flex items-center gap-3 text-xs mb-4">
+          {
+            post.category && (
+              <span class="font-semibold uppercase tracking-wider text-brand-dark bg-brand/10 rounded-full px-3 py-1">
+                {post.category}
+              </span>
+            )
+          }
+          {published && <time datetime={post.publishedAt} class="text-gray-500">{published}</time>}
+        </div>
+        <h1 class="font-heading font-extrabold text-gray-900 text-3xl md:text-5xl leading-tight">
+          {post.title}
+        </h1>
+        {post.excerpt && <p class="mt-4 text-gray-600 text-lg leading-relaxed">{post.excerpt}</p>}
+      </div>
+    </header>
+
+    {
+      post.coverImage?.asset && (
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mb-6 mt-10">
+          <img
+            src={urlFor(post.coverImage).width(1600).height(900).url()}
+            alt={post.coverImage.alt ?? ''}
+            class="rounded-2xl w-full h-auto shadow-xl ring-1 ring-gray-200"
+          />
+        </div>
+      )
+    }
+
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      <Prose>
+        <PortableText value={post.body ?? []} />
+      </Prose>
+    </div>
+  </article>
+
+  <CTABar
+    headline="Rather have a pro look at it?"
+    subhead="Free estimates across the Tri-State — call or send the details and we'll take it from there."
+  />
+</BaseLayout>

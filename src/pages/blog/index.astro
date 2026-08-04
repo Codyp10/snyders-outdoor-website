@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import CTABar from '../../components/CTABar.astro';
+import { getBlogPosts } from '../../sanity/lib/queries';
+import { urlFor } from '../../sanity/lib/image';
+import heroImage from '../../assets/images/hero-tree-services.jpg';
+import heroImageMobile from '../../assets/images/hero-tree-services-mobile.jpg';
+
+// Static in production; server-rendered only in the visual-editing preview build.
+export const prerender = import.meta.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED !== 'true';
+
+const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
+const posts = await getBlogPosts();
+
+const formatDate = (iso?: string) =>
+  iso
+    ? new Date(iso).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+    : null;
+---
+
+<BaseLayout
+  title="Tree Care Tips & Resources | Snyder's Outdoor Solutions"
+  description="Practical tree care advice from a working Hagerstown crew — storm prep, cost guides, seasonal maintenance, and what to expect when you hire a tree service."
+  canonical={pageURL}
+>
+  <Hero
+    eyebrow="From the crew"
+    eyebrowIcon="leaf"
+    headline="Tree Care Tips & Resources"
+    subhead="Straight answers from the people who do the work — what trees need, what jobs cost, and when to call a pro."
+    variant="about"
+    heroImage={heroImage}
+    heroImageMobile={heroImageMobile}
+    heroAlt="Snyder's Outdoor Solutions crew working in the trees."
+  />
+
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {
+        posts.length === 0 ? (
+          <div class="max-w-xl mx-auto text-center rounded-2xl bg-stone-50 ring-1 ring-gray-200 p-10">
+            <h2 class="font-heading font-bold text-gray-900 text-2xl">Articles are on the way</h2>
+            <p class="mt-3 text-gray-600 leading-relaxed">
+              We're putting together practical guides on tree care, storm prep, and what tree work
+              really costs. In the meantime, if you have a question about a tree on your property,
+              just <a href="/contact" class="text-brand font-semibold underline underline-offset-4 hover:text-brand-dark">ask us directly</a>.
+            </p>
+          </div>
+        ) : (
+          <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {posts.map((post) => (
+              <a
+                href={`/blog/${post.slug}`}
+                class="group flex flex-col rounded-2xl overflow-hidden bg-white ring-1 ring-gray-200 shadow-sm hover:shadow-lg transition-shadow"
+              >
+                <div class="aspect-[16/10] bg-brand-dark/10 overflow-hidden">
+                  {post.coverImage?.asset ? (
+                    <img
+                      src={urlFor(post.coverImage).width(800).height(500).url()}
+                      alt={post.coverImage.alt ?? ''}
+                      loading="lazy"
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div class="w-full h-full bg-gradient-to-br from-brand-dark to-brand/90 flex items-center justify-center" aria-hidden="true">
+                      <svg class="w-16 h-16 text-white/20" viewBox="0 0 120 160" fill="currentColor">
+                        <path d="M60 10 L40 50 L50 50 L30 90 L45 90 L20 140 L100 140 L75 90 L90 90 L70 50 L80 50 Z" />
+                        <rect x="54" y="140" width="12" height="18" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+                <div class="flex-1 flex flex-col p-6">
+                  <div class="flex items-center gap-3 text-xs mb-3">
+                    {post.category && (
+                      <span class="font-semibold uppercase tracking-wider text-brand-dark bg-brand/10 rounded-full px-3 py-1">
+                        {post.category}
+                      </span>
+                    )}
+                    {formatDate(post.publishedAt) && <span class="text-gray-500">{formatDate(post.publishedAt)}</span>}
+                  </div>
+                  <h2 class="font-heading font-bold text-gray-900 text-xl leading-snug group-hover:text-brand-dark">
+                    {post.title}
+                  </h2>
+                  {post.excerpt && <p class="mt-3 text-gray-600 text-sm leading-relaxed">{post.excerpt}</p>}
+                  <span class="mt-auto pt-4 text-brand font-semibold text-sm inline-flex items-center gap-1">
+                    Read article
+                    <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <CTABar
+    headline="Got a tree you're not sure about?"
+    subhead="Skip the research — call and describe it, or send a photo with the estimate form."
+  />
+</BaseLayout>
