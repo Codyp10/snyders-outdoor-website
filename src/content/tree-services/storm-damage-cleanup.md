@@ -2,7 +2,7 @@
 title: "Storm Damage Cleanup in Hagerstown, MD"
 titleTag: "Storm Damage Cleanup Hagerstown MD | Snyder's Outdoor Solutions"
 h1: "Storm Damage Cleanup in Hagerstown, MD"
-description: "Storm damage cleanup in Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg — fallen branches, uprooted trees, debris hauling, site restoration."
+description: "Storm damage cleanup in Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg. Fallen branches, uprooted trees, debris hauling, site restoration."
 city: "Hagerstown"
 state: "MD"
 heroImage: "../../assets/images/hero-storm.jpg"

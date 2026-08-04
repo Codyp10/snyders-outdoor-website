@@ -54,7 +54,7 @@ const reviews = await getReviews();
 
 <BaseLayout
   title="Tree Service Hagerstown MD | Snyder's Outdoor Solutions"
-  description="Licensed tree service in Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg. Removal, trimming, stumps, storm cleanup — free estimates."
+  description="Licensed tree service in Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg. Removal, trimming, stumps, storm cleanup. Free estimates."
   canonical={pageURL}
 >
   <LocalBusiness slot="head" />
@@ -83,7 +83,7 @@ const reviews = await getReviews();
         </h2>
         <p class="mt-4 text-gray-600 text-base md:text-lg leading-relaxed">
           From routine trimming to major removals, we run one crew across the full range of
-          residential tree work. Tap any service for the details — pricing notes, process, and FAQs.
+          residential tree work. Tap any service for the details: pricing notes, process, and FAQs.
         </p>
       </div>
       <div class="grid gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -123,7 +123,7 @@ const reviews = await getReviews();
         Tree Down? Storm Damage? Don't Wait.
       </h2>
       <p class="mt-5 text-base md:text-lg text-white/85 leading-relaxed max-w-2xl mx-auto">
-        Trees on houses, blocked driveways, line hazards — we respond around the clock across Hagerstown,
+        Trees on houses, blocked driveways, line hazards. We respond around the clock across Hagerstown,
         Greencastle, Waynesboro, Frederick, and Martinsburg. Fastest way to get a crew moving is to call.
       </p>
       <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
@@ -157,7 +157,7 @@ const reviews = await getReviews();
           <Prose>
             <p>
               There's a lot of tree services in the Tri-State area. Most do the job. A few do it right. Snyder's Outdoor Solutions
-              was built on the premise that homeowners shouldn't have to gamble on which crew shows up — the same people who
+              was built on the premise that homeowners shouldn't have to gamble on which crew shows up. The same people who
               quote the job do the work, with the experience, the equipment, and the insurance to stand behind it.
             </p>
             <p>
@@ -173,7 +173,7 @@ const reviews = await getReviews();
             </svg>
             <blockquote class="text-lg leading-relaxed text-gray-800 italic">
               "My dad taught me that tree work is about respecting the property as much as the tree. If you leave a yard
-              torn up or a stump sitting there rotting, you didn't finish the job — you just stopped working. That's the
+              torn up or a stump sitting there rotting, you didn't finish the job. You just stopped working. That's the
               difference we try to show up with on every call."
             </blockquote>
             <figcaption class="mt-5 flex items-center gap-3 text-sm">
@@ -195,7 +195,7 @@ const reviews = await getReviews();
             <div class="relative">
               <ul class="space-y-4">
                 {[
-                  ['Owner on every job', 'Dustin is on site or one phone call away — the person who quoted your job is the person you talk to if something comes up.'],
+                  ['Owner on every job', 'Dustin is on site or one phone call away. The person who quoted your job is the person you talk to if something comes up.'],
                   ['Flat-rate pricing', 'You know the price before we start. No hourly surprises.'],
                   ['Full cleanup included', 'Debris haul-off is part of the job, not an add-on.'],
                   ['Licensed in MD & WV', 'Proper licensing and insurance on both sides of the line.'],
@@ -248,7 +248,11 @@ const reviews = await getReviews();
     subhead="Real homeowners across Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg."
   />
 
-  {/* Outdoor Services teaser */}
+  {/* HIDDEN until Phase 2 — "We Do More Than Trees" teaser.
+      Snyder's does not offer these services yet, so the band and the page it linked to
+      are hidden rather than deleted. Full restore steps: README → "Built but hidden".
+      Uncomment this block to bring it back.
+
   <section class="bg-brand-light/50 py-16 md:py-24 border-y border-brand/10">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl mb-4">
@@ -256,7 +260,7 @@ const reviews = await getReviews();
       </h2>
       <p class="text-gray-700 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
         Wood products, plant health care, holiday lights, lightning protection, and more.
-        Trees are our anchor — they're not the whole list.
+        Trees are our anchor, but they're not the whole list.
       </p>
       <a
         href="/outdoor-services"
@@ -269,6 +273,7 @@ const reviews = await getReviews();
       </a>
     </div>
   </section>
+  */}
 
   {/* Service areas */}
   <section class="bg-white py-16 md:py-24">
@@ -278,7 +283,7 @@ const reviews = await getReviews();
           Serving the Tri-State Area
         </h2>
         <p class="mt-4 text-gray-600 text-base md:text-lg leading-relaxed">
-          Five primary markets — and plenty of stops between. <a href="/service-areas" class="text-brand font-semibold hover:text-brand-dark">See full coverage →</a>
+          Five primary markets, and plenty of stops between. <a href="/service-areas" class="text-brand font-semibold hover:text-brand-dark">See full coverage →</a>
         </p>
       </div>
       <div class="grid gap-5 md:gap-6 sm:grid-cols-3">

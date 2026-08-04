@@ -28,7 +28,8 @@ export default defineConfig({
     react(),
     sitemap({
       // Keep utility/admin routes out of the sitemap.
-      filter: (page) => !/\/(privacy|terms|admin)(\/|$)/.test(page),
+      // outdoor-services is hidden until Phase 2 (see README → "Built but hidden").
+      filter: (page) => !/\/(privacy|terms|admin|outdoor-services)(\/|$)/.test(page),
     }),
   ],
   vite: {
