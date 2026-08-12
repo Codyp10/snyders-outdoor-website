@@ -10,7 +10,7 @@ heroImageMobile: "../../assets/images/location-hagerstown-mobile.jpg"
 heroAlt: "Snyder's Outdoor Solutions crew removing a large evergreen at sunset near Hagerstown."
 
 intro: |
-  Snyder's Outdoor Solutions is based right here in Hagerstown, which means we're not driving in from an hour away when your tree needs to come down — we're your neighbors. From the Robinwood area and the North End to Fountain Head, Halfway, and the Pangborn corridor, we handle tree removal, emergency response, trimming, stump grinding, and lot clearing across every corner of Washington County. Licensed, insured, and local to the tip of a chainsaw.
+  Snyder's Outdoor Solutions is based in Williamsport, MD, just south of Hagerstown — roughly 15 minutes from downtown. We work Washington County every day, so when a tree in Robinwood, the North End, Fountain Head, Halfway, or the Pangborn corridor needs to come down, we're not driving in from an hour away. Tree removal, emergency response, trimming, stump grinding, and lot clearing, across every corner of the city. Licensed, insured, and close enough to be on site fast.
 
 whyHere:
   heading: "Why Hagerstown Homeowners Choose Snyder's"
@@ -41,13 +41,13 @@ landmarks:
   - "Antietam Creek watershed"
 
 drivingRoute: |
-  Because we're based in Hagerstown, most city calls are a 10–15 minute drive for the crew. We can typically be on site within the hour for scheduled estimates, and faster for emergencies. Our trucks cover the I-70 corridor east toward Frederick, I-81 south toward Martinsburg, and I-81 north toward Greencastle without delay.
+  Because we're based in Williamsport, most Hagerstown city calls are a 10–15 minute drive for the crew. We can typically be on site within the hour for scheduled estimates, and faster for emergencies. Our trucks cover the I-70 corridor east toward Frederick, I-81 south toward Martinsburg, and I-81 north toward Greencastle without delay.
 
 localStats: ""
 
 faqs:
   - question: "Are you actually local to Hagerstown, or just driving in from out of town?"
-    answer: "We're based in Hagerstown. Our trucks leave from here, we live here, and we work here every day. That matters when you need a fast response — we're not driving ninety minutes to get to your property."
+    answer: "We're based in Williamsport, roughly 15 minutes from downtown Hagerstown, and we work Washington County every day. Our trucks aren't coming from Baltimore or Pennsylvania — they're leaving from just down the road. That matters when you need a fast response."
   - question: "Do you serve Smithsburg, Funkstown, Williamsport, and the rest of Washington County?"
     answer: "Yes. We work throughout Washington County regularly — Smithsburg, Funkstown, Williamsport, Clear Spring, Boonsboro, Hancock, and the unincorporated areas in between. If you're inside the county line, we're your crew."
   - question: "Do you need a permit to remove a tree in Hagerstown?"

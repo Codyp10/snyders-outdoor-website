@@ -11,7 +11,7 @@ import vercel from '@astrojs/vercel';
 const visualEditing = process.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED === 'true';
 
 export default defineConfig({
-  site: 'https://snydersoutdoorsolutions.com',
+  site: 'https://www.snydersoutdoorsolutions.com',
   output: 'static',
   trailingSlash: 'never',
   adapter: visualEditing ? vercel() : undefined,

@@ -76,6 +76,7 @@ externalLink:
   source: "University of Maryland Extension"
 
 relatedLocations:
+  - williamsport-md
   - hagerstown-md
   - greencastle-pa
   - waynesboro-pa

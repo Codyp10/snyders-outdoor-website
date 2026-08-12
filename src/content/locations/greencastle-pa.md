@@ -10,7 +10,7 @@ heroImageMobile: "../../assets/images/location-greencastle-mobile.jpg"
 heroAlt: "Rural Pennsylvania home with mature trees, a metal roof, and an American flag on the front lawn."
 
 intro: |
-  Greencastle is a short drive up I-81 from our Hagerstown base — close enough that we work Franklin County as regularly as any market on our Maryland side. From the borough itself and the older homes along Baltimore Street to the farms and new builds spread across Antrim Township, Snyder's Outdoor Solutions handles residential tree removal, emergency response, trimming, stump grinding, and lot clearing with the same crew, pricing, and licensing standards we use on the other side of the Mason-Dixon. Licensed in Pennsylvania, fully insured, and local enough to know the difference between a yard oak that's worth saving and one that's past its time.
+  Greencastle is a short drive up I-81 from our Williamsport base — close enough that we work Franklin County as regularly as any market on our Maryland side. From the borough itself and the older homes along Baltimore Street to the farms and new builds spread across Antrim Township, Snyder's Outdoor Solutions handles residential tree removal, emergency response, trimming, stump grinding, and lot clearing with the same crew, pricing, and licensing standards we use on the other side of the Mason-Dixon. Licensed in Pennsylvania, fully insured, and local enough to know the difference between a yard oak that's worth saving and one that's past its time.
 
 whyHere:
   heading: "Why Greencastle Homeowners Choose Snyder's"
@@ -41,7 +41,7 @@ landmarks:
   - "Conococheague Creek"
 
 drivingRoute: |
-  I-81 north from our Hagerstown base puts our crews in Greencastle in about 25 minutes. We run the corridor multiple times a week between Maryland and Pennsylvania markets, so scheduling a Greencastle estimate is usually same-week. For true emergencies we dispatch immediately and are typically on site in well under 90 minutes — faster than most crews coming south from Chambersburg or Harrisburg.
+  I-81 north from our Williamsport base puts our crews in Greencastle in about 25 minutes. We run the corridor multiple times a week between Maryland and Pennsylvania markets, so scheduling a Greencastle estimate is usually same-week. For true emergencies we dispatch immediately and are typically on site in well under 90 minutes — faster than most crews coming south from Chambersburg or Harrisburg.
 
 localStats: ""
 
@@ -53,7 +53,7 @@ faqs:
   - question: "Any permits I should know about for tree removal in Greencastle?"
     answer: "The borough and Antrim Township generally don't require permits for residential tree removal on private property. Exceptions include trees in the public right-of-way and certain historic overlay situations downtown. We check your specific case during the estimate and handle the paperwork when permits do apply."
   - question: "How fast can you respond to an emergency in Greencastle?"
-    answer: "From our Hagerstown base, 45–90 minutes is the realistic window for daytime Greencastle emergencies, depending on where our crews are when you call. Overnight calls get a callback to triage and morning dispatch unless it's an immediate safety issue."
+    answer: "From our Williamsport base, 45–90 minutes is the realistic window for daytime Greencastle emergencies, depending on where our crews are when you call. Overnight calls get a callback to triage and morning dispatch unless it's an immediate safety issue."
   - question: "Do you handle big trees on older Greencastle lots?"
     answer: "Yes — a lot of the borough's older homes have mature hardwoods with almost no clearance from the house or the neighbor's property line. We specialize in rigging and sectional takedowns for exactly that situation. No yard is too tight if we plan right."
 

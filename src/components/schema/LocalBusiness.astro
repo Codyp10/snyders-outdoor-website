@@ -4,15 +4,19 @@ import business from '../../data/business.json';
 interface Props {
   /** Override @id for area-specific LocalBusiness on location pages */
   idSuffix?: string;
+  /** Page URL used to build a page-scoped @id (location pages) */
+  pageUrl?: string;
   /** Area-specific name override, e.g. "Snyder's Outdoor Solutions — Hagerstown" */
   nameOverride?: string;
   /** Restrict areaServed to one city (for location pages) */
   areaServedCity?: { city: string; region: string };
 }
 
-const { idSuffix = 'business', nameOverride, areaServedCity } = Astro.props;
+const { idSuffix = 'business', pageUrl, nameOverride, areaServedCity } = Astro.props;
 
-const id = `${business.url}/#${idSuffix}`;
+const id = pageUrl
+  ? `${pageUrl.replace(/\/$/, '')}/#${idSuffix}`
+  : `${business.url}/#${idSuffix}`;
 const name = nameOverride ?? business.name;
 
 const addr = business.address;
@@ -45,6 +49,7 @@ const jsonLd: Record<string, unknown> = {
   name,
   url: business.url,
   image: `${business.url}/og-default.jpg`,
+  priceRange: business.priceRange,
 };
 
 if (business.phone !== 'NAP_PENDING') jsonLd.telephone = business.phone;
@@ -58,7 +63,7 @@ if (addr.postalCode !== 'NAP_PENDING') addressFields.postalCode = addr.postalCod
 addressFields.addressCountry = addr.country;
 jsonLd.address = addressFields;
 
-if (business.geo.latitude !== 'NAP_PENDING' && business.geo.longitude !== 'NAP_PENDING') {
+if (typeof business.geo.latitude === 'number' && typeof business.geo.longitude === 'number') {
   jsonLd.geo = {
     '@type': 'GeoCoordinates',
     latitude: business.geo.latitude,

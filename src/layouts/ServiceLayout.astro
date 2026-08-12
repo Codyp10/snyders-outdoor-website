@@ -23,6 +23,7 @@ const d = entry.data;
 const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const locationLabelMap: Record<string, string> = {
+  'williamsport-md': 'Williamsport, MD',
   'hagerstown-md': 'Hagerstown, MD',
   'greencastle-pa': 'Greencastle, PA',
   'waynesboro-pa': 'Waynesboro, PA',
@@ -334,7 +335,7 @@ const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
                 We provide {serviceLabelMap[entry.id] ?? 'tree service'} across our primary service area, including{' '}
                 {d.relatedLocations.map((slug, i) => (
                   <>{i > 0 && i === d.relatedLocations.length - 1 ? ', and ' : i > 0 ? ', ' : ''}<a href={`/service-areas/${slug}`}>{locationLabelMap[slug] ?? slug}</a></>
-                ))}. Most jobs happen within a 30-mile radius of our Hagerstown base.
+                ))}. Most jobs happen within a 30-mile radius of our Williamsport base.
               </p>
             )}
             {d.relatedServices.length > 0 && (

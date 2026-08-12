@@ -77,6 +77,7 @@ externalLink:
   source: "Maryland Department of Natural Resources"
 
 relatedLocations:
+  - williamsport-md
   - hagerstown-md
   - greencastle-pa
   - waynesboro-pa

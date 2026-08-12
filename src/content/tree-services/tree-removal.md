@@ -80,6 +80,7 @@ externalLink:
   source: "International Society of Arboriculture"
 
 relatedLocations:
+  - williamsport-md
   - hagerstown-md
   - greencastle-pa
   - waynesboro-pa
