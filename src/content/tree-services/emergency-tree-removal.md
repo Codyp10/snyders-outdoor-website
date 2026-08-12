@@ -78,6 +78,7 @@ externalLink:
   source: "U.S. Department of Homeland Security"
 
 relatedLocations:
+  - williamsport-md
   - hagerstown-md
   - greencastle-pa
   - waynesboro-pa

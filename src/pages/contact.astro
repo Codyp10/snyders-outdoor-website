@@ -115,7 +115,7 @@ const addr = business.address;
           }
         </ul>
         <p class="mt-4 text-gray-600 text-sm leading-relaxed">
-          Plus Williamsport, Clear Spring, Smithsburg, Funkstown, Boonsboro, Hedgesville, Inwood, Bunker Hill,
+          Plus Clear Spring, Smithsburg, Funkstown, Boonsboro, Hedgesville, Inwood, Bunker Hill,
           and most of the territory between. Outside the listed area? <a href="/contact" class="text-brand font-semibold underline underline-offset-4 hover:text-brand-dark">Ask anyway.</a>
         </p>
       </div>
@@ -125,15 +125,15 @@ const addr = business.address;
         <dl class="space-y-2 text-gray-700">
           <div class="flex justify-between gap-4 border-b border-gray-200 pb-2">
             <dt class="font-semibold">Monday – Friday</dt>
-            <dd>7:00 AM – 5:00 PM</dd>
+            <dd>8:00 AM – 5:00 PM</dd>
           </div>
           <div class="flex justify-between gap-4 border-b border-gray-200 pb-2">
             <dt class="font-semibold">Saturday</dt>
-            <dd>8:00 AM – 2:00 PM</dd>
+            <dd>Closed</dd>
           </div>
           <div class="flex justify-between gap-4 border-b border-gray-200 pb-2">
             <dt class="font-semibold">Sunday</dt>
-            <dd>By appointment</dd>
+            <dd>Closed</dd>
           </div>
           <div class="flex justify-between gap-4 bg-orange-50 -mx-2 px-2 py-2 rounded">
             <dt class="font-semibold text-orange-700">Emergency line</dt>
@@ -141,7 +141,7 @@ const addr = business.address;
           </div>
         </dl>
         <p class="mt-4 text-gray-500 text-xs italic">
-          Hours are representative — confirm with your local market via the phone line.
+          Hours match our Google Business Profile. The emergency line is staffed 24/7.
         </p>
       </div>
     </div>
@@ -157,7 +157,7 @@ const addr = business.address;
           </h2>
           <address class="not-italic text-gray-700 space-y-2 text-base">
             <div class="font-semibold text-gray-900">{business.name}</div>
-            <div>{addr.street !== 'NAP_PENDING' ? addr.street : 'Hagerstown, MD (full address on request)'}</div>
+            <div>{addr.street !== 'NAP_PENDING' ? addr.street : 'Williamsport, MD (full address on request)'}</div>
             {addr.street !== 'NAP_PENDING' && <div>{addr.city}, {addr.region} {addr.postalCode}</div>}
             <div>
               <a href={`tel:${phoneTel}`} class="text-brand font-semibold hover:text-brand-dark">
@@ -169,11 +169,11 @@ const addr = business.address;
 
         <div class="rounded-2xl overflow-hidden shadow-lg ring-1 ring-gray-200 bg-white aspect-video">
           <iframe
-            src="https://www.google.com/maps?q=Hagerstown,MD&output=embed"
+            src={`https://www.google.com/maps?q=${encodeURIComponent(`${addr.street}, ${addr.city}, ${addr.region} ${addr.postalCode}`)}&output=embed`}
             class="w-full h-full border-0"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            title="Snyder's Outdoor Solutions service area map"
+            title="Snyder's Outdoor Solutions at 16040 Dellinger Rd, Williamsport, MD"
           ></iframe>
         </div>
       </div>

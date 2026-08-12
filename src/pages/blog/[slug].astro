@@ -6,6 +6,7 @@ import PortableText from '../../components/PortableText.astro';
 import business from '../../data/business.json';
 import { getBlogPosts, type BlogPostDoc } from '../../sanity/lib/queries';
 import { urlFor } from '../../sanity/lib/image';
+import { injectBlogLinks } from '../../lib/injectBlogLinks';
 
 // Static in production; server-rendered only in the visual-editing preview build.
 export const prerender = import.meta.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED !== 'true';
@@ -44,11 +45,13 @@ const articleSchema = {
   publisher: { '@type': 'Organization', name: business.name },
   mainEntityOfPage: pageURL,
 };
+
+const body = injectBlogLinks(post.slug, (post.body ?? []) as unknown[]);
 ---
 
 <BaseLayout
   title={`${post.title} | Snyder's Outdoor Solutions`}
-  description={post.excerpt ?? `${post.title} — tree care advice from Snyder's Outdoor Solutions in Hagerstown, MD.`}
+  description={post.excerpt ?? `${post.title} — tree care advice from Snyder's Outdoor Solutions in Williamsport, MD.`}
   canonical={pageURL}
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
@@ -95,7 +98,7 @@ const articleSchema = {
 
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
       <Prose>
-        <PortableText value={post.body ?? []} />
+        <PortableText value={body} />
       </Prose>
     </div>
   </article>

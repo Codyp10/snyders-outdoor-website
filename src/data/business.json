@@ -1,34 +1,38 @@
 {
-  "_comment": "SINGLE SOURCE OF TRUTH for NAP. Every component reads from here. Character-for-character match to GBP required before production launch. Replace every NAP_PENDING value before DNS cutover. Phone is the real business line — CallRail DNI (fired via GTM) swaps the displayed number client-side, so this stays the canonical/swap-target number.",
+  "_comment": "SINGLE SOURCE OF TRUTH for NAP. Every component reads from here. Character-for-character match to GBP required before production launch. Phone is the real business line — CallRail DNI (fired via GTM) swaps the displayed number client-side, so this stays the canonical/swap-target number.",
   "name": "Snyder's Outdoor Solutions",
   "legalName": "NAP_PENDING",
   "phone": "(301) 288-1677",
   "phoneTel": "+13012881677",
   "email": "NAP_PENDING",
   "address": {
-    "street": "NAP_PENDING",
-    "city": "Hagerstown",
+    "street": "16040 Dellinger Rd",
+    "city": "Williamsport",
     "region": "MD",
-    "postalCode": "NAP_PENDING",
+    "postalCode": "21795",
     "country": "US"
   },
   "geo": {
-    "latitude": "NAP_PENDING",
-    "longitude": "NAP_PENDING"
+    "latitude": 39.5396587,
+    "longitude": -77.8117454
   },
-  "url": "https://snydersoutdoorsolutions.com",
-  "gbpUrl": "NAP_PENDING",
+  "url": "https://www.snydersoutdoorsolutions.com",
+  "gbpUrl": "https://www.google.com/maps/place/Snyder's+Outdoor+Solutions/@39.5396587,-77.8117454,17z/data=!4m6!3m5!1s0x89c9f1441e867c0d:0xfa197157948c6a2f!8m2!3d39.5396587!4d-77.8117454!16s%2Fg%2F11zhb70rmg",
+  "priceRange": "$$",
   "openingHours": [
-    { "days": "Mo,Tu,We,Th,Fr", "opens": "NAP_PENDING", "closes": "NAP_PENDING" },
-    { "days": "Sa", "opens": "NAP_PENDING", "closes": "NAP_PENDING" }
+    { "days": "Mo,Tu,We,Th,Fr", "opens": "08:00", "closes": "17:00" }
   ],
   "emergency247": true,
   "areaServed": [
+    { "city": "Williamsport", "region": "MD" },
     { "city": "Hagerstown", "region": "MD" },
     { "city": "Greencastle", "region": "PA" },
     { "city": "Waynesboro", "region": "PA" },
     { "city": "Frederick", "region": "MD" },
     { "city": "Martinsburg", "region": "WV" }
   ],
-  "sameAs": []
+  "sameAs": [
+    "https://www.google.com/maps/place/Snyder's+Outdoor+Solutions/@39.5396587,-77.8117454,17z/data=!4m6!3m5!1s0x89c9f1441e867c0d:0xfa197157948c6a2f!8m2!3d39.5396587!4d-77.8117454!16s%2Fg%2F11zhb70rmg",
+    "https://www.facebook.com/p/Snyders-Outdoor-Solutions-61576662452776/"
+  ]
 }

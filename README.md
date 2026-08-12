@@ -1,6 +1,6 @@
 # Snyder's Outdoor Solutions — Website
 
-Local service site for Snyder's Outdoor Solutions (Hagerstown, MD).
+Local service site for Snyder's Outdoor Solutions (Williamsport, MD).
 Astro 5 · Tailwind 4 · Vercel (static).
 
 ## Stack

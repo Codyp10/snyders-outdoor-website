@@ -13,7 +13,6 @@ import emergencyBandImage from '../assets/images/hero-storm.jpg';
 import { Image } from 'astro:assets';
 import { phoneTel } from '../lib/nap';
 import Reviews from '../components/Reviews.astro';
-import ReviewsSchema from '../components/schema/Reviews.astro';
 import { getReviews } from '../sanity/lib/queries';
 
 // Static in production; server-rendered only in the visual-editing preview build.
@@ -43,7 +42,7 @@ const iconMap: Record<string, 'axe' | 'alert' | 'wind' | 'scissors' | 'disc' | '
 const shortTitle = (full: string) => full.split(' in ')[0];
 
 const locations = await getCollection('locations');
-const locationOrder = ['hagerstown-md', 'greencastle-pa', 'waynesboro-pa', 'frederick-md', 'martinsburg-wv'];
+const locationOrder = ['williamsport-md', 'hagerstown-md', 'greencastle-pa', 'waynesboro-pa', 'frederick-md', 'martinsburg-wv'];
 const orderedLocations = locationOrder
   .map((id) => locations.find((l) => l.id === id))
   .filter((l): l is CollectionEntry<'locations'> => l !== undefined);
@@ -53,18 +52,17 @@ const reviews = await getReviews();
 ---
 
 <BaseLayout
-  title="Tree Service Hagerstown MD | Snyder's Outdoor Solutions"
-  description="Licensed tree service in Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg. Removal, trimming, stumps, storm cleanup. Free estimates."
+  title="Snyder's Outdoor Solutions | Tree Service in Washington County, MD"
+  description="Licensed, insured tree service based in Williamsport, MD. Tree removal, 24/7 emergency response, trimming, stump grinding, and land clearing across Maryland, Pennsylvania, and West Virginia. Free estimates."
   canonical={pageURL}
 >
   <LocalBusiness slot="head" />
-  <ReviewsSchema slot="head" reviews={reviews} />
 
   <Hero
-    eyebrow="Hagerstown · Greencastle · Waynesboro · Frederick · Martinsburg"
+    eyebrow="Williamsport · Hagerstown · Greencastle · Waynesboro · Frederick · Martinsburg"
     eyebrowIcon="location"
-    headline="Tree Service in Hagerstown, MD"
-    subhead="Licensed, local, and ready when you are. Snyder's Outdoor Solutions handles tree removal, emergency response, trimming, stump grinding, storm damage cleanup, and land clearing across the Tri-State area."
+    headline="Licensed Tree Service Across the Tri-State Area"
+    subhead="Based in Williamsport, MD, just south of Hagerstown. Snyder's Outdoor Solutions handles tree removal, emergency response, trimming, stump grinding, storm damage cleanup, and land clearing across Maryland, Pennsylvania, and West Virginia."
     variant="home"
     heroImage={heroImage}
     heroImageMobile={heroImageMobile}
@@ -234,7 +232,7 @@ const reviews = await getReviews();
       </h2>
       <Prose>
         <p>
-          Snyder's Outdoor Solutions is a Hagerstown-based tree service and outdoor solutions company run by Dustin Snyder.
+          Snyder's Outdoor Solutions is a Williamsport-based tree service and outdoor solutions company run by Dustin Snyder.
           What started as Dustin working alongside his dad has grown into a full-service crew covering residential tree
           care across Maryland and West Virginia. <a href="/about">Read Dustin's full story →</a>
         </p>
@@ -283,7 +281,7 @@ const reviews = await getReviews();
           Serving the Tri-State Area
         </h2>
         <p class="mt-4 text-gray-600 text-base md:text-lg leading-relaxed">
-          Five primary markets, and plenty of stops between. <a href="/service-areas" class="text-brand font-semibold hover:text-brand-dark">See full coverage →</a>
+          Six primary markets, and plenty of stops between. <a href="/service-areas" class="text-brand font-semibold hover:text-brand-dark">See full coverage →</a>
         </p>
       </div>
       <div class="grid gap-5 md:gap-6 sm:grid-cols-3">

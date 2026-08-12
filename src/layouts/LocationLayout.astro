@@ -53,6 +53,7 @@ const shortTitle = (full: string) => full.split(' in ')[0];
   <LocalBusiness
     slot="head"
     idSuffix={`business-${entry.id}`}
+    pageUrl={pageURL}
     nameOverride={`${business.name} — ${d.city}`}
     areaServedCity={{ city: d.city, region: d.state }}
   />

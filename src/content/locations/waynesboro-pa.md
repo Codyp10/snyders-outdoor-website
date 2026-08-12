@@ -10,7 +10,7 @@ heroImageMobile: "../../assets/images/location-waynesboro-mobile.jpg"
 heroAlt: "Rural Pennsylvania property in the South Mountain foothills with mature hardwoods and open lawn."
 
 intro: |
-  Waynesboro sits right at the foot of South Mountain, a short run up PA-16 from our Hagerstown base — one of the closest Pennsylvania markets we work. From the older homes along Main Street and Walnut Street to the newer developments in Wayne Heights and the farms and wooded lots spread across Washington Township, Snyder's Outdoor Solutions handles residential tree removal, emergency response, trimming, stump grinding, and lot clearing with the same crew, pricing, and licensing standards we use on the Maryland side. Licensed in Pennsylvania, fully insured, and close enough that a Waynesboro estimate is rarely more than a few days out.
+  Waynesboro sits right at the foot of South Mountain, a short run up PA-16 from our Williamsport base — one of the closest Pennsylvania markets we work. From the older homes along Main Street and Walnut Street to the newer developments in Wayne Heights and the farms and wooded lots spread across Washington Township, Snyder's Outdoor Solutions handles residential tree removal, emergency response, trimming, stump grinding, and lot clearing with the same crew, pricing, and licensing standards we use on the Maryland side. Licensed in Pennsylvania, fully insured, and close enough that a Waynesboro estimate is rarely more than a few days out.
 
 whyHere:
   heading: "Why Waynesboro Homeowners Choose Snyder's"
@@ -41,7 +41,7 @@ landmarks:
   - "South Mountain / Pen Mar Park"
 
 drivingRoute: |
-  PA-16 east from our Hagerstown base puts our crews in Waynesboro in about 20 minutes — one of our shortest runs into Pennsylvania. We work the Washington County–Franklin County corridor multiple times a week, so scheduling a Waynesboro estimate is usually same-week. For true emergencies we dispatch immediately and are typically on site in well under an hour — faster than most crews coming down from Chambersburg.
+  PA-16 east from our Williamsport base puts our crews in Waynesboro in about 25 minutes — one of our shortest runs into Pennsylvania. We work the Washington County–Franklin County corridor multiple times a week, so scheduling a Waynesboro estimate is usually same-week. For true emergencies we dispatch immediately and are typically on site in well under an hour — faster than most crews coming down from Chambersburg.
 
 localStats: ""
 
@@ -49,11 +49,11 @@ faqs:
   - question: "You're a Maryland-based company — are you licensed to work in Pennsylvania?"
     answer: "Yes. We carry proper Pennsylvania licensing and insurance for Franklin County work. A lot of Maryland tree services won't cross the line; we do because southern Franklin County — Waynesboro especially — is a regular market for us, not a one-off."
   - question: "Do you serve Rouzerville, Quincy, and the rest of Washington Township?"
-    answer: "Yes. We work throughout Washington Township and the surrounding area — Rouzerville, Quincy, Zullinger, Blue Ridge Summit, Mont Alto on request, and the wooded lots in between. Being just over the line in Hagerstown, we're usually the fastest option for the Waynesboro area."
+    answer: "Yes. We work throughout Washington Township and the surrounding area — Rouzerville, Quincy, Zullinger, Blue Ridge Summit, Mont Alto on request, and the wooded lots in between. Being just over the line in Williamsport, we're usually the fastest option for the Waynesboro area."
   - question: "Any permits I should know about for tree removal in Waynesboro?"
     answer: "The borough and Washington Township generally don't require permits for residential tree removal on private property. Exceptions include trees in the public right-of-way and certain shade-tree or downtown situations. We check your specific case during the estimate and handle the paperwork when permits do apply."
   - question: "How fast can you respond to an emergency in Waynesboro?"
-    answer: "From our Hagerstown base, 30–60 minutes is the realistic window for daytime Waynesboro emergencies, depending on where our crews are when you call. It's one of our closest Pennsylvania markets. Overnight calls get a callback to triage and morning dispatch unless it's an immediate safety issue."
+    answer: "From our Williamsport base, 30–60 minutes is the realistic window for daytime Waynesboro emergencies, depending on where our crews are when you call. It's one of our closest Pennsylvania markets. Overnight calls get a callback to triage and morning dispatch unless it's an immediate safety issue."
   - question: "Do you handle big trees coming off South Mountain lots?"
     answer: "Yes — a lot of Waynesboro and Washington Township properties back up to the mountain with tall, mature hardwoods and pines close to the house or the property line. We specialize in rigging and sectional takedowns for exactly that situation. No yard is too tight if we plan the drop right."
 

@@ -76,6 +76,7 @@ externalLink:
   source: "NOAA / National Weather Service"
 
 relatedLocations:
+  - williamsport-md
   - hagerstown-md
   - greencastle-pa
   - waynesboro-pa

@@ -10,7 +10,7 @@ heroImageMobile: "../../assets/images/location-frederick-mobile.jpg"
 heroAlt: "Snyder's bucket truck extended over a residential home at dusk."
 
 intro: |
-  Frederick is a tree town — from the old hardwoods around Baker Park and Carroll Creek to the young canopies in newer developments like Spring Ridge, Worman's Mill, and Urbana. Snyder's Outdoor Solutions runs from Hagerstown east on I-70 to Frederick and the surrounding county regularly. Same crew, same flat-rate pricing, same licensed-and-insured work you'd get if we were based around the corner.
+  Frederick is a tree town — from the old hardwoods around Baker Park and Carroll Creek to the young canopies in newer developments like Spring Ridge, Worman's Mill, and Urbana. Snyder's Outdoor Solutions runs from Williamsport east on I-70 to Frederick and the surrounding county regularly. Same crew, same flat-rate pricing, same licensed-and-insured work you'd get if we were based around the corner.
 
 whyHere:
   heading: "Why Frederick Homeowners Choose Snyder's"
@@ -42,12 +42,12 @@ landmarks:
   - "Frederick Community College"
 
 drivingRoute: |
-  Our crews run I-70 east from Hagerstown into Frederick in about 45 minutes outside of rush hour. Most estimates can be scheduled the same week, and larger jobs are typically on the books within one to two weeks. For emergencies — a tree on a house, a blocked drive — we dispatch immediately and we're on site in under 90 minutes from the call.
+  Our crews run I-70 east from Williamsport into Frederick in about 45 minutes outside of rush hour. Most estimates can be scheduled the same week, and larger jobs are typically on the books within one to two weeks. For emergencies — a tree on a house, a blocked drive — we dispatch immediately and we're on site in under 90 minutes from the call.
 
 localStats: ""
 
 faqs:
-  - question: "You're based in Hagerstown — why hire you over a Frederick-based crew?"
+  - question: "You're based in Williamsport — why hire you over a Frederick-based crew?"
     answer: "Because we're worth the drive. Frederick has no shortage of tree services; our customers generally pick us for price, quality, and the fact that you deal with the owner directly. If you'd rather hire local to Frederick, we won't argue — but get a quote from us either way. You'll see the difference."
   - question: "Do you charge extra to come to Frederick?"
     answer: "Not typically. Our flat-rate pricing factors in travel for scheduled work. The exception is very small jobs where windshield time becomes a bigger share of the total — in those cases we'll sometimes batch you with another Frederick-area job to keep the price right."
