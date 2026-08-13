@@ -7,7 +7,7 @@ import ServiceCard from '../components/ServiceCard.astro';
 import CTABar from '../components/CTABar.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
 import Prose from '../components/Prose.astro';
-import LocalBusiness from '../components/schema/LocalBusiness.astro';
+import ServiceSchema from '../components/schema/ServiceSchema.astro';
 import FAQSchema from '../components/schema/FAQSchema.astro';
 import PhotoGallery from '../components/PhotoGallery.astro';
 import BeforeAfter from '../components/BeforeAfter.astro';
@@ -50,12 +50,13 @@ const shortTitle = (full: string) => full.split(' in ')[0];
 ---
 
 <BaseLayout title={d.titleTag} description={d.description} canonical={pageURL}>
-  <LocalBusiness
+  <ServiceSchema
     slot="head"
-    idSuffix={`business-${entry.id}`}
-    pageUrl={pageURL}
-    nameOverride={`${business.name} — ${d.city}`}
-    areaServedCity={{ city: d.city, region: d.state }}
+    id={`${pageURL.replace(/\/$/, '')}/#service`}
+    serviceName={`Tree Service in ${d.city}, ${d.state}`}
+    serviceType="Tree Service"
+    url={pageURL}
+    areaServed={{ city: d.city, region: d.state }}
   />
   <FAQSchema slot="head" faqs={d.faqs} />
 
@@ -98,7 +99,7 @@ const shortTitle = (full: string) => full.split(' in ')[0];
           orderedTreeServices.map((s) => (
             <ServiceCard
               title={shortTitle(s.data.title)}
-              description={s.data.description}
+              description={s.data.cardDescription}
               href={`/tree-services/${s.id}`}
               icon={iconMap[s.id] ?? 'default'}
               image={s.data.heroImage}

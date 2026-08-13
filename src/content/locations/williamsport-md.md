@@ -2,7 +2,7 @@
 title: "Tree Service in Williamsport, MD"
 titleTag: "Tree Service Williamsport MD | Snyder's Outdoor Solutions"
 h1: "Tree Service in Williamsport, MD"
-description: "Locally based tree service in Williamsport, MD and southern Washington County. Tree removal, emergency response, trimming, stump grinding, and lot clearing. Free estimates."
+description: "Locally based tree service in Williamsport, MD. Tree removal, emergency response, trimming, stump grinding, and lot clearing. Free estimates from Snyder's."
 city: "Williamsport"
 state: "MD"
 # TODO: location-williamsport.jpg and location-williamsport-mobile.jpg — Williamsport-specific hero (C&O Canal / Conococheague / Dellinger Rd area). Reusing the service-areas aerial until those files land.

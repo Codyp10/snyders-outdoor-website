@@ -53,7 +53,7 @@ const reviews = await getReviews();
 
 <BaseLayout
   title="Snyder's Outdoor Solutions | Tree Service in Washington County, MD"
-  description="Licensed, insured tree service based in Williamsport, MD. Tree removal, 24/7 emergency response, trimming, stump grinding, and land clearing across Maryland, Pennsylvania, and West Virginia. Free estimates."
+  description="Licensed, insured tree service based in Williamsport, MD. Tree removal, 24/7 emergency response, trimming, stump grinding, and land clearing. Free estimates."
   canonical={pageURL}
 >
   <LocalBusiness slot="head" />
@@ -89,7 +89,7 @@ const reviews = await getReviews();
           ordered.map((s) => (
             <ServiceCard
               title={shortTitle(s.data.title)}
-              description={s.data.description}
+              description={s.data.cardDescription}
               href={`/tree-services/${s.id}`}
               icon={iconMap[s.id] ?? 'default'}
               image={s.data.heroImage}
