@@ -75,6 +75,8 @@ const treeServices = defineCollection({
     titleTag: z.string(),
     h1: z.string(),
     description: z.string(),
+    /** Geo-neutral blurb for service cards reused across location pages. */
+    cardDescription: z.string(),
     city: z.string().default('Hagerstown'),
     state: z.string().default('MD'),
     heroImage: image().optional(),

@@ -71,8 +71,8 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
 <BaseLayout
-  title="Tree Services Hagerstown MD | Snyder's Outdoor Solutions"
-  description="Full-service tree care in Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg. Licensed and insured — removal, trimming, stumps, storm cleanup."
+  title="Tree Services in Washington County, MD | Snyder's Outdoor Solutions"
+  description="Tree removal, 24/7 emergency response, storm cleanup, trimming, stump grinding, and lot clearing across Washington County, MD."
   canonical={pageURL}
 >
   <FAQSchema slot="head" faqs={faqs} />
@@ -80,7 +80,7 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
   <Hero
     eyebrow="Williamsport · Hagerstown · Greencastle · Waynesboro · Frederick · Martinsburg"
     eyebrowIcon="leaf"
-    headline="Professional Tree Services in Hagerstown, MD"
+    headline="Our Tree Services"
     subhead="One local crew for tree removal, emergency response, trimming, stumps, storm cleanup, and land clearing. Licensed, insured, and based in Williamsport, MD, just south of Hagerstown."
     variant="service"
     heroImage={heroImage}
@@ -95,7 +95,7 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <Prose>
         <p>
-          Snyder's Outdoor Solutions is a full-service tree-care company serving Hagerstown and the surrounding Tri-State region.
+          Snyder's Outdoor Solutions is a full-service tree-care company serving Washington County and the surrounding Tri-State region.
           We handle the whole spectrum of residential tree work — from routine maintenance pruning to emergency storm response,
           stump grinding, and multi-day land clearing — with the same crew, the same flat-rate pricing, and the same standards
           every time. Dustin grew up logging with his dad, and that experience drives how the crew approaches every job.
@@ -120,7 +120,7 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
           ordered.map((s) => (
             <ServiceCard
               title={shortTitle(s.data.title)}
-              description={s.data.description}
+              description={s.data.cardDescription}
               href={`/tree-services/${s.id}`}
               icon={iconMap[s.id] ?? 'default'}
               image={s.data.heroImage}
