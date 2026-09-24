@@ -13,6 +13,7 @@ import BeforeAfter from '../components/BeforeAfter.astro';
 import { Image } from 'astro:assets';
 import business from '../data/business.json';
 import { phoneTel } from '../lib/nap';
+import { renderMarkdownParagraphs } from '../lib/inline-markdown';
 
 interface Props {
   entry: CollectionEntry<'tree-services'>;
@@ -334,6 +335,9 @@ const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
           <Prose>
             {/* Separator + anchor + punctuation stay on one line — Astro preserves
                 inter-element whitespace, and stray spaces land before the commas. */}
+            {d.comboCallout && (
+              <p set:html={renderMarkdownParagraphs(d.comboCallout)} />
+            )}
             {d.relatedLocations.length > 0 && (
               <p>
                 We provide {serviceLabelMap[entry.id] ?? 'tree service'} across our primary service area, including{' '}

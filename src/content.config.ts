@@ -133,6 +133,8 @@ const treeServices = defineCollection({
     externalLink: externalLinkSchema,
     relatedLocations: z.array(z.string()).default([]),
     relatedServices: z.array(z.string()).default([]),
+    /** Optional editorial line pointing at a service×city page. */
+    comboCallout: z.string().optional(),
   }),
 });
 
@@ -214,8 +216,133 @@ const outdoorServices = defineCollection({
   }),
 });
 
+/**
+ * Service × city pages — /tree-services/<service>/<city>
+ * First combo: tree-removal / frederick-md. Future pages are content-only.
+ */
+const serviceCity = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/service-city' }),
+  schema: ({ image }) => z.object({
+    title: z.string(),
+    titleTag: z.string(),
+    h1: z.string(),
+    description: z.string(),
+    metaDescription: z.string(),
+    serviceSlug: z.string(),
+    citySlug: z.string(),
+    city: z.string(),
+    state: z.string(),
+    county: z.string().optional(),
+    heroImage: image().optional(),
+    heroImageMobile: image().optional(),
+    heroAlt: z.string(),
+    emergency: z.boolean().default(false),
+
+    intro: z.string(),
+    whatsIncluded: z
+      .object({
+        heading: z.string(),
+        body: z.string(),
+        items: z.array(z.string()).optional(),
+      })
+      .optional(),
+    signsYouNeed: z
+      .object({
+        heading: z.string(),
+        body: z.string().optional(),
+        subheading: z.string().optional(),
+        items: z.array(
+          z.object({
+            title: z.string(),
+            description: z.string(),
+          })
+        ),
+      })
+      .optional(),
+    stormEmergency: z
+      .object({
+        heading: z.string(),
+        body: z.string(),
+      })
+      .optional(),
+    processSteps: z
+      .object({
+        heading: z.string(),
+        body: z.string().optional(),
+        steps: z.array(processStepSchema),
+      })
+      .optional(),
+    costFactors: z
+      .object({
+        heading: z.string(),
+        body: z.string(),
+        items: z.array(
+          z.object({
+            title: z.string(),
+            description: z.string(),
+          })
+        ),
+        cta: z.string().optional(),
+      })
+      .optional(),
+    permits: z
+      .object({
+        heading: z.string(),
+        intro: z.string(),
+        sections: z.array(
+          z.object({
+            heading: z.string(),
+            body: z.string(),
+          })
+        ),
+      })
+      .optional(),
+    nearStructures: z
+      .object({
+        heading: z.string(),
+        body: z.string(),
+      })
+      .optional(),
+    stumpPairing: z
+      .object({
+        heading: z.string(),
+        body: z.string(),
+      })
+      .optional(),
+    localAreas: z
+      .object({
+        heading: z.string(),
+        body: z.string(),
+        neighborhoods: z.array(z.string()).default([]),
+        landmarks: z.array(z.string()).default([]),
+      })
+      .optional(),
+    whyChoose: z
+      .object({
+        heading: z.string(),
+        body: z.string(),
+        quote: quoteSchema.optional(),
+      })
+      .optional(),
+    crossLinks: z.string().optional(),
+    faqs: z.array(faqSchema),
+
+    gallery: gallerySchema(image),
+    beforeAfter: beforeAfterSchema(image),
+    asidePhoto: asidePhotoSchema(image),
+
+    relatedHubService: z.string(),
+    relatedCityPage: z.string(),
+    relatedServices: z.array(z.string()).default([]),
+    externalLinks: z.array(externalLinkSchema).default([]),
+    ctaHeadline: z.string().optional(),
+    ctaSubhead: z.string().optional(),
+  }),
+});
+
 export const collections = {
   'tree-services': treeServices,
   locations,
   'outdoor-services': outdoorServices,
+  'service-city': serviceCity,
 };

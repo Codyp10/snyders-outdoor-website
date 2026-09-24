@@ -52,7 +52,7 @@ faqs:
   - question: "Do you charge extra to come to Frederick?"
     answer: "Not typically. Our flat-rate pricing factors in travel for scheduled work. The exception is very small jobs where windshield time becomes a bigger share of the total — in those cases we'll sometimes batch you with another Frederick-area job to keep the price right."
   - question: "Do you know the permit rules in Frederick?"
-    answer: "Yes. Frederick city and Frederick County have specific rules around street trees, forest conservation (especially on larger lots), and work in certain overlay districts. We check your specific situation during the estimate and flag anything that needs a permit before we start."
+    answer: "Frederick City and Frederick County rules differ for street trees, the Historic District, forest conservation, and HOAs. We flag permit issues during the estimate — see our [Tree removal in Frederick, MD](/tree-services/tree-removal/frederick-md) page for a plain-language overview."
   - question: "Do you serve the smaller towns around Frederick?"
     answer: "Yes — Urbana, Walkersville, Middletown, Jefferson, Myersville, Thurmont, and the rest of Frederick County. If you're not sure whether you're in our service area, call and we'll tell you straight."
   - question: "How quickly can you respond for storm damage in Frederick?"

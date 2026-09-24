@@ -1,4 +1,6 @@
 ---
+import { renderInlineMarkdown } from '../lib/inline-markdown';
+
 interface FAQ {
   question: string;
   answer: string;
@@ -36,8 +38,8 @@ const { faqs, heading = 'Frequently Asked Questions' } = Astro.props;
                 />
               </svg>
             </summary>
-            <div class="px-5 md:px-6 pb-5 md:pb-6 text-gray-700 leading-relaxed">
-              {f.answer}
+            <div class="px-5 md:px-6 pb-5 md:pb-6 text-gray-700 leading-relaxed [&_a]:text-brand [&_a]:font-semibold [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-brand-dark">
+              <span set:html={renderInlineMarkdown(f.answer)} />
             </div>
           </details>
         ))
