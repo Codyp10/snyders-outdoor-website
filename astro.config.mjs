@@ -15,6 +15,9 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'never',
   adapter: visualEditing ? vercel() : undefined,
+  redirects: {
+    '/sitemap.xml': '/sitemap-index.xml',
+  },
   integrations: [
     // Embedded Sanity Studio at /admin (config in ./sanity.config.ts).
     // Only the /admin route ships the studio bundle; marketing pages stay static + JS-free.

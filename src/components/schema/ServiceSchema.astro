@@ -7,8 +7,8 @@ interface Props {
   description?: string;
   /** URL of the page this schema is on */
   url: string;
-  /** City/region this service is offered in (usually the page's city) */
-  areaServed: { city: string; region: string };
+  /** City/region this service is offered in (one city or the full service area) */
+  areaServed: { city: string; region: string } | { city: string; region: string }[];
   /** @id of the LocalBusiness this service is provided by */
   providerId?: string;
   /** Optional node @id (used on service-area pages) */
@@ -25,6 +25,12 @@ const {
   id,
 } = Astro.props;
 
+const cities = Array.isArray(areaServed) ? areaServed : [areaServed];
+const areaServedNodes = cities.map((a) => ({
+  '@type': 'City',
+  name: `${a.city}, ${a.region}`,
+}));
+
 const jsonLd: Record<string, unknown> = {
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -32,10 +38,7 @@ const jsonLd: Record<string, unknown> = {
   serviceType: serviceType ?? serviceName,
   url,
   provider: { '@id': providerId },
-  areaServed: {
-    '@type': 'City',
-    name: `${areaServed.city}, ${areaServed.region}`,
-  },
+  areaServed: areaServedNodes.length === 1 ? areaServedNodes[0] : areaServedNodes,
 };
 
 if (id) jsonLd['@id'] = id;

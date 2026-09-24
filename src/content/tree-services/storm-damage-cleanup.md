@@ -1,8 +1,9 @@
 ---
 title: "Storm Damage Cleanup in Hagerstown, MD"
-titleTag: "Storm Damage Cleanup Hagerstown MD | Snyder's Outdoor Solutions"
+titleTag: "Storm Damage Cleanup | Washington County MD"
 h1: "Storm Damage Cleanup in Hagerstown, MD"
 description: "Storm damage cleanup in Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg. Fallen branches, uprooted trees, debris hauling, site restoration."
+metaDescription: "Storm damage cleanup across Washington County, MD and the Tri-State area. Fallen branches, uprooted trees, debris hauling, and site restoration."
 cardDescription: "Storm damage cleanup — fallen branches, uprooted trees, debris hauling, and site restoration."
 city: "Hagerstown"
 state: "MD"

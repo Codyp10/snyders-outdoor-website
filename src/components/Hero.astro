@@ -85,6 +85,7 @@ const isEmergency = variant === 'emergency';
     heightClass,
     isEmergency ? 'bg-[#4a1a1a]' : 'bg-brand-dark',
   ]}
+  data-track-location="hero"
 >
   {/* Background photo (when provided). Mobile gets a portrait crop via <picture>. */}
   {hasImage && desktopImg && (

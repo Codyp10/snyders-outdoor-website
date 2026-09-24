@@ -75,6 +75,8 @@ const treeServices = defineCollection({
     titleTag: z.string(),
     h1: z.string(),
     description: z.string(),
+    /** Optional <meta name="description"> override so hero copy can stay city-specific. */
+    metaDescription: z.string().optional(),
     /** Geo-neutral blurb for service cards reused across location pages. */
     cardDescription: z.string(),
     city: z.string().default('Hagerstown'),

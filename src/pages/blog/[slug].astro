@@ -7,6 +7,7 @@ import business from '../../data/business.json';
 import { getBlogPosts, type BlogPostDoc } from '../../sanity/lib/queries';
 import { urlFor } from '../../sanity/lib/image';
 import { injectBlogLinks } from '../../lib/injectBlogLinks';
+import { blogSeoTitle } from '../../lib/blogSeoTitle';
 
 // Static in production; server-rendered only in the visual-editing preview build.
 export const prerender = import.meta.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED !== 'true';
@@ -29,7 +30,8 @@ if (!post) {
   if (!post) return Astro.redirect('/404');
 }
 
-const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
+const site = Astro.site ?? 'https://www.snydersoutdoorsolutions.com';
+const pageURL = new URL(Astro.url.pathname, site).toString();
 const published = post.publishedAt
   ? new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
   : null;
@@ -50,9 +52,14 @@ const body = injectBlogLinks(post.slug, (post.body ?? []) as unknown[]);
 ---
 
 <BaseLayout
-  title={`${post.title} | Snyder's Outdoor Solutions`}
+  title={blogSeoTitle(post.slug, post.title)}
   description={post.excerpt ?? `${post.title} — tree care advice from Snyder's Outdoor Solutions in Williamsport, MD.`}
   canonical={pageURL}
+  breadcrumbs={[
+    { name: 'Home', url: new URL('/', site).toString() },
+    { name: 'Blog', url: new URL('/blog', site).toString() },
+    { name: post.title, url: pageURL },
+  ]}
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 

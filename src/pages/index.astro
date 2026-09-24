@@ -6,7 +6,6 @@ import TrustStrip from '../components/TrustStrip.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import CTABar from '../components/CTABar.astro';
 import Prose from '../components/Prose.astro';
-import LocalBusiness from '../components/schema/LocalBusiness.astro';
 import heroImage from '../assets/images/hero-home.jpg';
 import heroImageMobile from '../assets/images/hero-home-mobile.jpg';
 import emergencyBandImage from '../assets/images/hero-storm.jpg';
@@ -56,8 +55,6 @@ const reviews = await getReviews();
   description="Licensed, insured tree service based in Williamsport, MD. Tree removal, 24/7 emergency response, trimming, stump grinding, and land clearing. Free estimates."
   canonical={pageURL}
 >
-  <LocalBusiness slot="head" />
-
   <Hero
     eyebrow="Williamsport · Hagerstown · Greencastle · Waynesboro · Frederick · Martinsburg"
     eyebrowIcon="location"
@@ -102,7 +99,7 @@ const reviews = await getReviews();
   </section>
 
   {/* Emergency callout — full-width, urgency. Real storm-damage photo under a heavy maroon scrim. */}
-  <section class="relative overflow-hidden bg-[#4a1a1a] text-white isolate">
+  <section class="relative overflow-hidden bg-[#4a1a1a] text-white isolate" data-track-location="emergency">
     <Image
       src={emergencyBandImage}
       alt=""
