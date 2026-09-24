@@ -1,4 +1,6 @@
 ---
+import { stripMarkdown } from '../../lib/inline-markdown';
+
 interface Props {
   faqs: Array<{ question: string; answer: string }>;
 }
@@ -13,7 +15,7 @@ const jsonLd = {
     name: f.question,
     acceptedAnswer: {
       '@type': 'Answer',
-      text: f.answer,
+      text: stripMarkdown(f.answer),
     },
   })),
 };

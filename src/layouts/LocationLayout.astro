@@ -25,6 +25,12 @@ const pageURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 // Short tree-service data for the services grid
 const treeServices = await getCollection('tree-services');
+const serviceCityPages = await getCollection('service-city');
+const comboByService = new Map(
+  serviceCityPages
+    .filter((page) => page.data.citySlug === entry.id)
+    .map((page) => [page.data.serviceSlug, page])
+);
 const treeServiceOrder = [
   'tree-removal',
   'emergency-tree-removal',
@@ -96,16 +102,24 @@ const shortTitle = (full: string) => full.split(' in ')[0];
       </div>
       <div class="grid gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
-          orderedTreeServices.map((s) => (
-            <ServiceCard
-              title={shortTitle(s.data.title)}
-              description={s.data.cardDescription}
-              href={`/tree-services/${s.id}`}
-              icon={iconMap[s.id] ?? 'default'}
-              image={s.data.heroImage}
-              imageAlt={s.data.heroAlt}
-            />
-          ))
+          orderedTreeServices.map((s) => {
+            const combo = comboByService.get(s.id);
+            return (
+              <ServiceCard
+                title={shortTitle(s.data.title)}
+                description={s.data.cardDescription}
+                href={
+                  combo
+                    ? `/tree-services/${combo.data.serviceSlug}/${combo.data.citySlug}`
+                    : `/tree-services/${s.id}`
+                }
+                eyebrow={combo ? `${d.city}, ${d.state}` : undefined}
+                icon={iconMap[s.id] ?? 'default'}
+                image={s.data.heroImage}
+                imageAlt={s.data.heroAlt}
+              />
+            );
+          })
         }
       </div>
     </div>

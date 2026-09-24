@@ -1,0 +1,23 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import ServiceCityLayout from '../../../layouts/ServiceCityLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('service-city');
+  return entries.map((entry) => ({
+    params: {
+      service: entry.data.serviceSlug,
+      city: entry.data.citySlug,
+    },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<'service-city'>;
+}
+
+const { entry } = Astro.props;
+---
+
+<ServiceCityLayout entry={entry} />

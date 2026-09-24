@@ -92,4 +92,7 @@ relatedLocations:
 relatedServices:
   - stump-grinding
   - emergency-tree-removal
+
+comboCallout: |
+  Looking for [tree removal in Frederick, MD](/tree-services/tree-removal/frederick-md)? We have a dedicated Frederick page covering local cost factors, City vs. County permit notes, and Frederick-specific FAQs.
 ---
