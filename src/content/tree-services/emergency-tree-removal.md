@@ -1,8 +1,9 @@
 ---
 title: "Emergency Tree Removal in Hagerstown, MD"
-titleTag: "Emergency Tree Removal Hagerstown MD | Snyder's Outdoor Solutions"
+titleTag: "24/7 Emergency Tree Removal | Tri-State"
 h1: "Emergency Tree Removal in Hagerstown, MD"
 description: "24/7 emergency tree removal in Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg. Tree on a house, car, or driveway? Call Snyder's now."
+metaDescription: "24/7 emergency tree removal across Washington County, MD and the Tri-State area. Tree on a house, car, or driveway? Call Snyder's now."
 cardDescription: "24/7 emergency tree removal. Tree on a house, car, or driveway? Call Snyder's now."
 city: "Hagerstown"
 state: "MD"

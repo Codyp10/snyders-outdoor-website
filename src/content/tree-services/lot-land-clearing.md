@@ -1,8 +1,9 @@
 ---
 title: "Lot & Land Clearing in Hagerstown, MD"
-titleTag: "Lot & Land Clearing Hagerstown MD | Snyder's Outdoor Solutions"
+titleTag: "Lot & Land Clearing | Washington County MD"
 h1: "Lot & Land Clearing in Hagerstown, MD"
 description: "Lot and land clearing in Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg. Brush removal, building site prep, and light commercial clearing."
+metaDescription: "Lot and land clearing across Washington County, MD and the Tri-State area. Brush removal, building site prep, and light commercial clearing."
 cardDescription: "Brush removal, building site prep, and light commercial clearing."
 city: "Hagerstown"
 state: "MD"

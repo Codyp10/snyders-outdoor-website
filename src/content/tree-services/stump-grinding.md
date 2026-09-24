@@ -1,8 +1,9 @@
 ---
 title: "Stump Grinding in Hagerstown, MD"
-titleTag: "Stump Grinding Hagerstown MD | Snyder's Outdoor Solutions"
+titleTag: "Stump Grinding | Washington County MD"
 h1: "Stump Grinding in Hagerstown, MD"
 description: "Stump grinding in Hagerstown, Greencastle, Waynesboro, Frederick, and Martinsburg. Ground below grade, site cleaned, ready to replant, resod, or build over."
+metaDescription: "Stump grinding across Washington County, MD and the Tri-State area. Ground below grade, site cleaned, ready to replant, resod, or build over."
 cardDescription: "Stump grinding below grade, site cleaned, ready to replant, resod, or build over."
 city: "Hagerstown"
 state: "MD"

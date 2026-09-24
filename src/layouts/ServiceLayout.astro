@@ -74,13 +74,17 @@ const signsChipMap: Record<string, string> = {
 const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
 ---
 
-<BaseLayout title={d.titleTag} description={d.description} canonical={pageURL}>
+<BaseLayout
+  title={d.titleTag}
+  description={d.metaDescription ?? d.description}
+  canonical={pageURL}
+>
   <ServiceSchema
     slot="head"
-    serviceName={d.title}
-    description={d.description}
+    serviceName={d.title.split(' in ')[0]}
+    description={d.metaDescription ?? d.description}
     url={pageURL}
-    areaServed={{ city: d.city, region: d.state }}
+    areaServed={business.areaServed}
   />
   <FAQSchema slot="head" faqs={d.faqs} />
 
@@ -222,7 +226,7 @@ const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
                   )}
                 </figure>
               )}
-              <div class="relative rounded-2xl bg-gradient-to-br from-brand-dark to-brand/90 text-white p-6 md:p-7 shadow-xl overflow-hidden">
+              <div class="relative rounded-2xl bg-gradient-to-br from-brand-dark to-brand/90 text-white p-6 md:p-7 shadow-xl overflow-hidden" data-track-location="sidebar">
                 <svg class="absolute -right-6 -bottom-6 w-40 h-40 text-white/5" viewBox="0 0 120 160" fill="currentColor" aria-hidden="true">
                   <path d="M60 10 L40 50 L50 50 L30 90 L45 90 L20 140 L100 140 L75 90 L90 90 L70 50 L80 50 Z"/>
                   <rect x="54" y="140" width="12" height="18"/>

@@ -44,7 +44,9 @@ const areaServed = areaServedCity
 
 const jsonLd: Record<string, unknown> = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
+  // HomeAndConstructionBusiness is the closest official LocalBusiness subtype
+  // for a tree service. schema.org has no TreeService type.
+  '@type': ['LocalBusiness', 'HomeAndConstructionBusiness'],
   '@id': id,
   name,
   url: business.url,

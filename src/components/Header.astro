@@ -14,7 +14,7 @@ const isActive = (href: string) => {
 const primaryNav = nav.primary.filter((item) => !('hidden' in item && item.hidden));
 ---
 
-<header class="sticky top-0 z-40 bg-brand-dark text-white shadow-sm">
+<header class="sticky top-0 z-40 bg-brand-dark text-white shadow-sm" data-track-location="header">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
       <a href="/" class="flex items-center" aria-label={`${business.name} Home`}>
