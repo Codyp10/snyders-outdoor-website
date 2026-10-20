@@ -88,4 +88,8 @@ relatedLocations:
 relatedServices:
   - tree-removal
   - lot-land-clearing
+
+comboCallout: |
+  Looking for [stump grinding in Frederick, MD](/tree-services/stump-grinding/frederick-md)? We have a dedicated Frederick page with local cost factors and FAQs.
 ---
+
