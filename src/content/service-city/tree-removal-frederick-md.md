@@ -24,7 +24,7 @@ whatsIncluded:
   body: |
     Snyder's handles full residential tree removals for City of Frederick and Frederick County yards — from Downtown and Whittier to Spring Ridge, Worman's Mill, Clover Hill, Ballenger Creek, and nearby towns like Urbana, Walkersville, Middletown, and Linganore.
 
-    A full removal with us means more than cutting a trunk. We assess the tree and drop zone, plan the sequence of cuts, protect structures and landscaping, remove the wood and brush, and leave the jobsite cleaned up. [Stump grinding](/tree-services/stump-grinding) is optional and often bundled on the same visit when you want the area ready to replant, resod, or build over.
+    A full removal with us means more than cutting a trunk. We assess the tree and drop zone, plan the sequence of cuts, protect structures and landscaping, remove the wood and brush, and leave the jobsite cleaned up. [Stump grinding](/tree-services/stump-grinding/frederick-md) is optional and often bundled on the same visit when you want the area ready to replant, resod, or build over.
 
     If you're comparing companies for [tree service in Frederick, MD](/service-areas/frederick-md), this page covers removal end to end. For the full six-service overview, neighborhoods list, and travel FAQ, use the Frederick city hub; for our Tri-State process overview, see [our tree removal process](/tree-services/tree-removal).
   items:
@@ -130,7 +130,7 @@ stumpPairing:
   body: |
     Stump grinding is a separate service from tree removal, and we commonly bundle both on one visit with combined pricing. Grinding makes sense when you want to replant, resod, build a patio or walk, or reduce trip and pest harborage around an old stump.
 
-    Learn more on our [stump grinding](/tree-services/stump-grinding) page, or ask for a bundled number when we estimate the removal.
+    Learn more on our [stump grinding in Frederick, MD](/tree-services/stump-grinding/frederick-md) page, or ask for a bundled number when we estimate the removal.
 
 localAreas:
   heading: "Areas we serve in and around Frederick"
@@ -171,7 +171,7 @@ whyChoose:
 crossLinks: |
   We provide tree removal across Frederick and the Tri-State area. Start with this page for Frederick-specific removal details, see [our tree removal process](/tree-services/tree-removal) for the Tri-State hub, or visit [tree service in Frederick, MD](/service-areas/frederick-md) for every service we offer in town.
 
-  Need a related service? We also handle [24/7 emergency tree removal](/tree-services/emergency-tree-removal), [storm damage cleanup](/tree-services/storm-damage-cleanup), [stump grinding](/tree-services/stump-grinding), and [tree trimming and pruning](/tree-services/tree-trimming-pruning) — often in the same visit when it makes sense.
+  Need a related service? We also handle [24/7 emergency tree removal](/tree-services/emergency-tree-removal), [storm damage cleanup](/tree-services/storm-damage-cleanup), [stump grinding in Frederick](/tree-services/stump-grinding/frederick-md), and [tree trimming and pruning](/tree-services/tree-trimming-pruning) — often in the same visit when it makes sense.
 
   Helpful public resources: [City of Frederick Urban Forestry](https://cityoffrederickmd.gov/529/Urban-Forestry) (City of Frederick) · [UMD Extension — Emerald Ash Borer](https://extension.umd.edu/resource/emerald-ash-borer-eab) (University of Maryland Extension).
 
@@ -187,7 +187,7 @@ faqs:
   - question: "Do you offer emergency or storm tree removal in Frederick?"
     answer: "Yes. Snyder's provides 24/7 emergency tree removal when a tree is on a house, car, or blocking a driveway, and storm damage cleanup for fallen limbs and debris. Call (301) 288-1677 anytime for emergencies. Non-emergency storm cleanup is scheduled after hazards are handled. Details are on our emergency tree removal and storm damage cleanup pages."
   - question: "Is stump grinding included with tree removal?"
-    answer: "Stump grinding is usually a separate service, but we commonly bundle it with a removal and give a combined price. If you plan to replant, resod, or build where the tree stood, grinding the stump is usually the right call. Ask for a bundled quote during your free Frederick estimate."
+    answer: "[Stump grinding](/tree-services/stump-grinding/frederick-md) is usually a separate service, but we commonly bundle it with a removal and give a combined price. If you plan to replant, resod, or build where the tree stood, grinding the stump is usually the right call. Ask for a bundled quote during your free Frederick estimate."
   - question: "You're based in Williamsport — do you charge extra to work in Frederick?"
     answer: "Not typically. Our flat-rate pricing factors in travel for scheduled Frederick work. The exception is very small jobs where windshield time becomes a larger share of the total — in those cases we sometimes batch you with another Frederick-area job to keep the price right. Ask during your estimate if you have a small one-off."
   - question: "How long does a typical residential removal take?"
