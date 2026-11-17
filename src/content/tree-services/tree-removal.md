@@ -94,5 +94,5 @@ relatedServices:
   - emergency-tree-removal
 
 comboCallout: |
-  Looking for [tree removal in Frederick, MD](/tree-services/tree-removal/frederick-md)? We have a dedicated Frederick page covering local cost factors, City vs. County permit notes, and Frederick-specific FAQs.
+  Looking for a city-specific page? See [tree removal in Hagerstown, MD](/tree-services/tree-removal/hagerstown-md) for Washington County cost factors, permit notes, and FAQs, or [tree removal in Frederick, MD](/tree-services/tree-removal/frederick-md) for the Frederick version.
 ---
