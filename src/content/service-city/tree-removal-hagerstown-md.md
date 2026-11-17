@@ -101,7 +101,7 @@ costFactors:
 permits:
   heading: "Permits and rules in Hagerstown and Washington County"
   intro: |
-    Permit rules in Hagerstown depend on *where* the tree sits and what else is happening on the lot. This is general guidance for homeowners — not legal advice. We flag likely requirements during the estimate; always verify with the City, County, HOA, or Maryland DNR for your address.
+    Permit rules in Hagerstown depend on *where* the tree sits and what else is happening on the lot. This is general guidance for homeowners — not legal advice. We flag likely requirements during the estimate; always check with the City, County, or your HOA for your address.
   sections:
     - heading: "Private residential trees (typical backyard case)"
       body: |
@@ -110,9 +110,9 @@ permits:
         We handle permit questions as part of the free estimate. Confirm the details for your address with the City or County before work starts.
     - heading: "Street trees and the public right-of-way"
       body: |
-        Trees in the public road right-of-way generally fall under Maryland's Roadside Tree Law. Trimming or removing a roadside tree typically requires a Roadside Tree Permit from the Maryland DNR Forest Service. Do not prune or remove a tree in the public right-of-way on your own.
+        Trees in the public right-of-way, including street trees between the curb and sidewalk or in a sidewalk tree well, can have extra rules. Do not prune or remove those trees on your own.
 
-        In the City of Hagerstown, a street tree is a tree between the curb and sidewalk, or in a tree well in the sidewalk, in the public right-of-way. Public Works cares for those trees. If you have a concern about a street tree, contact the City at (301) 739-8577 ext. 178 or submit a Street Tree Maintenance Request. After an assessment, the City applies for any needed DNR permits and schedules the work with its contracted arborist.
+        If you have a concern about a street tree, contact the City of Hagerstown at (301) 739-8577 ext. 178 or submit a Street Tree Maintenance Request, and confirm what's required for your address before any work starts.
     - heading: "HOAs and other lot rules"
       body: |
         Some neighborhoods require HOA or architectural approval even when the City or County does not issue a tree permit. Bring any HOA packet or plat notes to the estimate and we'll help you see what still needs homeowner approval before the saws come out.
@@ -179,7 +179,7 @@ faqs:
   - question: "How much does tree removal cost in Hagerstown, MD?"
     answer: "Cost depends on the tree's size, how close it is to buildings or power lines, yard access, the tree's condition, whether you want stump grinding, and whether the job is an emergency or a scheduled visit. Snyder's Outdoor Solutions provides a free on-site estimate and a flat-rate quote before work starts — no hourly surprises. Call (301) 288-1677 or request a quote through our contact form."
   - question: "Do I need a permit to remove a tree in Hagerstown or Washington County?"
-    answer: "Most residential removals on private property inside the city or county do not require a permit. Exceptions include trees in the public right-of-way, protected specimen designations, work inside certain overlay districts, and some HOA rules. City street trees — typically between the curb and sidewalk — are handled by Public Works, and Maryland's Roadside Tree Law generally requires a DNR permit for work in the public right-of-way. We flag likely issues at the estimate; confirm with the City, County, or your HOA for your address. This is not legal advice."
+    answer: "Most residential removals on private property inside the city or county do not require a permit. Exceptions can include trees in the public right-of-way, protected specimen designations, work inside certain overlay districts, and some HOA rules. For street trees or other public right-of-way trees, check with the City or County for your address. We flag likely issues at the estimate. This is not legal advice."
   - question: "Do you offer emergency tree service in Hagerstown, MD?"
     answer: "Yes. Snyder's provides 24/7 emergency tree removal when a tree is on a house, car, or blocking a driveway, and storm damage cleanup for fallen limbs and debris. Because we're based in Williamsport, daytime emergencies in Hagerstown are usually on site within the hour. Call (301) 288-1677 anytime. Non-emergency storm cleanup is scheduled after hazards are handled. Details are on our emergency tree removal and storm damage cleanup pages."
   - question: "Can you remove a tree close to my house or near power lines?"
