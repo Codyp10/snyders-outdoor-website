@@ -51,7 +51,7 @@ faqs:
   - question: "Do you serve Smithsburg, Funkstown, Williamsport, and the rest of Washington County?"
     answer: "Yes. We work throughout Washington County regularly — Smithsburg, Funkstown, Williamsport, Clear Spring, Boonsboro, Hancock, and the unincorporated areas in between. If you're inside the county line, we're your crew."
   - question: "Do you need a permit to remove a tree in Hagerstown?"
-    answer: "Most residential removals on private property inside the city or county don't require a permit. Exceptions include trees in the public right-of-way, protected specimen designations, and work inside certain overlay districts. We handle permit questions as part of the free estimate."
+    answer: "Most residential removals on private property inside the city or county don't require a permit. Exceptions include trees in the public right-of-way, protected specimen designations, and work inside certain overlay districts. See our [tree removal in Hagerstown, MD](/tree-services/tree-removal/hagerstown-md) page for a plain-language overview. We handle permit questions as part of the free estimate."
   - question: "Can you handle big trees in tight city lots?"
     answer: "Yes — a lot of our work is in older neighborhoods like the North End and Fountain Head where houses are close together. We specialize in rigging and sectional takedowns for trees that can't simply be felled. No yard is too tight if we plan right."
   - question: "How fast can you respond to an emergency in Hagerstown?"
