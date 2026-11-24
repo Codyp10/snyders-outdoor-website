@@ -90,4 +90,7 @@ relatedLocations:
 relatedServices:
   - storm-damage-cleanup
   - tree-removal
+
+comboCallout: |
+  Looking for [emergency tree removal in Frederick, MD](/tree-services/emergency-tree-removal/frederick-md)? That page covers Frederick thunderstorms and ice, power-line safety, what to do while you wait, and insurance-photo tips.
 ---

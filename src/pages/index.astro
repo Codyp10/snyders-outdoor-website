@@ -6,6 +6,7 @@ import TrustStrip from '../components/TrustStrip.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import CTABar from '../components/CTABar.astro';
 import Prose from '../components/Prose.astro';
+import { serviceCityIcon, serviceCityLinks } from '../lib/serviceCityLinks';
 import heroImage from '../assets/images/hero-home.jpg';
 import heroImageMobile from '../assets/images/hero-home-mobile.jpg';
 import emergencyBandImage from '../assets/images/hero-storm.jpg';
@@ -39,6 +40,8 @@ const iconMap: Record<string, 'axe' | 'alert' | 'wind' | 'scissors' | 'disc' | '
   'lot-land-clearing': 'trees',
 };
 const shortTitle = (full: string) => full.split(' in ')[0];
+
+const nearYou = serviceCityLinks(await getCollection('service-city'));
 
 const locations = await getCollection('locations');
 const locationOrder = ['williamsport-md', 'hagerstown-md', 'greencastle-pa', 'waynesboro-pa', 'frederick-md', 'martinsburg-wv'];
@@ -97,6 +100,36 @@ const reviews = await getReviews();
       </div>
     </div>
   </section>
+
+  {
+    nearYou.length > 0 && (
+      <section id="popular-services" class="bg-stone-50 py-16 md:py-24 border-y border-gray-100" data-track-location="popular-services">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl mx-auto text-center mb-10 md:mb-14">
+            <h2 class="font-heading font-bold text-gray-900 text-3xl md:text-4xl">
+              Popular services near you
+            </h2>
+            <p class="mt-4 text-gray-600 text-base md:text-lg leading-relaxed">
+              City guides for the jobs Frederick and Hagerstown homeowners ask about most.
+              Each page covers what the work includes, what changes the quote, and how to request a free on-site estimate.
+            </p>
+          </div>
+          <div class="grid gap-5 md:gap-6 sm:grid-cols-2">
+            {nearYou.map((link) => (
+              <ServiceCard
+                title={link.label}
+                description={link.description}
+                href={link.href}
+                icon={serviceCityIcon[link.serviceSlug] ?? 'default'}
+                image={link.heroImage}
+                imageAlt={link.heroAlt}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   {/* Emergency callout — full-width, urgency. Real storm-damage photo under a heavy maroon scrim. */}
   <section class="relative overflow-hidden bg-[#4a1a1a] text-white isolate" data-track-location="emergency">

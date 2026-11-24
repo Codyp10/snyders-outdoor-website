@@ -1,6 +1,7 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
+import { serviceCityLinks } from '../lib/serviceCityLinks';
 import Hero from '../components/Hero.astro';
 import TrustStrip from '../components/TrustStrip.astro';
 import CTABar from '../components/CTABar.astro';
@@ -73,6 +74,14 @@ const signsChipMap: Record<string, string> = {
   'lot-land-clearing': 'Common Jobs',
 };
 const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
+
+const cityPagesForService = serviceCityLinks(await getCollection('service-city')).filter(
+  (link) => link.serviceSlug === entry.id
+);
+const comboCallout = d.comboCallout ?? '';
+// Pages already named in the editorial callout are not listed twice.
+// A new service×city file shows up here even if the callout has not been edited.
+const extraCityPages = cityPagesForService.filter((link) => !comboCallout.includes(link.href));
 ---
 
 <BaseLayout
@@ -329,7 +338,7 @@ const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
 
   {/* Editorial cross-links — required by the strategy doc */}
   {
-    (d.relatedLocations.length > 0 || d.relatedServices.length > 0) && (
+    (d.relatedLocations.length > 0 || d.relatedServices.length > 0 || Boolean(d.comboCallout) || extraCityPages.length > 0) && (
       <section class="bg-stone-50 py-12 md:py-16 border-y border-gray-100">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Prose>
@@ -337,6 +346,14 @@ const signsChipLabel = signsChipMap[entry.id] ?? 'When to Call';
                 inter-element whitespace, and stray spaces land before the commas. */}
             {d.comboCallout && (
               <p set:html={renderMarkdownParagraphs(d.comboCallout)} />
+            )}
+            {extraCityPages.length > 0 && (
+              <p>
+                {d.comboCallout ? 'More city pages: ' : 'City pages for this service: '}
+                {extraCityPages.map((link, i) => (
+                  <>{i > 0 && i === extraCityPages.length - 1 ? ', and ' : i > 0 ? ', ' : ''}<a href={link.href}>{link.label}</a></>
+                ))}.
+              </p>
             )}
             {d.relatedLocations.length > 0 && (
               <p>

@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
+import { serviceCityLinks } from '../lib/serviceCityLinks';
 import Hero from '../components/Hero.astro';
 import TrustStrip from '../components/TrustStrip.astro';
 import ServiceCard from '../components/ServiceCard.astro';
@@ -53,6 +54,7 @@ const iconMap: Record<string, 'axe' | 'alert' | 'wind' | 'scissors' | 'disc' | '
 };
 
 const shortTitle = (full: string) => full.split(' in ')[0];
+const localServiceLinks = serviceCityLinks(serviceCityPages).filter((link) => link.citySlug === entry.id);
 ---
 
 <BaseLayout title={d.titleTag} description={d.description} canonical={pageURL}>
@@ -122,6 +124,14 @@ const shortTitle = (full: string) => full.split(' in ')[0];
           })
         }
       </div>
+      {localServiceLinks.length > 0 && (
+        <p class="mt-8 text-center text-gray-700 text-base leading-relaxed max-w-3xl mx-auto">
+          Local guides:{' '}
+          {localServiceLinks.map((link, i) => (
+            <>{i > 0 && i === localServiceLinks.length - 1 ? ', and ' : i > 0 ? ', ' : ''}<a href={link.href} class="text-brand font-semibold underline underline-offset-4 hover:text-brand-dark">{link.label}</a></>
+          ))}.
+        </p>
+      )}
     </div>
   </section>
 

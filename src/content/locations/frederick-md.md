@@ -56,7 +56,15 @@ faqs:
   - question: "Do you serve the smaller towns around Frederick?"
     answer: "Yes — Urbana, Walkersville, Middletown, Jefferson, Myersville, Thurmont, and the rest of Frederick County. If you're not sure whether you're in our service area, call and we'll tell you straight."
   - question: "How quickly can you respond for storm damage in Frederick?"
-    answer: "After a major storm our dispatch prioritizes structural hazards first across the full service area. Frederick non-emergency cleanup typically starts within a few days of the storm. Tree-on-structure situations get the emergency call treatment regardless of which county you're in."
+    answer: "After a major storm our dispatch prioritizes structural hazards first across the full service area. Frederick non-emergency cleanup typically starts within a few days of the storm. Tree-on-structure situations get the emergency call treatment regardless of which county you're in. See [emergency tree removal in Frederick, MD](/tree-services/emergency-tree-removal/frederick-md)."
+  - question: "What affects the cost of tree work in Frederick?"
+    answer: "Size, how close the tree is to the house or power lines, yard access, the tree's condition, and whether the job is scheduled or an emergency all change the quote. Stump grinding is priced separately from removal. There is no set price list. Snyder's gives a free on-site estimate and a flat-rate quote before work starts. Detail is on [tree removal in Frederick, MD](/tree-services/tree-removal/frederick-md), [emergency tree removal in Frederick, MD](/tree-services/emergency-tree-removal/frederick-md), and [stump grinding in Frederick, MD](/tree-services/stump-grinding/frederick-md)."
+  - question: "Is Snyder's Outdoor Solutions insured?"
+    answer: "Yes. Snyder's is licensed and insured. We can send current certificates before work starts if you want them for your records. The company is owned by Dustin Snyder and based at 16040 Dellinger Rd, Williamsport, MD 21795. Call (301) 288-1677."
+  - question: "What happens to the wood, debris, and stump?"
+    answer: "On a tree removal, logs, limbs, and brush are hauled away and the yard is cleaned up. The stump stays unless you add stump grinding. Grinding is usually 6 to 8 inches below the surface depending on stump size. Each stump is priced separately, chip removal is included, and we call 811 before grinding. Contact Dustin about a multi-stump discount. See [stump grinding in Frederick, MD](/tree-services/stump-grinding/frederick-md)."
+  - question: "How do I get a free estimate in Frederick?"
+    answer: "Call (301) 288-1677 or use the contact form. Estimates are free and on-site. We look at the tree or stump and quote the work before we start. For a tree on a home, car, or driveway, call anytime for [emergency tree removal in Frederick, MD](/tree-services/emergency-tree-removal/frederick-md)."
 
 externalLink:
   url: "https://cityoffrederickmd.gov/"
