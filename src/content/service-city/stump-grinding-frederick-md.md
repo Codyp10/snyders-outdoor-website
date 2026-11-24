@@ -135,7 +135,7 @@ whyChoose:
 crossLinks: |
   We grind stumps across Frederick and the Tri-State area. Start here for Frederick stump grinding, see our [stump grinding](/tree-services/stump-grinding) page for the Tri-State overview, or visit [tree service in Frederick, MD](/service-areas/frederick-md) for every service we offer in town.
 
-  Need a related service? We also handle [tree removal in Frederick](/tree-services/tree-removal/frederick-md), [lot and land clearing](/tree-services/lot-land-clearing), [storm damage cleanup](/tree-services/storm-damage-cleanup), and [24/7 emergency tree removal](/tree-services/emergency-tree-removal).
+  Need a related service? We also handle [tree removal in Frederick](/tree-services/tree-removal/frederick-md), [emergency tree removal in Frederick, MD](/tree-services/emergency-tree-removal/frederick-md), [lot and land clearing](/tree-services/lot-land-clearing), and [storm damage cleanup](/tree-services/storm-damage-cleanup).
 
 faqs:
   - question: "How much does stump grinding cost in Frederick, MD?"
@@ -154,6 +154,10 @@ faqs:
     answer: "Yes. We grind old stumps, stumps left from storms, and stumps left by other crews or past owners, not just stumps from our own removals. Call (301) 288-1677 or request a free estimate and let us know how many stumps you have."
   - question: "Can you grind stumps and remove a tree on the same visit in Frederick?"
     answer: "Yes. Stump grinding is a separate service, but we can schedule it with a tree removal and quote both together. It means one appointment and one cleanup. See our [tree removal in Frederick, MD](/tree-services/tree-removal/frederick-md) page for removal details."
+  - question: "Is Snyder's insured for stump grinding in Frederick?"
+    answer: "Yes. Snyder's Outdoor Solutions is licensed and insured. We can send current certificates before work starts if you want them for your records. Call (301) 288-1677 or request a free on-site estimate."
+  - question: "How soon can you grind a stump in Frederick, and is the estimate free?"
+    answer: "The estimate is free and done on site. Call (301) 288-1677 or use the contact form. We look at the stump, the access, and how many stumps you have, then quote each stump separately before any grinding. Chip removal is included in that price. Work is scheduled after the quote. If the grinding is part of a tree removal, we can often do both on the same visit."
 
 relatedHubService: "stump-grinding"
 relatedCityPage: "frederick-md"

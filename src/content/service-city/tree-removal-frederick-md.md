@@ -56,7 +56,7 @@ signsYouNeed:
 stormEmergency:
   heading: "Storm damage and emergency removals in Frederick"
   body: |
-    If a tree is on a house, car, or blocking a driveway in Frederick, treat it as an emergency. Call [(301) 288-1677](tel:+13012881677) anytime — we provide [24/7 emergency tree removal](/tree-services/emergency-tree-removal) across our Tri-State service area, and [storm damage cleanup](/tree-services/storm-damage-cleanup) for fallen limbs, hung-up branches, and debris after severe weather.
+    If a tree is on a house, car, or blocking a driveway in Frederick, treat it as an emergency. Call [(301) 288-1677](tel:+13012881677) anytime. [Emergency tree removal in Frederick, MD](/tree-services/emergency-tree-removal/frederick-md) covers what to do while you wait, including power lines. [Storm damage cleanup](/tree-services/storm-damage-cleanup) is for fallen limbs, hung-up branches, and debris after severe weather.
 
     Non-emergency storm cleanup can wait for daylight and a scheduled visit. Structural hazards and blocked access go first. When you call, tell us whether anyone is hurt, whether power lines are involved, and whether the tree is still hanging over a roof or vehicle.
 
@@ -171,7 +171,7 @@ whyChoose:
 crossLinks: |
   We provide tree removal across Frederick and the Tri-State area. Start with this page for Frederick-specific removal details, see [our tree removal process](/tree-services/tree-removal) for the Tri-State hub, or visit [tree service in Frederick, MD](/service-areas/frederick-md) for every service we offer in town.
 
-  Need a related service? We also handle [24/7 emergency tree removal](/tree-services/emergency-tree-removal), [storm damage cleanup](/tree-services/storm-damage-cleanup), [stump grinding in Frederick](/tree-services/stump-grinding/frederick-md), and [tree trimming and pruning](/tree-services/tree-trimming-pruning) — often in the same visit when it makes sense.
+  Need a related service? We also handle [emergency tree removal in Frederick, MD](/tree-services/emergency-tree-removal/frederick-md), [storm damage cleanup](/tree-services/storm-damage-cleanup), [stump grinding in Frederick](/tree-services/stump-grinding/frederick-md), and [tree trimming and pruning](/tree-services/tree-trimming-pruning), often in the same visit when it makes sense.
 
   Helpful public resources: [City of Frederick Urban Forestry](https://cityoffrederickmd.gov/529/Urban-Forestry) (City of Frederick) · [UMD Extension — Emerald Ash Borer](https://extension.umd.edu/resource/emerald-ash-borer-eab) (University of Maryland Extension).
 
@@ -185,7 +185,7 @@ faqs:
   - question: "Can you remove a tree close to my house or near power lines?"
     answer: "Yes. We use controlled sectional removal and rigging so limbs are lowered in pieces instead of dropped as one piece. Jobs near power lines may require utility coordination before cutting. Never attempt line-adjacent tree work yourself. A free on-site estimate determines the safest method for your Frederick property."
   - question: "Do you offer emergency or storm tree removal in Frederick?"
-    answer: "Yes. Snyder's provides 24/7 emergency tree removal when a tree is on a house, car, or blocking a driveway, and storm damage cleanup for fallen limbs and debris. Call (301) 288-1677 anytime for emergencies. Non-emergency storm cleanup is scheduled after hazards are handled. Details are on our emergency tree removal and storm damage cleanup pages."
+    answer: "Yes. Snyder's provides 24/7 emergency tree removal when a tree is on a house, car, or blocking a driveway, and storm damage cleanup for fallen limbs and debris. Call (301) 288-1677 anytime for emergencies. Non-emergency storm cleanup is scheduled after hazards are handled. See [emergency tree removal in Frederick, MD](/tree-services/emergency-tree-removal/frederick-md) for power-line safety and what to do while you wait."
   - question: "Is stump grinding included with tree removal?"
     answer: "[Stump grinding](/tree-services/stump-grinding/frederick-md) is usually a separate service, but we commonly bundle it with a removal and give a combined price. If you plan to replant, resod, or build where the tree stood, grinding the stump is usually the right call. Ask for a bundled quote during your free Frederick estimate."
   - question: "You're based in Williamsport — do you charge extra to work in Frederick?"
@@ -196,6 +196,10 @@ faqs:
     answer: "Yes. Snyder's Outdoor Solutions is a licensed tree service with insurance coverage, including general liability and workers' compensation. We'll send current certificates before work starts if you want them for your records. Call (301) 288-1677 or request a free estimate to get started."
   - question: "What's the best time of year to remove a tree in Frederick County?"
     answer: "Hazardous trees should come down whenever they're unsafe — don't wait on the calendar. For non-urgent removals, the dormant season from late fall through early spring often means easier assessment, firmer ground for equipment, and less soft lawn damage. We'll recommend timing that fits your tree's condition and your schedule during the estimate."
+  - question: "How soon can Snyder's come out for a free estimate in Frederick?"
+    answer: "Estimates are free and done on site. Call (301) 288-1677 or use the contact form. We look at the tree and give you a flat-rate quote before any cutting. Routine Frederick jobs are scheduled after that quote. If a tree is on a home, car, or blocking a driveway, call anytime. Those calls are [emergency tree removal in Frederick, MD](/tree-services/emergency-tree-removal/frederick-md) and go ahead of routine work. How soon a crew arrives depends on where the trucks are and whether the utility has to make power lines safe first."
+  - question: "What happens to the wood, debris, and stump after tree removal in Frederick?"
+    answer: "Logs, limbs, and brush are hauled away, and the yard is cleaned up before we leave. The stump stays in the ground unless you add stump grinding. Grinding is a separate service. We typically grind 6 to 8 inches below the surface depending on stump size, price each stump separately, include chip removal, and call 811 before grinding. If you have several stumps, contact Dustin about a multi-stump discount. See [stump grinding in Frederick, MD](/tree-services/stump-grinding/frederick-md), or ask for one quote that covers the tree and the stump."
 
 relatedHubService: "tree-removal"
 relatedCityPage: "frederick-md"

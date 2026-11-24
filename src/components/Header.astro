@@ -1,8 +1,12 @@
 ---
+import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import nav from '../data/navigation.json';
 import business from '../data/business.json';
 import logo from '../assets/images/logo-white.png';
+import { serviceCityLinks } from '../lib/serviceCityLinks';
+
+const nearYou = serviceCityLinks(await getCollection('service-city'));
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) => {
@@ -54,7 +58,7 @@ const primaryNav = nav.primary.filter((item) => !('hidden' in item && item.hidde
                     />
                   </svg>
                 </button>
-                <div class="absolute left-0 top-full pt-2 w-72 invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 transition-opacity">
+                <div class="absolute left-0 top-full pt-2 w-[22rem] invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 transition-opacity">
                   <div class="bg-brand-dark rounded-lg shadow-xl ring-1 ring-white/10 overflow-hidden">
                     {item.children.map((child) => (
                       <a
@@ -64,6 +68,21 @@ const primaryNav = nav.primary.filter((item) => !('hidden' in item && item.hidde
                         {child.label}
                       </a>
                     ))}
+                    {item.label === 'Tree Services' && nearYou.length > 0 && (
+                      <>
+                        <div class="px-4 pt-3 pb-1 text-[11px] font-semibold uppercase tracking-wider text-white/50 border-t border-white/10">
+                          Near you
+                        </div>
+                        {nearYou.map((link) => (
+                          <a
+                            href={link.href}
+                            class={`block px-4 py-3 text-sm leading-snug hover:bg-brand border-b border-white/10 last:border-b-0 ${isActive(link.href) ? 'bg-brand/30' : ''}`}
+                          >
+                            {link.label}
+                          </a>
+                        ))}
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -143,6 +162,16 @@ const primaryNav = nav.primary.filter((item) => !('hidden' in item && item.hidde
                       {child.label}
                     </a>
                   ))}
+                  {item.label === 'Tree Services' && nearYou.length > 0 && (
+                    <>
+                      <div class="px-4 pt-3 pb-1 text-xs font-semibold uppercase tracking-wider text-white/50">Near you</div>
+                      {nearYou.map((link) => (
+                        <a href={link.href} class="block px-4 py-2 text-base leading-snug text-white/80 hover:text-white">
+                          {link.label}
+                        </a>
+                      ))}
+                    </>
+                  )}
                 </div>
               </details>
             ) : (

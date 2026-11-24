@@ -1,9 +1,13 @@
 ---
+import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import business from '../data/business.json';
 import nav from '../data/navigation.json';
 import { phoneDisplay, phoneTel } from '../lib/nap';
 import logo from '../assets/images/logo-white.png';
+import { serviceCityLinks } from '../lib/serviceCityLinks';
+
+const nearYou = serviceCityLinks(await getCollection('service-city'));
 
 const year = new Date().getFullYear();
 const treeServices = nav.primary.find((i) => i.label === 'Tree Services')?.children ?? [];
@@ -50,6 +54,16 @@ const facebookUrl = business.sameAs.find((u) => u.includes('facebook.com')) ?? '
             <li><a href={s.href} class="text-white/70 hover:text-white">{s.label}</a></li>
           ))}
         </ul>
+        {nearYou.length > 0 && (
+          <>
+            <h2 class="font-heading font-bold text-sm uppercase tracking-wider text-white/90 mb-3 mt-6">Near you</h2>
+            <ul class="space-y-2 text-sm">
+              {nearYou.map((link) => (
+                <li><a href={link.href} class="text-white/70 hover:text-white">{link.label}</a></li>
+              ))}
+            </ul>
+          </>
+        )}
       </div>
 
       <div>
